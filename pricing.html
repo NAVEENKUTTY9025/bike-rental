@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowwBike | Pricing – centered plans</title>
+    <link rel="icon" type="images/jpeg" href="images/growwpark_logo.jpg">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Bike Rental Theme - Black/White/Dark Yellow */
+        :root {
+            --primary-color: #D4AF37;
+            --primary-dark: #B8860B;
+            --primary-light: #FFD700;
+            --primary-ultralight: #FFF8DC;
+            --text-color: #FFFFFF;
+            --text-light: #E5E5E5;
+            --text-lighter: #A0A0A0;
+            --bg-color: #0A0A0A;
+            --bg-secondary: #1A1A1A;
+            --bg-dark: #0A0A0A;
+            --card-bg: #1A1A1A;
+            --border-color: #333333;
+            --nav-bg: #000000;
+            --nav-text: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.7);
+            --transition: all 0.3s ease;
+            --border-radius: 12px;
+            --container-width: 1200px;
+            --header-height: 80px;
+        }
+
+        .light-theme {
+            --primary-color: #D4AF37;
+            --primary-dark: #B8860B;
+            --primary-light: #FFD700;
+            --primary-ultralight: #FFF8DC;
+            --text-color: #222222;
+            --text-light: #444444;
+            --text-lighter: #666666;
+            --bg-color: #FFFFFF;
+            --bg-secondary: #F8F8F8;
+            --bg-dark: #FFFFFF;
+            --card-bg: #FFFFFF;
+            --border-color: #E0E0E0;
+            --nav-bg: #000000;
+            --nav-text: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: var(--transition);
+            overflow-x: hidden;
+            font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background-color: var(--primary-color);
+            color: #000000;
+            border-radius: 8px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(212, 175, 55, 0.3);
+            color: #000000;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 14px 28px;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: #000000;
+        }
+
+        .btn-outline-sm {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 6px 14px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .btn-outline-sm:hover {
+            background-color: var(--primary-color);
+            color: #000000;
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            background-color: var(--nav-bg);
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1001;
+            flex-shrink: 0;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+            color: var(--nav-text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--primary-color);
+        }
+
+       
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            background-color: #000000;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 12px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            transition: var(--transition);
+            color: #FFFFFF;
+            white-space: nowrap;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+            color: var(--primary-color);
+        }
+
+        .theme-toggle, .rtl-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--nav-text);
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 10px;
+            border-radius: 8px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover, .rtl-toggle:hover {
+            background-color: var(--primary-color);
+            color: #000000;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--nav-text);
+            background: none;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            z-index: 1001;
+            flex-shrink: 0;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-shrink: 0;
+            margin-left: 20px;
+        }
+
+        /* ===== PRICING HERO – BOLD VISIBLE BIKE BACKGROUND, NOT FIXED ===== */
+        .pricing-hero {
+            padding-top: calc(var(--header-height) + 80px);
+            padding-bottom: 120px;
+            text-align: center;
+            position: relative;
+            background-image: url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            background-color: rgba(0, 0, 0, 0.55);
+            background-blend-mode: overlay;
+            isolation: isolate;
+            transition: background-color 0.3s ease;
+        }
+
+        .light-theme .pricing-hero {
+            background-color: rgba(255, 255, 255, 0.7);
+            background-blend-mode: overlay;
+        }
+
+        .pricing-hero .container {
+            position: relative;
+            z-index: 3;
+            background-color: transparent;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .pricing-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .light-theme .pricing-hero h1 {
+            color: #000000;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .pricing-hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .pricing-hero p {
+            font-size: 1.2rem;
+            color: #ffffff;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+            font-weight: 500;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .light-theme .pricing-hero p {
+            color: #222222;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            background-color: var(--bg-color);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--text-color);
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .categories-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .category-filter-btn {
+            padding: 12px 24px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .category-filter-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .category-filter-btn.active {
+            background-color: var(--primary-color);
+            color: #000000;
+            border-color: var(--primary-color);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            font-weight: 700;
+        }
+
+        .pricing-card .price {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .pricing-card .price span {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        .pricing-card ul {
+            margin: 20px 0;
+            flex-grow: 1;
+        }
+
+        .pricing-card ul li {
+            padding: 10px 0;
+            color: var(--text-light);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+        }
+
+        .pricing-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 14px 20px;
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--primary-color);
+            position: relative;
+            transform: scale(1.05);
+        }
+
+        .pricing-card.popular::before {
+            content: 'POPULAR';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-color);
+            color: #000000;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .rental-plans-section {
+            background-color: var(--bg-secondary);
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .plan-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .plan-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: rgba(212, 175, 55, 0.15);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 25px;
+        }
+
+        .plan-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .plan-price span {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        .plan-card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            text-align: center;
+            max-width: 280px;
+        }
+
+        .plan-features {
+            margin: 20px 0 30px;
+            text-align: left;
+            width: 100%;
+            max-width: 280px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .plan-features li {
+            padding: 8px 0;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .plan-features li i {
+            color: var(--primary-color);
+            width: 20px;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .plan-card .btn {
+            width: 100%;
+            max-width: 280px;
+            margin-top: auto;
+        }
+
+        .faq-section {
+            background-color: var(--bg-color);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            color: var(--primary-color);
+        }
+
+        .faq-question i {
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--text-light);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 30px 30px;
+            max-height: 500px;
+        }
+
+        footer {
+            background-color: var(--bg-dark);
+            color: var(--text-color);
+            padding: 80px 0 40px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 24px;
+            color: var(--text-color);
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-light);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .footer-links a i {
+            width: 20px;
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .social-links a {
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            background-color: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            color: #000000;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-light);
+            font-size: 0.9rem;
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        .copyright a {
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .copyright a:hover {
+            color: var(--text-color);
+        }
+
+        body.rtl {
+            direction: rtl;
+            text-align: right;
+        }
+
+        body.rtl .dropdown-content {
+            left: auto;
+            right: 0;
+            text-align: right;
+        }
+
+        body.rtl .footer-links a:hover {
+            transform: translateX(-5px);
+        }
+
+        body.rtl .footer-column h3::after {
+            left: auto;
+            right: 0;
+        }
+
+        body.rtl .plan-features {
+            text-align: right;
+        }
+
+        @media (max-width: 1200px) {
+            .container, .nav-container, .footer-container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .pricing-hero h1 {
+                font-size: 3rem;
+            }
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .nav-menu {
+                position: fixed;
+                top: var(--header-height);
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - var(--header-height));
+                background-color: #000000;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                padding: 30px;
+                gap: 0;
+                transition: var(--transition);
+                z-index: 999;
+                overflow-y: auto;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+                margin: 0;
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+            .mobile-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .nav-link {
+                width: 100%;
+                padding: 16px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                justify-content: space-between;
+                color: #FFFFFF;
+            }
+            .nav-link::after {
+                display: none;
+            }
+            .dropdown-content {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background-color: rgba(255, 255, 255, 0.05);
+                margin-top: 0;
+                padding: 0;
+                border-radius: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease, padding 0.3s ease;
+                border: none;
+                margin-left: 0;
+                width: 100%;
+            }
+            .dropdown.active .dropdown-content {
+                max-height: 300px;
+                padding: 10px 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .dropdown-content a {
+                padding: 12px 0 12px 20px;
+                color: #FFFFFF;
+            }
+            .nav-actions {
+                flex-direction: column;
+                width: 100%;
+                gap: 15px;
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                margin-left: 0;
+            }
+            .nav-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .pricing-hero {
+                padding-top: calc(var(--header-height) + 60px);
+            }
+            .pricing-hero h1 {
+                font-size: 2.5rem;
+            }
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+            .pricing-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 0;
+            }
+            .pricing-hero h1 {
+                font-size: 2.2rem;
+            }
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .categories-filter {
+                gap: 10px;
+            }
+            .category-filter-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container, .nav-container, .footer-container {
+                padding: 0 16px;
+            }
+            .pricing-hero h1 {
+                font-size: 1.8rem;
+            }
+            .btn {
+                padding: 12px 24px;
+                width: 100%;
+                justify-content: center;
+            }
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            .pricing-card,
+            .plan-card,
+            .faq-item {
+                padding: 25px;
+            }
+            .pricing-card .price {
+                font-size: 2rem;
+            }
+            .plan-price {
+                font-size: 2rem;
+            }
+        }
+
+        .mobile-dropdown-arrow {
+            transition: transform 0.3s ease;
+            font-size: 0.8rem;
+            margin-left: 5px;
+        }
+        
+        .dropdown.active .mobile-dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        
+        @media (min-width: 1025px) {
+            .mobile-dropdown-arrow {
+                display: none;
+            }
+        }
+        
+        .text-xs {
+            font-size: 0.75rem;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            margin: 40px auto;
+            width: 80%;
+        }
+        
+        .bike-type {
+            display: inline-block;
+            padding: 5px 12px;
+            background-color: rgba(212, 175, 55, 0.15);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-bicycle"></i>
+                </div>
+                <span>GrowwBike</span>
+            </a>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-menu" id="navMenu">
+                <div class="dropdown">
+                    <a href="index.html" class="nav-link" id="homeDropdown">
+                        <span>Home</span>
+                        <i class="fas fa-chevron-down mobile-dropdown-arrow text-xs"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="index.html">Home 1</a>
+                        <a href="home2.html">Home 2</a>
+                    </div>
+                </div>
+                
+                <a href="about.html" class="nav-link">About</a>
+                <a href="Gallery.html" class="nav-link">Gallery</a>
+                <a href="pricing.html" class="nav-link active">Pricing</a>
+                <a href="booking.html" class="nav-link">Book Now</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                
+                <div class="dropdown">
+                    <a href="#" class="nav-link" id="dashboardDropdown">
+                        <span>Dashboard</span>
+                        <i class="fas fa-chevron-down mobile-dropdown-arrow text-xs"></i>
+                    </a>
+                   <div class="dropdown-content">
+                        <a href="admin.html"><i class="fas fa-user-shield"></i> Admin Dashboard</a>
+                        <a href="client.html"><i class="fas fa-user"></i> Client Dashboard</a>
+                    </div>
+                </div>
+                
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    
+                    <button class="rtl-toggle" id="rtlToggle" title="Toggle RTL/LTR">
+                        <i class="fas fa-exchange-alt"></i>
+                    </button>
+                    
+                    <a href="login.html" class="btn btn-outline">Login/Register</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PRICING HERO -->
+    <section class="pricing-hero" id="home">
+        <div class="container">
+            <h1>Transparent & Affordable <span>Pricing</span></h1>
+            <p>Choose from our flexible rental plans designed to fit every budget and riding style. No hidden fees, just great value for your cycling adventures.</p>
+            <a href="#pricing" class="btn">View All Gallery</a>
+        </div>
+    </section>
+
+    <!-- Bike Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Bike Rental Pricing</h2>
+                <p>Select your preferred bike from our premium collection. All prices include helmet, lock, and basic insurance.</p>
+            </div>
+            
+            <div class="categories-filter">
+                <button class="category-filter-btn active" data-category="all">All Gallery</button>
+                <button class="category-filter-btn" data-category="sports">Sports Gallery</button>
+                <button class="category-filter-btn" data-category="cruiser">Cruiser Gallery</button>
+                <button class="category-filter-btn" data-category="adventure">Adventure Gallery</button>
+                <button class="category-filter-btn" data-category="electric">Electric Gallery</button>
+            </div>
+            
+            <div class="pricing-grid">
+                <!-- Yamaha R15 -->
+                <div class="pricing-card " data-category="sports">
+                    <span class="bike-type">Sports Bike</span>
+                    <h3>Yamaha R15</h3>
+                    <p class="price">₹1300 <span>/ Day</span></p>
+                    <ul>
+                        <li>₹800 / Half Day</li>
+                        <li>₹7500 / Week</li>
+                        <li>Security Deposit: ₹3500</li>
+                        <li>Helmet Included</li>
+                    </ul>
+                    <a href="booking.html" class="btn">Book Now</a>
+                </div>
+                
+                <!-- Royal Enfield Classic 350 -->
+                <div class="pricing-card" data-category="cruiser">
+                    <span class="bike-type">Cruiser Bike</span>
+                    <h3>Royal Enfield Classic 350</h3>
+                    <p class="price">₹1500 <span>/ Day</span></p>
+                    <ul>
+                        <li>₹900 / Half Day</li>
+                        <li>₹8500 / Week</li>
+                        <li>Security Deposit: ₹4000</li>
+                        <li>Helmet Included</li>
+                    </ul>
+                    <a href="booking.html" class="btn">Book Now</a>
+                </div>
+                
+                <!-- KTM Duke 200 -->
+                <div class="pricing-card" data-category="sports">
+                    <span class="bike-type">Sports Bike</span>
+                    <h3>KTM Duke 200</h3>
+                    <p class="price">₹1200 <span>/ Day</span></p>
+                    <ul>
+                        <li>₹750 / Half Day</li>
+                        <li>₹7000 / Week</li>
+                        <li>Security Deposit: ₹3500</li>
+                        <li>Helmet Included</li>
+                    </ul>
+                    <a href="booking.html" class="btn">Book Now</a>
+                </div>
+                
+                <!-- Bajaj Pulsar 150 -->
+                <div class="pricing-card" data-category="sports">
+                    <span class="bike-type">Sports Bike</span>
+                    <h3>Bajaj Pulsar 150</h3>
+                    <p class="price">₹800 <span>/ Day</span></p>
+                    <ul>
+                        <li>₹500 / Half Day</li>
+                        <li>₹4500 / Week</li>
+                        <li>Security Deposit: ₹2500</li>
+                        <li>Helmet Included</li>
+                    </ul>
+                    <a href="booking.html" class="btn">Book Now</a>
+                </div>
+                
+                <!-- Honda Activa 125 -->
+                <div class="pricing-card" data-category="electric">
+                    <span class="bike-type">Electric Scooter</span>
+                    <h3>Honda Activa 125</h3>
+                    <p class="price">₹600 <span>/ Day</span></p>
+                    <ul>
+                        <li>₹400 / Half Day</li>
+                        <li>₹3500 / Week</li>
+                        <li>Security Deposit: ₹2000</li>
+                        <li>Helmet Included</li>
+                    </ul>
+                    <a href="booking.html" class="btn">Book Now</a>
+                </div>
+                
+                <!-- Hero Electric Optima -->
+                <div class="pricing-card" data-category="electric">
+                    <span class="bike-type">Electric Bike</span>
+                    <h3>Hero Electric Optima</h3>
+                    <p class="price">₹500 <span>/ Day</span></p>
+                    <ul>
+                        <li>₹350 / Half Day</li>
+                        <li>₹3000 / Week</li>
+                        <li>Security Deposit: ₹1500</li>
+                        <li>Helmet Included</li>
+                    </ul>
+                    <a href="booking.html" class="btn">Book Now</a>
+                </div>
+                
+                <!-- TVS Apache RTR 160 -->
+                <div class="pricing-card" data-category="sports">
+                    <span class="bike-type">Sports Bike</span>
+                    <h3>TVS Apache RTR 160</h3>
+                    <p class="price">₹900 <span>/ Day</span></p>
+                    <ul>
+                        <li>₹550 / Half Day</li>
+                        <li>₹5000 / Week</li>
+                        <li>Security Deposit: ₹3000</li>
+                        <li>Helmet Included</li>
+                    </ul>
+                    <a href="booking.html" class="btn">Book Now</a>
+                </div>
+                
+                <!-- Suzuki Access 125 -->
+                <div class="pricing-card" data-category="electric">
+                    <span class="bike-type">Electric Scooter</span>
+                    <h3>Suzuki Access 125</h3>
+                    <p class="price">₹650 <span>/ Day</span></p>
+                    <ul>
+                        <li>₹400 / Half Day</li>
+                        <li>₹3800 / Week</li>
+                        <li>Security Deposit: ₹2000</li>
+                        <li>Helmet Included</li>
+                    </ul>
+                    <a href="booking.html" class="btn">Book Now</a>
+                </div>
+                
+                <!-- Royal Enfield Himalayan -->
+                <div class="pricing-card" data-category="adventure">
+                    <span class="bike-type">Adventure Bike</span>
+                    <h3>Royal Enfield Himalayan</h3>
+                    <p class="price">₹1800 <span>/ Day</span></p>
+                    <ul>
+                        <li>₹1100 / Half Day</li>
+                        <li>₹10,000 / Week</li>
+                        <li>Security Deposit: ₹5000</li>
+                        <li>Helmet Included</li>
+                    </ul>
+                    <a href="booking.html" class="btn">Book Now</a>
+                </div>
+                
+                <!-- Honda CB Hornet 160R -->
+                <div class="pricing-card" data-category="sports">
+                    <span class="bike-type">Sports Bike</span>
+                    <h3>Honda CB Hornet 160R</h3>
+                    <p class="price">₹850 <span>/ Day</span></p>
+                    <ul>
+                        <li>₹550 / Half Day</li>
+                        <li>₹4800 / Week</li>
+                        <li>Security Deposit: ₹2800</li>
+                        <li>Helmet Included</li>
+                    </ul>
+                    <a href="booking.html" class="btn">Book Now</a>
+                </div>
+                
+                <!-- Yamaha FZS-FI V3 -->
+                <div class="pricing-card" data-category="sports">
+                    <span class="bike-type">Sports Bike</span>
+                    <h3>Yamaha FZS-FI V3</h3>
+                    <p class="price">₹950 <span>/ Day</span></p>
+                    <ul>
+                        <li>₹600 / Half Day</li>
+                        <li>₹5500 / Week</li>
+                        <li>Security Deposit: ₹3000</li>
+                        <li>Helmet Included</li>
+                    </ul>
+                    <a href="booking.html" class="btn">Book Now</a>
+                </div>
+                
+                <!-- Jawa Perak -->
+                <div class="pricing-card" data-category="cruiser">
+                    <span class="bike-type">Cruiser Bike</span>
+                    <h3>Jawa Perak</h3>
+                    <p class="price">₹1600 <span>/ Day</span></p>
+                    <ul>
+                        <li>₹1000 / Half Day</li>
+                        <li>₹9000 / Week</li>
+                        <li>Security Deposit: ₹4500</li>
+                        <li>Helmet Included</li>
+                    </ul>
+                    <a href="booking.html" class="btn">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="section-divider"></div>
+
+    <!-- RENTAL PLANS – FULLY CENTERED, CLEAN & FIXED -->
+    <section class="rental-plans-section" id="plans">
+        <div class="container">
+            <div class="section-title">
+                <h2>Flexible Rental Plans</h2>
+                <p>Choose a plan that suits your riding needs. All plans include maintenance, insurance, and 24/7 roadside assistance.</p>
+            </div>
+            
+            <div class="plans-grid">
+                <!-- Hourly Plan -->
+                <div class="plan-card">
+                    <div class="plan-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Hourly Plan</h3>
+                    <p class="plan-price">₹99 </p>
+                    <p>Perfect for short trips and quick errands around the city.</p>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check-circle"></i> Minimum 2 hours</li>
+                        <li><i class="fas fa-check-circle"></i> Free helmet & lock</li>
+                        <li><i class="fas fa-check-circle"></i> Basic insurance included</li>
+                        <li><i class="fas fa-check-circle"></i> Fuel included</li>
+                        <li><i class="fas fa-check-circle"></i> 24/7 roadside assistance</li>
+                    </ul>
+                    <a href="booking.html" class="btn">Choose Plan</a>
+                </div>
+                
+                <!-- Daily Plan (popular) -->
+                <div class="plan-card popular">
+                    <div class="plan-icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <h3>Daily Plan</h3>
+                    <p class="plan-price">From ₹500 </p>
+                    <p>Best value for full day explorations and city tours.</p>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check-circle"></i> 24-hour rental period</li>
+                        <li><i class="fas fa-check-circle"></i> Free helmet & lock</li>
+                        <li><i class="fas fa-check-circle"></i> Comprehensive insurance</li>
+                        <li><i class="fas fa-check-circle"></i> Unlimited kilometers</li>
+                        <li><i class="fas fa-check-circle"></i> Fuel included</li>
+                    </ul>
+                    <a href="booking.html" class="btn">Choose Plan</a>
+                </div>
+                
+                <!-- Weekly Plan -->
+                <div class="plan-card">
+                    <div class="plan-icon">
+                        <i class="fas fa-calendar-week"></i>
+                    </div>
+                    <h3>Weekly Plan</h3>
+                    <p class="plan-price">From ₹3000 </p>
+                    <p>Ideal for extended trips and vacation explorations.</p>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check-circle"></i> 7-day rental period</li>
+                        <li><i class="fas fa-check-circle"></i> Free helmet & lock</li>
+                        <li><i class="fas fa-check-circle"></i> Premium insurance</li>
+                        <li><i class="fas fa-check-circle"></i> Unlimited kilometers</li>
+                        <li><i class="fas fa-check-circle"></i> Free maintenance</li>
+                    </ul>
+                    <a href="booking.html" class="btn">Choose Plan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our rental process, policies, and services.</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What documents are required for bike rental?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You need a valid driving license (for the bike category), original ID proof (Aadhar Card, Passport, or Voter ID), and two passport-size photographs. For international tourists, a valid international driving permit and passport are required.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is the security deposit and refund policy?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Security deposit varies based on the bike model (₹1500 to ₹5000). The deposit is fully refundable within 24 hours after bike return, provided there are no damages or traffic violations. Refunds are processed via the original payment method.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I extend my rental period?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can extend your rental period. Please inform us at least 6 hours before your scheduled return time. Extension charges will be calculated based on the hourly/daily rate of your current plan. Extensions are subject to bike availability.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What happens in case of breakdown or accident?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All our Gallery are insured against accidents and theft. In case of breakdown, we provide 24/7 roadside assistance. For accidents, immediately contact our support team and file a police report if required. Please refer to our terms for detailed coverage information.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer delivery and pickup service?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer doorstep delivery and pickup within city limits for an additional fee of ₹200. For airport/railway station deliveries, the charge is ₹300. Delivery must be Booked at least 4 hours in advance. Free pickup and drop available at our rental stations.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are there any age restrictions for renting?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you must be at least 18 years old with a valid driving license to rent our Gallery. For premium Gallery (above 250cc), the minimum age is 21 years. International renters must meet their home country's minimum age requirement plus have a valid IDP.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-bicycle"></i>
+                        </div>
+                        <span>GrowwBike</span>
+                    </a>
+                    <p style="margin-bottom: 20px; color: var(--text-light);">Premium bike rentals for urban exploration and adventure. Offering quality bicycles, flexible rental plans, and exceptional customer service across the city.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                    
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                        <li><a href="Gallery.html"><i class="fas fa-bicycle"></i> Gallery</a></li>
+                        <li><a href="pricing.html"><i class="fas fa-tag"></i> Pricing</a></li>
+                        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Bike Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-motorcycle"></i> Sports Gallery</a></li>
+                        <li><a href="#"><i class="fas fa-biking"></i> Cruiser Gallery</a></li>
+                        <li><a href="#"><i class="fas fa-mountain"></i> Adventure Gallery</a></li>
+                        <li><a href="#"><i class="fas fa-bolt"></i> Electric Gallery</a></li>
+                        <li><a href="#"><i class="fas fa-scooter"></i> Scooters</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> 123 Cycling Street, Bike City</a></li>
+                        <li><a href="tel:+1234567890"><i class="fas fa-phone"></i> +1 234 567 890</a></li>
+                        <li><a href="mailto:info@GrowwBike.com"><i class="fas fa-envelope"></i> info@GrowwBike.com</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> Mon - Sun: 7AM - 9PM</a></li>
+                        <li><a href="#"><i class="fas fa-map-signs"></i> Multiple Locations</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 GrowwBike Bike Rentals. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Safety Guidelines</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const rtlToggle = document.getElementById('rtlToggle');
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        const homeDropdown = document.getElementById('homeDropdown');
+        const dashboardDropdown = document.getElementById('dashboardDropdown');
+        const body = document.body;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            const icon = themeToggle.querySelector('i');
+            if (body.classList.contains('light-theme')) {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+            localStorage.setItem('theme', body.classList.contains('light-theme') ? 'light' : 'dark');
+        });
+
+        rtlToggle.addEventListener('click', () => {
+            body.classList.toggle('rtl');
+            localStorage.setItem('rtl', body.classList.contains('rtl') ? 'true' : 'false');
+        });
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
+            const icon = mobileToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        const setupDropdown = (dropdownElement) => {
+            dropdownElement.addEventListener('click', (e) => {
+                if (window.innerWidth <= 1024) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const dropdown = dropdownElement.parentElement;
+                    dropdown.classList.toggle('active');
+                    document.querySelectorAll('.dropdown').forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown && otherDropdown.classList.contains('active')) {
+                            otherDropdown.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        };
+
+        setupDropdown(homeDropdown);
+        setupDropdown(dashboardDropdown);
+
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 1024) {
+                const dropdowns = document.querySelectorAll('.dropdown');
+                dropdowns.forEach(dropdown => {
+                    if (!dropdown.contains(e.target) && dropdown.classList.contains('active')) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+            }
+        });
+
+        const filterButtons = document.querySelectorAll('.category-filter-btn');
+        const pricingCards = document.querySelectorAll('.pricing-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                const category = button.getAttribute('data-category');
+                pricingCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'flex';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                item.classList.toggle('active');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                body.classList.add('light-theme');
+                themeToggle.querySelector('i').classList.remove('fa-sun');
+                themeToggle.querySelector('i').classList.add('fa-moon');
+            }
+            const savedRTL = localStorage.getItem('rtl');
+            if (savedRTL === 'true') {
+                body.classList.add('rtl');
+            }
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 1024 && !link.parentElement.classList.contains('dropdown')) {
+                        navMenu.classList.remove('active');
+                        body.style.overflow = 'auto';
+                        mobileToggle.querySelector('i').classList.remove('fa-times');
+                        mobileToggle.querySelector('i').classList.add('fa-bars');
+                        const dropdowns = document.querySelectorAll('.dropdown.active');
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    }
+                });
+            });
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 1024 && navMenu.classList.contains('active')) {
+                    if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+                        navMenu.classList.remove('active');
+                        body.style.overflow = 'auto';
+                        mobileToggle.querySelector('i').classList.remove('fa-times');
+                        mobileToggle.querySelector('i').classList.add('fa-bars');
+                        const dropdowns = document.querySelectorAll('.dropdown.active');
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    }
+                }
+            });
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            }
+            const pricingLink = document.querySelector('a[href="pricing.html"]');
+            if (pricingLink) {
+                pricingLink.classList.add('active');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    if (window.innerWidth <= 1024) {
+                        navMenu.classList.remove('active');
+                        body.style.overflow = 'auto';
+                        mobileToggle.querySelector('i').classList.remove('fa-times');
+                        mobileToggle.querySelector('i').classList.add('fa-bars');
+                        const dropdowns = document.querySelectorAll('.dropdown.active');
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    }
+                }
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024 && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                body.style.overflow = 'auto';
+                mobileToggle.querySelector('i').classList.remove('fa-times');
+                mobileToggle.querySelector('i').classList.add('fa-bars');
+                const dropdowns = document.querySelectorAll('.dropdown.active');
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+            if (window.innerWidth > 1024) {
+                document.querySelectorAll('.dropdown-content').forEach(content => {
+                    content.style.maxHeight = '';
+                    content.style.padding = '';
+                    content.style.border = '';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

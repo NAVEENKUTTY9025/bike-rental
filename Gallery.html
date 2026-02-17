@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Collection | GrowwBike Premium Rentals</title>
+    <link rel="icon" type="images/jpeg" href="images/growwpark_logo.jpg">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Bike Rental Theme - Black/White/Dark Yellow */
+        :root {
+            --primary-color: #D4AF37;
+            --primary-dark: #B8860B;
+            --primary-light: #FFD700;
+            --primary-ultralight: #FFF8DC;
+            --text-color: #FFFFFF;
+            --text-light: #E5E5E5;
+            --text-lighter: #A0A0A0;
+            --bg-color: #0A0A0A;
+            --bg-secondary: #1A1A1A;
+            --bg-dark: #0A0A0A;
+            --card-bg: #1A1A1A;
+            --border-color: #333333;
+            --nav-bg: #000000;
+            --nav-text: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.7);
+            --transition: all 0.3s ease;
+            --border-radius: 12px;
+            --container-width: 1200px;
+            --header-height: 80px;
+        }
+
+        .light-theme {
+            --primary-color: #D4AF37;
+            --primary-dark: #B8860B;
+            --primary-light: #FFD700;
+            --primary-ultralight: #FFF8DC;
+            --text-color: #222222;
+            --text-light: #444444;
+            --text-lighter: #666666;
+            --bg-color: #FFFFFF;
+            --bg-secondary: #F8F8F8;
+            --bg-dark: #FFFFFF;
+            --card-bg: #FFFFFF;
+            --border-color: #E0E0E0;
+            --nav-bg: #000000;
+            --nav-text: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: var(--transition);
+            overflow-x: hidden;
+            font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Button Styles - EXACT COPY from index.html */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background-color: var(--primary-color);
+            color: #000000;
+            border-radius: 8px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(212, 175, 55, 0.3);
+            color: #000000;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 14px 28px;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: #000000;
+        }
+
+        /* SMALL BUTTON VARIANT - ONLY for View Details */
+        .btn-outline-sm {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 8px 18px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .btn-outline-sm:hover {
+            background-color: var(--primary-color);
+            color: #000000;
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* HEADER - PERFECT ALIGNMENT with index.html */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            background-color: var(--nav-bg);
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1001;
+            flex-shrink: 0;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+            color: var(--nav-text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            background-color: #000000;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 12px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            transition: var(--transition);
+            color: #FFFFFF;
+            white-space: nowrap;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+            color: var(--primary-color);
+        }
+
+        .theme-toggle, .rtl-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--nav-text);
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 10px;
+            border-radius: 8px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover, .rtl-toggle:hover {
+            background-color: var(--primary-color);
+            color: #000000;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--nav-text);
+            background: none;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            z-index: 1001;
+            flex-shrink: 0;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-shrink: 0;
+            margin-left: 20px;
+        }
+
+        /* CRITICAL FIX: Login/Register button EXACT same as index.html */
+        
+
+        /* ========== HERO BANNER – VISIBLE BIKE IMAGE, NOT FIXED ========== */
+        .page-header {
+            padding-top: calc(var(--header-height) + 100px);
+            padding-bottom: 120px;
+            text-align: center;
+            position: relative;
+            background-image: url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            background-color: rgba(0, 0, 0, 0.55);
+            background-blend-mode: overlay;
+            isolation: isolate;
+            transition: background-color 0.3s ease;
+        }
+
+        .light-theme .page-header {
+            background-color: rgba(255, 255, 255, 0.7);
+            background-blend-mode: overlay;
+        }
+
+        .page-header .container {
+            position: relative;
+            z-index: 3;
+            background-color: transparent;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .light-theme .page-header h1 {
+            color: #000000;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .page-header h1 span {
+            color: var(--primary-color);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #ffffff;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+            font-weight: 500;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .light-theme .page-header p {
+            color: #222222;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background-color: var(--bg-secondary);
+            padding: 50px 0;
+            position: relative;
+            z-index: 5;
+        }
+
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        .filter-select {
+            padding: 14px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-select:hover, .filter-select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .filter-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .filter-actions .btn {
+            padding: 12px 28px;
+        }
+
+        /* Gallery Grid Section */
+        .Gallery-grid-section {
+            padding: 80px 0;
+            background-color: var(--bg-color);
+        }
+
+        .Gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .bike-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .bike-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .bike-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary-color);
+            color: #000000;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 2;
+        }
+
+        .bike-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bike-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+
+        .bike-card:hover .bike-image img {
+            transform: scale(1.05);
+        }
+
+        .bike-content {
+            padding: 25px;
+        }
+
+        .bike-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .bike-header h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-color);
+            line-height: 1.3;
+        }
+
+        .bike-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            white-space: nowrap;
+        }
+
+        .bike-price span {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        .bike-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .bike-spec {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-color);
+        }
+
+        .bike-spec-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: rgba(212, 175, 55, 0.15);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .bike-spec-info h4 {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .bike-spec-info p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .bike-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .bike-actions .btn-outline-sm {
+            flex: 1;
+            justify-content: center;
+            padding: 10px 18px;
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background-color: rgba(212, 175, 55, 0.1);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: #000000;
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        .cta-content .btn {
+            background-color: #000000;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            padding: 16px 32px;
+        }
+
+        .cta-content .btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        /* Footer - EXACT same as index.html */
+        footer {
+            background-color: var(--bg-dark);
+            color: var(--text-color);
+            padding: 80px 0 40px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 24px;
+            color: var(--text-color);
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-light);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .footer-links a i {
+            width: 20px;
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .social-links a {
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            background-color: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            color: #000000;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-light);
+            font-size: 0.9rem;
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        .copyright a {
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .copyright a:hover {
+            color: var(--text-color);
+        }
+
+        /* RTL Styles */
+        body.rtl {
+            direction: rtl;
+            text-align: right;
+        }
+
+        body.rtl .dropdown-content {
+            left: auto;
+            right: 0;
+            text-align: right;
+        }
+
+        body.rtl .footer-links a:hover {
+            transform: translateX(-5px);
+        }
+
+        body.rtl .footer-column h3::after {
+            left: auto;
+            right: 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .container, .nav-container, .footer-container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            
+            .page-header h1 {
+                font-size: 3rem;
+            }
+            
+            .Gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .nav-menu {
+                position: fixed;
+                top: var(--header-height);
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - var(--header-height));
+                background-color: #000000;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                padding: 30px;
+                gap: 0;
+                transition: var(--transition);
+                z-index: 999;
+                overflow-y: auto;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+                margin: 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .nav-link {
+                width: 100%;
+                padding: 16px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                justify-content: space-between;
+                color: #FFFFFF;
+            }
+
+            .nav-link::after {
+                display: none;
+            }
+
+            .dropdown-content {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background-color: rgba(255, 255, 255, 0.05);
+                margin-top: 0;
+                padding: 0;
+                border-radius: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease, padding 0.3s ease;
+                border: none;
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .dropdown.active .dropdown-content {
+                max-height: 300px;
+                padding: 10px 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .dropdown-content a {
+                padding: 12px 0 12px 20px;
+                color: #FFFFFF;
+            }
+
+            .nav-actions {
+                flex-direction: column;
+                width: 100%;
+                gap: 15px;
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                margin-left: 0;
+            }
+            
+            .nav-actions .btn-outline {
+                width: 100% !important;
+                justify-content: center !important;
+                padding: 14px 28px !important;
+                font-size: 0.95rem !important;
+            }
+
+            .page-header {
+                padding-top: calc(var(--header-height) + 80px);
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .filter-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .filter-group {
+                width: 100%;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+            
+            .cta-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .bike-actions {
+                flex-direction: row;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 0;
+            }
+            
+            .Gallery-grid-section {
+                padding: 60px 0;
+            }
+            
+            .filter-section {
+                padding: 40px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-header p {
+                font-size: 1.1rem;
+            }
+            
+            .Gallery-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .bike-image {
+                height: 220px;
+            }
+            
+            .cta-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-content p {
+                font-size: 1.1rem;
+            }
+            
+            .nav-menu {
+                padding: 20px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .bike-actions {
+                flex-direction: column;
+            }
+            
+            .bike-actions .btn-outline-sm {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container, .nav-container, .footer-container {
+                padding: 0 16px;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .bike-specs {
+                grid-template-columns: 1fr;
+            }
+            
+            .bike-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .bike-header h3 {
+                font-size: 1.3rem;
+            }
+            
+            .bike-price {
+                font-size: 1.6rem;
+            }
+            
+            .cta-content h2 {
+                font-size: 1.6rem;
+            }
+            
+            .cta-content .btn {
+                width: 100%;
+            }
+            
+            .filter-actions {
+                flex-direction: column;
+            }
+            
+            .filter-actions .btn {
+                width: 100%;
+            }
+        }
+
+        .mobile-dropdown-arrow {
+            transition: transform 0.3s ease;
+            font-size: 0.8rem;
+            margin-left: 5px;
+        }
+        
+        .dropdown.active .mobile-dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        
+        @media (min-width: 1025px) {
+            .mobile-dropdown-arrow {
+                display: none;
+            }
+        }
+        
+        .text-xs {
+            font-size: 0.75rem;
+        }
+        
+        .light-accent {
+            color: var(--primary-color);
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 60px;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            grid-column: 1 / -1;
+        }
+        
+        .no-results i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER - PERFECT ALIGNMENT with index.html -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-bicycle"></i>
+                </div>
+                <span>GrowwBike</span>
+            </a>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-menu" id="navMenu">
+                <div class="dropdown">
+                    <a href="index.html" class="nav-link" id="homeDropdown">
+                        <span>Home</span>
+                        <i class="fas fa-chevron-down mobile-dropdown-arrow text-xs"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="index.html">Home 1</a>
+                        <a href="home2.html">Home 2</a>
+                    </div>
+                </div>
+                
+                <a href="about.html" class="nav-link">About</a>
+                <a href="Gallery.html" class="nav-link active">Gallery</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="booking.html" class="nav-link">Book Now</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                
+                <div class="dropdown">
+                    <a href="#" class="nav-link" id="dashboardDropdown">
+                        <span>Dashboard</span>
+                        <i class="fas fa-chevron-down mobile-dropdown-arrow text-xs"></i>
+                    </a>
+                   <div class="dropdown-content">
+                        <a href="admin.html"><i class="fas fa-user-shield"></i> Admin Dashboard</a>
+                        <a href="client.html"><i class="fas fa-user"></i> Client Dashboard</a>
+                    </div>
+                </div>
+                
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    
+                    <button class="rtl-toggle" id="rtlToggle" title="Toggle RTL/LTR">
+                        <i class="fas fa-exchange-alt"></i>
+                    </button>
+                    
+                    <!-- LOGIN/REGISTER BUTTON - EXACT same as index.html -->
+                    <a href="login.html" class="btn btn-outline">Login/Register</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PAGE HERO – BOLD VISIBLE BIKE BACKGROUND -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our <span class="light-accent">Premium</span> Bike Collection</h1>
+            <p>Choose from our extensive range of premium motorcycles. Whether you're looking for a cruiser, sports bike, or adventure tourer, we have the perfect ride for your journey.</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label for="category">Bike Category</label>
+                    <select id="category" class="filter-select">
+                        <option value="all">All Categories</option>
+                        <option value="cruiser">Cruiser</option>
+                        <option value="sports">Sports Bike</option>
+                        <option value="adventure">Adventure Tourer</option>
+                        <option value="naked">Naked Street</option>
+                        <option value="electric">Electric Bike</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="price">Price Range</label>
+                    <select id="price" class="filter-select">
+                        <option value="all">All Prices</option>
+                        <option value="low">Under ₹1000/day</option>
+                        <option value="medium">₹1000 - ₹2000/day</option>
+                        <option value="high">Over ₹2000/day</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="engine">Engine CC</label>
+                    <select id="engine" class="filter-select">
+                        <option value="all">All Engine Sizes</option>
+                        <option value="small">Under 250cc</option>
+                        <option value="medium">250cc - 500cc</option>
+                        <option value="large">Over 500cc</option>
+                    </select>
+                </div>
+                
+                <div class="filter-actions">
+                    <button id="applyFilters" class="btn">Apply Filters</button>
+                    <button id="resetFilters" class="btn btn-outline">Reset Filters</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid Section -->
+    <section class="Gallery-grid-section">
+        <div class="container">
+            <div class="Gallery-container" id="GalleryContainer">
+                <!-- Royal Enfield Classic 350 -->
+                <div class="bike-card" data-category="cruiser" data-price="medium" data-engine="medium">
+                    <div class="bike-badge">Most Popular</div>
+                    <div class="bike-image">
+                        <img src="images/re2.jpg" alt="Royal Enfield Classic 350">
+                    </div>
+                    <div class="bike-content">
+                        <span class="category-badge">Cruiser</span>
+                        <div class="bike-header">
+                            <h3>Royal Enfield Classic 350</h3>
+                            <div class="bike-price">₹1200<span>/day</span></div>
+                        </div>
+                        
+                        <div class="bike-specs">
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-gas-pump"></i></div>
+                                <div class="bike-spec-info"><h4>Engine CC</h4><p>346 cc</p></div>
+                            </div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <div class="bike-spec-info"><h4>Mileage</h4><p>35 km/l</p></div>
+                            </div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-cogs"></i></div>
+                                <div class="bike-spec-info"><h4>Transmission</h4><p>5-Speed</p></div>
+                            </div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-bolt"></i></div>
+                                <div class="bike-spec-info"><h4>Power</h4><p>20.2 bhp</p></div>
+                            </div>
+                        </div>
+                        
+                        <div class="bike-actions">
+                            <a href="bike-details.html?id=royal-enfield-classic-350" class="btn-outline-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- KTM Duke 200 -->
+                <div class="bike-card" data-category="naked" data-price="medium" data-engine="small">
+                    <div class="bike-badge" style="background-color: #FF6600; color: white;">Sport Edition</div>
+                    <div class="bike-image">
+                        <img src="images/200.jpg" alt="KTM Duke 200">
+                    </div>
+                    <div class="bike-content">
+                        <span class="category-badge">Naked Street</span>
+                        <div class="bike-header">
+                            <h3>KTM Duke 200</h3>
+                            <div class="bike-price">₹1500<span>/day</span></div>
+                        </div>
+                        <div class="bike-specs">
+                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-gas-pump"></i></div><div class="bike-spec-info"><h4>Engine CC</h4><p>199.5 cc</p></div></div>
+                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-tachometer-alt"></i></div><div class="bike-spec-info"><h4>Mileage</h4><p>30 km/l</p></div></div>
+                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-cogs"></i></div><div class="bike-spec-info"><h4>Transmission</h4><p>6-Speed</p></div></div>
+                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-bolt"></i></div><div class="bike-spec-info"><h4>Power</h4><p>25 bhp</p></div></div>
+                        </div>
+                        <div class="bike-actions">
+                            <a href="bike-details.html?id=ktm-duke-200" class="btn-outline-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Yamaha R15 -->
+                <div class="bike-card" data-category="sports" data-price="medium" data-engine="small">
+                    <div class="bike-image">
+                        <img src="images/r15 2.jpg" alt="Yamaha R15">
+                    </div>
+                    <div class="bike-content">
+                        <span class="category-badge">Sports Bike</span>
+                        <div class="bike-header">
+                            <h3>Yamaha R15 V4</h3>
+                            <div class="bike-price">₹1300<span>/day</span></div>
+                        </div>
+                        <div class="bike-specs">
+                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-gas-pump"></i></div><div class="bike-spec-info"><h4>Engine CC</h4><p>155 cc</p></div></div>
+                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-tachometer-alt"></i></div><div class="bike-spec-info"><h4>Mileage</h4><p>40 km/l</p></div></div>
+                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-cogs"></i></div><div class="bike-spec-info"><h4>Transmission</h4><p>6-Speed</p></div></div>
+                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-bolt"></i></div><div class="bike-spec-info"><h4>Power</h4><p>18.4 bhp</p></div></div>
+                        </div>
+                        <div class="bike-actions">
+                            <a href="bike-details.html?id=yamaha-r15-v4" class="btn-outline-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Honda CB350 -->
+                <div class="bike-card" data-category="cruiser" data-price="medium" data-engine="medium">
+                    <div class="bike-image">
+                        <img src="images/cb350.jpg" alt="Honda CB350">
+                    </div>
+                    <div class="bike-content">
+                        <span class="category-badge">Cruiser</span>
+                        <div class="bike-header">
+                            <h3>Honda CB350</h3>
+                            <div class="bike-price">₹1100<span>/day</span></div>
+                        </div>
+                        <div class="bike-specs">
+                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-gas-pump"></i></div><div class="bike-spec-info"><h4>Engine CC</h4><p>348 cc</p></div></div>
+                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-tachometer-alt"></i></div><div class="bike-spec-info"><h4>Mileage</h4><p>38 km/l</p></div></div>
+                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-cogs"></i></div><div class="bike-spec-info"><h4>Transmission</h4><p>5-Speed</p></div></div>
+                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-bolt"></i></div><div class="bike-spec-info"><h4>Power</h4><p>21 bhp</p></div></div>
+                        </div>
+                        <div class="bike-actions">
+                            <a href="bike-details.html?id=honda-cb350" class="btn-outline-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Royal Enfield Himalayan -->
+                <div class="bike-card" data-category="adventure" data-price="medium" data-engine="medium">
+                    <div class="bike-badge">Adventure Ready</div>
+                    <div class="bike-image">
+                        <img src="images/himalayan.jpg" alt="Royal Enfield Himalayan">
+                    </div>
+                    <div class="bike-content">
+                        <span class="category-badge">Adventure Tourer</span>
+                        <div class="bike-header">
+                            <h3>Royal Enfield Himalayan</h3>
+                            <div class="bike-price">₹1400<span>/day</span></div>
+                        </div>
+                        <div class="bike-specs">
+                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-gas-pump"></i></div><div class="bike-spec-info"><h4>Engine CC</h4><p>411 cc</p></div></div>
+                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-tachometer-alt"></i></div><div class="bike-spec-info"><h4>Mileage</h4><p>30 km/l</p></div></div>
+                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-cogs"></i></div><div class="bike-spec-info"><h4>Transmission</h4><p>5-Speed</p></div></div>
+                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-bolt"></i></div><div class="bike-spec-info"><h4>Power</h4><p>24.3 bhp</p></div></div>
+                        </div>
+                        <div class="bike-actions">
+                            <a href="bike-details.html?id=royal-enfield-himalayan" class="btn-outline-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Kawasaki Ninja 300 -->
+                <div class="bike-card" data-category="sports" data-price="high" data-engine="medium">
+                    <div class="bike-badge" style="background-color: #00A651; color: white;">Green Edition</div>
+                    <div class="bike-image">
+                        <img src="images/ninja.jpg" alt="Kawasaki Ninja 300">
+                    </div>
+                    <div class="bike-content">
+                        <span class="category-badge">Sports Bike</span>
+                        <div class="bike-header">
+                            <h3>Kawasaki Ninja 300</h3>
+                            <div class="bike-price">₹1800<span>/day</span></div>
+                        </div>
+                        <div class="bike-specs">
+                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-gas-pump"></i></div><div class="bike-spec-info"><h4>Engine CC</h4><p>296 cc</p></div></div>
+                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-tachometer-alt"></i></div><div class="bike-spec-info"><h4>Mileage</h4><p>25 km/l</p></div></div>
+                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-cogs"></i></div><div class="bike-spec-info"><h4>Transmission</h4><p>6-Speed</p></div></div>
+                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-bolt"></i></div><div class="bike-spec-info"><h4>Power</h4><p>39 bhp</p></div></div>
+                        </div>
+                        <div class="bike-actions">
+                            <a href="bike-details.html?id=kawasaki-ninja-300" class="btn-outline-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Can't Find Your Dream Bike?</h2>
+                <p>Contact our team for special requests, custom packages, or assistance in choosing the perfect bike for your needs.</p>
+                <a href="contact.html" class="btn">Contact Our Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - EXACT same as index.html -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon"><i class="fas fa-bicycle"></i></div>
+                        <span>GrowwBike</span>
+                    </a>
+                    <p style="margin-bottom: 20px; color: var(--text-light);">Premium bike rentals for urban exploration and adventure. Offering quality bicycles, flexible rental plans, and exceptional customer service across the city.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                    
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                        <li><a href="Gallery.html"><i class="fas fa-bicycle"></i> Gallery</a></li>
+                        <li><a href="pricing.html"><i class="fas fa-tag"></i> Pricing</a></li>
+                        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Bike Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-motorcycle"></i> Cruiser Bikes</a></li>
+                        <li><a href="#"><i class="fas fa-tachometer-alt"></i> Sports Bikes</a></li>
+                        <li><a href="#"><i class="fas fa-mountain"></i> Adventure Tourers</a></li>
+                        <li><a href="#"><i class="fas fa-road"></i> Naked Street</a></li>
+                        <li><a href="#"><i class="fas fa-bolt"></i> Electric Bikes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> 123 Cycling Street, Bike City</a></li>
+                        <li><a href="tel:+1234567890"><i class="fas fa-phone"></i> +1 234 567 890</a></li>
+                        <li><a href="mailto:info@GrowwBike.com"><i class="fas fa-envelope"></i> info@GrowwBike.com</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> Mon - Sun: 7AM - 9PM</a></li>
+                        <li><a href="#"><i class="fas fa-map-signs"></i> Multiple Locations</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 GrowwBike Bike Rentals. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Safety Guidelines</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const themeToggle = document.getElementById('themeToggle');
+        const rtlToggle = document.getElementById('rtlToggle');
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        const homeDropdown = document.getElementById('homeDropdown');
+        const dashboardDropdown = document.getElementById('dashboardDropdown');
+        const body = document.body;
+        const header = document.querySelector('header');
+        
+        // Bike filtering elements
+        const categoryFilter = document.getElementById('category');
+        const priceFilter = document.getElementById('price');
+        const engineFilter = document.getElementById('engine');
+        const applyFiltersBtn = document.getElementById('applyFilters');
+        const resetFiltersBtn = document.getElementById('resetFilters');
+        const GalleryContainer = document.getElementById('GalleryContainer');
+        const bikeCards = document.querySelectorAll('.bike-card');
+
+        // Header scroll effect - EXACT same as index.html
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+
+        // Theme Toggle - FULLY FUNCTIONAL
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            
+            const icon = themeToggle.querySelector('i');
+            if (body.classList.contains('light-theme')) {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+            
+            localStorage.setItem('theme', body.classList.contains('light-theme') ? 'light' : 'dark');
+        });
+
+        // RTL Toggle
+        rtlToggle.addEventListener('click', () => {
+            body.classList.toggle('rtl');
+            localStorage.setItem('rtl', body.classList.contains('rtl') ? 'true' : 'false');
+        });
+
+        // Mobile Menu Toggle - EXACT same as index.html
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
+            
+            const icon = mobileToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Dropdown functionality for mobile - EXACT same as index.html
+        const setupDropdown = (dropdownElement) => {
+            if (!dropdownElement) return;
+            
+            dropdownElement.addEventListener('click', (e) => {
+                if (window.innerWidth <= 1024) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const dropdown = dropdownElement.parentElement;
+                    dropdown.classList.toggle('active');
+                    
+                    document.querySelectorAll('.dropdown').forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown && otherDropdown.classList.contains('active')) {
+                            otherDropdown.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        };
+
+        setupDropdown(homeDropdown);
+        setupDropdown(dashboardDropdown);
+
+        // Bike Filtering Functionality
+        function filterBikes() {
+            const selectedCategory = categoryFilter.value;
+            const selectedPrice = priceFilter.value;
+            const selectedEngine = engineFilter.value;
+            
+            let visibleCount = 0;
+            
+            bikeCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                const cardPrice = card.getAttribute('data-price');
+                const cardEngine = card.getAttribute('data-engine');
+                
+                const categoryMatch = selectedCategory === 'all' || cardCategory === selectedCategory;
+                const priceMatch = selectedPrice === 'all' || cardPrice === selectedPrice;
+                const engineMatch = selectedEngine === 'all' || cardEngine === selectedEngine;
+                
+                if (categoryMatch && priceMatch && engineMatch) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            let noResultsMsg = document.querySelector('.no-results');
+            if (visibleCount === 0) {
+                if (!noResultsMsg) {
+                    noResultsMsg = document.createElement('div');
+                    noResultsMsg.className = 'no-results';
+                    noResultsMsg.innerHTML = `
+                        <i class="fas fa-search"></i>
+                        <h3>No bikes match your filters</h3>
+                        <p>Try adjusting your filter criteria or resetting the filters</p>
+                    `;
+                    GalleryContainer.appendChild(noResultsMsg);
+                }
+            } else if (noResultsMsg) {
+                noResultsMsg.remove();
+            }
+        }
+
+        if (applyFiltersBtn) {
+            applyFiltersBtn.addEventListener('click', filterBikes);
+        }
+
+        if (resetFiltersBtn) {
+            resetFiltersBtn.addEventListener('click', () => {
+                categoryFilter.value = 'all';
+                priceFilter.value = 'all';
+                engineFilter.value = 'all';
+                filterBikes();
+            });
+        }
+
+        // Close dropdowns when clicking outside - EXACT same as index.html
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 1024) {
+                const dropdowns = document.querySelectorAll('.dropdown');
+                dropdowns.forEach(dropdown => {
+                    if (!dropdown.contains(e.target) && dropdown.classList.contains('active')) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+            }
+        });
+
+        // Load saved preferences - EXACT same as index.html
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                body.classList.add('light-theme');
+                if (themeToggle) {
+                    const icon = themeToggle.querySelector('i');
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
+            }
+            
+            const savedRTL = localStorage.getItem('rtl');
+            if (savedRTL === 'true') {
+                body.classList.add('rtl');
+            }
+            
+            // Set active navigation - Gallery page
+            const galleryLink = document.querySelector('a[href="Gallery.html"]');
+            if (galleryLink) {
+                galleryLink.classList.add('active');
+            }
+            
+            // Close mobile menu when clicking a link - EXACT same as index.html
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 1024 && !link.parentElement.classList.contains('dropdown')) {
+                        navMenu.classList.remove('active');
+                        body.style.overflow = 'auto';
+                        if (mobileToggle.querySelector('i')) {
+                            mobileToggle.querySelector('i').classList.remove('fa-times');
+                            mobileToggle.querySelector('i').classList.add('fa-bars');
+                        }
+                        
+                        const dropdowns = document.querySelectorAll('.dropdown.active');
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    }
+                });
+            });
+            
+            // Close mobile menu when clicking outside - EXACT same as index.html
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 1024 && navMenu.classList.contains('active')) {
+                    if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+                        navMenu.classList.remove('active');
+                        body.style.overflow = 'auto';
+                        if (mobileToggle.querySelector('i')) {
+                            mobileToggle.querySelector('i').classList.remove('fa-times');
+                            mobileToggle.querySelector('i').classList.add('fa-bars');
+                        }
+                        
+                        const dropdowns = document.querySelectorAll('.dropdown.active');
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    }
+                }
+            });
+            
+            // Initialize header scroll state
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links - EXACT same as index.html
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    if (window.innerWidth <= 1024) {
+                        navMenu.classList.remove('active');
+                        body.style.overflow = 'auto';
+                        if (mobileToggle.querySelector('i')) {
+                            mobileToggle.querySelector('i').classList.remove('fa-times');
+                            mobileToggle.querySelector('i').classList.add('fa-bars');
+                        }
+                        
+                        const dropdowns = document.querySelectorAll('.dropdown.active');
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    }
+                }
+            });
+        });
+
+        // Window resize handler - EXACT same as index.html
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024 && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                body.style.overflow = 'auto';
+                if (mobileToggle.querySelector('i')) {
+                    mobileToggle.querySelector('i').classList.remove('fa-times');
+                    mobileToggle.querySelector('i').classList.add('fa-bars');
+                }
+                
+                const dropdowns = document.querySelectorAll('.dropdown.active');
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+            
+            if (window.innerWidth > 1024) {
+                document.querySelectorAll('.dropdown-content').forEach(content => {
+                    content.style.maxHeight = '';
+                    content.style.padding = '';
+                    content.style.border = '';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

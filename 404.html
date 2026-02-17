@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found | GrowwBike</title>
+    <link rel="icon" type="images/jpeg" href="images/growwpark_logo.jpg">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* === GLOBAL DESIGN SYSTEM – SAME AS ADMIN/CLIENT === */
+        :root {
+            --primary-color: #D4AF37;
+            --primary-dark: #B8860B;
+            --primary-light: #FFD700;
+            --primary-ultralight: #FFF8DC;
+            --text-color: #FFFFFF;
+            --text-light: #E5E5E5;
+            --text-lighter: #A0A0A0;
+            --bg-color: #0A0A0A;
+            --bg-secondary: #1A1A1A;
+            --bg-dark: #0A0A0A;
+            --card-bg: #1A1A1A;
+            --border-color: #333333;
+            --nav-bg: #000000;
+            --nav-text: #FFFFFF;
+            --nav-text-light: #CCCCCC;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.7);
+            --transition: all 0.3s ease;
+            --border-radius: 12px;
+            --header-height: 80px;
+        }
+
+        .light-theme {
+            --primary-color: #D4AF37;
+            --primary-dark: #B8860B;
+            --primary-light: #FFD700;
+            --primary-ultralight: #FFF8DC;
+            --text-color: #222222;
+            --text-light: #444444;
+            --text-lighter: #666666;
+            --bg-color: #F5F5F5;
+            --bg-secondary: #FFFFFF;
+            --bg-dark: #FFFFFF;
+            --card-bg: #FFFFFF;
+            --border-color: #E0E0E0;
+            --nav-bg: #000000;
+            --nav-text: #FFFFFF;
+            --nav-text-light: #E0E0E0;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: var(--transition);
+            overflow-x: hidden;
+            font-weight: 400;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* === 404 SPECIFIC LAYOUT – CLEAN & CENTERED === */
+        .error-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ---------- HEADER (SAME STYLE) ---------- */
+        .error-header {
+            height: var(--header-height);
+            background-color: var(--nav-bg);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .rtl-toggle, .theme-toggle, .home-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            font-size: 1.1rem;
+            color: #FFFFFF;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 10px;
+            border-radius: 8px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .rtl-toggle:hover, .theme-toggle:hover, .home-btn:hover {
+            background-color: var(--primary-color);
+            color: #000000;
+        }
+
+        .home-btn span {
+            display: none;
+        }
+
+        /* ---------- MAIN ERROR CONTENT – FULLY RESPONSIVE ---------- */
+        .error-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            background-color: var(--bg-color);
+        }
+
+        .error-card {
+            max-width: 700px;
+            width: 100%;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* decorative bicycle icon */
+        .error-card::before {
+            content: "\f206"; /* fa-bicycle */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 160px;
+            color: var(--primary-color);
+            opacity: 0.06;
+            transform: rotate(10deg);
+            pointer-events: none;
+        }
+
+        .error-code {
+            font-size: 8rem;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--primary-color);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            margin-bottom: 20px;
+            letter-spacing: -5px;
+        }
+
+        .error-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 16px;
+        }
+
+        .error-message {
+            font-size: 1.1rem;
+            color: var(--text-lighter);
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .bike-illustration {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+
+        .bike-illustration i {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 20px;
+            border-radius: 50%;
+            border: 1px dashed var(--primary-color);
+        }
+
+        .bike-illustration span {
+            font-size: 1.5rem;
+            color: var(--text-lighter);
+        }
+
+        .error-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 14px 32px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #000000;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background-color: rgba(212, 175, 55, 0.05);
+            transform: translateY(-3px);
+        }
+
+        /* popular links section */
+        .popular-links {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .popular-links h4 {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-lighter);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .links-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px 30px;
+        }
+
+        .links-grid a {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .links-grid a i {
+            color: var(--primary-color);
+            font-size: 0.8rem;
+        }
+
+        .links-grid a:hover {
+            color: var(--primary-color);
+        }
+
+        /* ---------- FOOTER (SAME STYLE) ---------- */
+        .error-footer {
+            background-color: var(--nav-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 24px 30px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* ---------- RTL SUPPORT ---------- */
+        body.rtl .error-card::before {
+            right: auto;
+            left: -20px;
+            transform: rotate(-10deg);
+        }
+
+        body.rtl .btn-primary i,
+        body.rtl .btn-secondary i,
+        body.rtl .links-grid a i {
+            transform: scaleX(-1);
+        }
+
+        body.rtl .bike-illustration i {
+            transform: scaleX(-1);
+        }
+
+        /* ---------- LIGHT THEME SPECIFIC ---------- */
+        .light-theme .error-header,
+        .light-theme .error-footer {
+            background-color: #000000;
+        }
+
+        .light-theme .footer-links a,
+        .light-theme .error-footer {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .light-theme .logo-text,
+        .light-theme .rtl-toggle,
+        .light-theme .theme-toggle,
+        .light-theme .home-btn {
+            color: #FFFFFF;
+        }
+
+        /* ---------- RESPONSIVE – SAME BREAKPOINTS ---------- */
+        @media (max-width: 768px) {
+            .error-header {
+                padding: 0 20px;
+            }
+
+            .logo-text {
+                font-size: 1.3rem;
+            }
+
+            .home-btn {
+                width: 44px;
+            }
+
+            .error-card {
+                padding: 40px 25px;
+            }
+
+            .error-code {
+                font-size: 6rem;
+            }
+
+            .error-title {
+                font-size: 1.8rem;
+            }
+
+            .error-message {
+                font-size: 1rem;
+            }
+
+            .btn-primary, .btn-secondary {
+                padding: 12px 24px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .error-header {
+                padding: 0 16px;
+            }
+
+            .logo-icon {
+                font-size: 1.5rem;
+            }
+
+            .logo-text {
+                font-size: 1.2rem;
+            }
+
+            .header-actions {
+                gap: 12px;
+            }
+
+            .rtl-toggle, .theme-toggle, .home-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .error-card {
+                padding: 30px 20px;
+            }
+
+            .error-code {
+                font-size: 5rem;
+                letter-spacing: -3px;
+            }
+
+            .error-title {
+                font-size: 1.5rem;
+            }
+
+            .bike-illustration i {
+                padding: 15px;
+                font-size: 1.5rem;
+            }
+
+            .error-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .links-grid {
+                flex-direction: column;
+                gap: 12px;
+                align-items: center;
+            }
+
+            .footer-links {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .logo-text {
+                display: none;
+            }
+
+            .home-btn span {
+                display: inline;
+                margin-left: 8px;
+            }
+
+            .home-btn {
+                width: auto;
+                padding: 0 16px;
+                gap: 8px;
+            }
+
+            .home-btn i {
+                margin-right: 4px;
+            }
+        }
+
+        /* ---------- SCROLLBAR (CONSISTENT) ---------- */
+        body::-webkit-scrollbar {
+            width: 6px;
+        }
+        body::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        body::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-wrapper">
+        <!-- HEADER – SAME DESIGN AS ADMIN/CLIENT -->
+        <header class="error-header">
+            <a href="index.html" class="logo-area">
+    <div class="logo-icon">
+        <i class="fas fa-bicycle"></i>
+    </div>
+    <span class="logo-text">GrowwBike</span>
+</a>
+
+            <div class="header-actions">
+                <!-- RTL Toggle – neat and functional -->
+                <button class="rtl-toggle" id="rtlToggle" title="Toggle RTL/LTR">
+                    <i class="fas fa-arrow-right-arrow-left"></i>
+                </button>
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <!-- Home button – visible on all screens -->
+                <a href="index.html" class="home-btn" title="Go to homepage">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- MAIN 404 CONTENT – FULLY CENTERED, RESPONSIVE -->
+        <div class="error-container">
+            <div class="error-card">
+                <!-- 404 code with glow -->
+                <div class="error-code">404</div>
+                
+                <!-- Title -->
+                <h1 class="error-title">Page not found</h1>
+                
+                <!-- Description -->
+                <p class="error-message">
+                    Looks like you've taken a wrong turn. The path you're looking for doesn't exist or has been moved.
+                </p>
+                
+                <!-- Fun bike illustration -->
+                <div class="bike-illustration">
+                    <i class="fas fa-bicycle"></i>
+                    <span>———</span>
+                    <i class="fas fa-road"></i>
+                </div>
+
+                <!-- Action buttons -->
+                <div class="error-actions">
+                    <a href="index.html" class="btn-primary">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Home
+                    </a>
+                    <a href="contact.html" class="btn-secondary">
+                        <i class="fas fa-headset"></i>
+                        Contact Support
+                    </a>
+                </div>
+
+                <!-- Quick links – helpful navigation -->
+                <div class="popular-links">
+                    <h4>Popular destinations</h4>
+                    <div class="links-grid">
+                        <a href="bikes.html">
+                            <i class="fas fa-bicycle"></i>
+                            Browse Bikes
+                        </a>
+                        <a href="how-it-works.html">
+                            <i class="fas fa-circle-info"></i>
+                            How it Works
+                        </a>
+                        <a href="pricing.html">
+                            <i class="fas fa-tag"></i>
+                            Pricing
+                        </a>
+                        <a href="locations.html">
+                            <i class="fas fa-location-dot"></i>
+                            Locations
+                        </a>
+                        <a href="admin.html" class="admin-quick">
+                            <i class="fas fa-shield"></i>
+                            Admin
+                        </a>
+                        <a href="client.html" class="client-quick">
+                            <i class="fas fa-user"></i>
+                            My Account
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER – CLEAN, CONSISTENT -->
+        <footer class="error-footer">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </div>
+            <div class="copyright">
+                &copy; 2026 GrowwBike. All rights reserved. Ride free.
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            "use strict";
+
+            // DOM elements
+            const themeToggle = document.getElementById('themeToggle');
+            const rtlToggle = document.getElementById('rtlToggle');
+            const body = document.body;
+
+            // ---------- THEME TOGGLE (dark/light) ----------
+            themeToggle.addEventListener('click', function() {
+                body.classList.toggle('light-theme');
+                const icon = themeToggle.querySelector('i');
+                if (body.classList.contains('light-theme')) {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                } else {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                }
+                localStorage.setItem('groww-theme', body.classList.contains('light-theme') ? 'light' : 'dark');
+            });
+
+            // ---------- RTL TOGGLE (left-to-right / right-to-left) ----------
+            rtlToggle.addEventListener('click', function() {
+                body.classList.toggle('rtl');
+                const icon = rtlToggle.querySelector('i');
+                if (body.classList.contains('rtl')) {
+                    icon.style.transform = 'rotate(180deg)';
+                    localStorage.setItem('groww-rtl', 'true');
+                } else {
+                    icon.style.transform = 'rotate(0deg)';
+                    localStorage.setItem('groww-rtl', 'false');
+                }
+            });
+
+            // ---------- LOAD SAVED PREFERENCES ----------
+            document.addEventListener('DOMContentLoaded', function() {
+                // Theme
+                const savedTheme = localStorage.getItem('groww-theme');
+                if (savedTheme === 'light') {
+                    body.classList.add('light-theme');
+                    const icon = themeToggle.querySelector('i');
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
+                // RTL
+                const savedRTL = localStorage.getItem('groww-rtl');
+                if (savedRTL === 'true') {
+                    body.classList.add('rtl');
+                    const icon = rtlToggle.querySelector('i');
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    const icon = rtlToggle.querySelector('i');
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+
+            // ---------- DYNAMIC RTL ICON ROTATION ON PAGE LOAD ----------
+            // ensure icon direction matches body.rtl class
+            const setInitialIcon = function() {
+                const icon = rtlToggle.querySelector('i');
+                if (body.classList.contains('rtl')) {
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            };
+            window.addEventListener('load', setInitialIcon);
+        })();
+    </script>
+
+    <!-- 
+        NOTE: This 404 page is fully responsive, matches the admin/client dashboard 
+        design system, includes RTL support, theme persistence, and all interactive 
+        elements. All links are placeholders – replace with actual URLs.
+    -->
+</body>
+</html>
