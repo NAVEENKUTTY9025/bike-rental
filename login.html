@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <title>Login · Register - GrowwBike</title>
-    
+     <link rel="icon" type="images/jpeg" href="images/growwpark_logo.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -474,7 +474,7 @@
         }
     </style>
 </head>
-<body class="dark-theme">
+<body class="light-theme">   <!-- ← default light mode -->
     <!-- main container -->
     <div class="auth-container">
         <div class="auth-card">
@@ -486,7 +486,7 @@
                 </a>
                 <div class="header-actions">
                     <button class="header-btn" id="themeToggle" title="Dark/Light">
-                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>   <!-- icon moon = currently light mode, toggles to dark -->
                     </button>
                     <button class="header-btn" id="rtlToggle" title="RTL/LTR">
                         <i class="fas fa-exchange-alt"></i>
@@ -574,12 +574,10 @@
                     <label class="terms-checkbox"><input type="checkbox" id="terms"> <span>I accept <a href="#">Terms</a> & <a href="#">Privacy</a></span></label>
                     <div class="error-message" id="termsError"></div>
                     <button type="submit" class="btn" id="registerBtn"><i class="fas fa-user-plus"></i> Create Account</button>
-                    <div class="success-message" id="registerSuccessMessage"><i class="fas fa-check-circle"></i> Registered! redirect...</div>
-                    <!-- optional social? we keep same style, but no extra scroll -->
-                    
-                   
+                    <div class="success-message" id="registerSuccessMessage"><i class="fas fa-check-circle"></i> Registered! Now sign in...</div>
                 </div>
-                
+                <!-- fixed switchToLogin link (was missing ID) -->
+                <div class="toggle-link">Already have an account? <a id="switchToLogin">Sign in</a></div>
             </form>
         </div>
     </div>
@@ -595,7 +593,7 @@
             const loginForm = document.getElementById('loginForm');
             const registerForm = document.getElementById('registerForm');
             const switchToRegister = document.getElementById('switchToRegister');
-            const switchToLogin = document.getElementById('switchToLogin');
+            const switchToLogin = document.getElementById('switchToLogin'); // now properly linked
 
             // password toggles
             const pwt1 = document.getElementById('loginPasswordToggle');
@@ -605,7 +603,7 @@
             const pwt3 = document.getElementById('confirmPasswordToggle');
             const pwd3 = document.getElementById('confirmPassword');
 
-            // theme
+            // theme toggle logic
             themeToggle.addEventListener('click', () => {
                 body.classList.toggle('light-theme');
                 const icon = themeToggle.querySelector('i');
@@ -644,6 +642,8 @@
                 registerToggle.classList.remove('active');
                 loginForm.classList.remove('hidden');
                 registerForm.classList.add('hidden');
+                // clear any leftover register success message when switching manually
+                document.getElementById('registerSuccessMessage').style.display = 'none';
             }
             function showRegister() {
                 loginToggle.classList.remove('active');
@@ -653,8 +653,8 @@
             }
             loginToggle.addEventListener('click', showLogin);
             registerToggle.addEventListener('click', showRegister);
-            switchToRegister.addEventListener('click', showRegister);
-            switchToLogin.addEventListener('click', showLogin);
+            if (switchToRegister) switchToRegister.addEventListener('click', showRegister);
+            if (switchToLogin) switchToLogin.addEventListener('click', showLogin);
 
             // helpers
             const validateEmail = (e) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
@@ -687,7 +687,7 @@
                 }
             });
 
-            // register submit
+            // register submit - FIXED: now properly redirects to sign in after success
             document.getElementById('registerForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 let valid = true;
@@ -718,32 +718,69 @@
                 if (valid) {
                     const btn = document.getElementById('registerBtn');
                     btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ...';
+                    
+                    // Simulate account creation
                     setTimeout(() => {
-                        document.getElementById('registerSuccessMessage').style.display = 'block';
-                        setTimeout(() => { showLogin(); document.getElementById('email').value = email; btn.disabled = false; btn.innerHTML = '<i class="fas fa-user-plus"></i> Create Account'; }, 1300);
-                    }, 1200);
+                        // Show success message
+                        const successMsg = document.getElementById('registerSuccessMessage');
+                        successMsg.style.display = 'block';
+                        
+                        // Prefill login email with the newly registered email
+                        document.getElementById('email').value = email;
+                        
+                        // After showing success, switch to login form (1 second delay)
+                        setTimeout(() => {
+                            // Hide success, switch to login, re-enable button
+                            successMsg.style.display = 'none';
+                            showLogin(); // this switches to sign in tab
+                            
+                            // Reset register button for next use
+                            btn.disabled = false;
+                            btn.innerHTML = '<i class="fas fa-user-plus"></i> Create Account';
+                            
+                            // Optional: clear register form fields (good practice)
+                            document.getElementById('firstName').value = '';
+                            document.getElementById('lastName').value = '';
+                            document.getElementById('registerEmail').value = '';
+                            document.getElementById('phone').value = '';
+                            document.getElementById('registerPassword').value = '';
+                            document.getElementById('confirmPassword').value = '';
+                            document.getElementById('terms').checked = false;
+                        }, 1000); // 1 second to read success message
+                    }, 1200); // simulate network delay
                 }
             });
 
-            // social stubs
-            function socialHandler(platform, isLogin) {
-                const btn = document.getElementById(platform + (isLogin ? 'Login' : 'Register'));
+            // social stubs (only login social buttons exist in this markup)
+            function socialHandler(platform) {
+                const btn = document.getElementById(platform + 'Login');
                 if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ...'; }
                 setTimeout(() => {
                     localStorage.setItem('loggedIn', 'true');
                     window.location.href = 'client.html';
                 }, 1000);
             }
-            document.getElementById('googleLogin')?.addEventListener('click', () => socialHandler('google', true));
-            document.getElementById('facebookLogin')?.addEventListener('click', () => socialHandler('facebook', true));
-            document.getElementById('googleRegister')?.addEventListener('click', () => socialHandler('google', false));
-            document.getElementById('facebookRegister')?.addEventListener('click', () => socialHandler('facebook', false));
+            document.getElementById('googleLogin')?.addEventListener('click', () => socialHandler('google'));
+            document.getElementById('facebookLogin')?.addEventListener('click', () => socialHandler('facebook'));
 
-            // load saved prefs
-            if (localStorage.getItem('theme') === 'light') {
+            // load saved prefs (if any) — default light, override only if stored theme === 'dark'
+            if (localStorage.getItem('theme') === 'dark') {
+                body.classList.remove('light-theme');    // we start with light-theme class, remove to go dark
+                const icon = themeToggle.querySelector('i');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                // ensure light theme class and icon are correct (default state)
                 body.classList.add('light-theme');
-                themeToggle.querySelector('i').className = 'fas fa-moon';
+                const icon = themeToggle.querySelector('i');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                if (!localStorage.getItem('theme')) {
+                    localStorage.setItem('theme', 'light');
+                }
             }
+
+            // rtl from storage
             if (localStorage.getItem('rtl') === 'true') body.classList.add('rtl');
 
             // prefill if remembered (dummy)
