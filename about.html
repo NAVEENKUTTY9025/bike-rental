@@ -13,7 +13,7 @@
         :root {
             --primary-color: #D4AF37;      /* Classic Gold/Dark Yellow */
             --primary-dark: #B8860B;       /* Dark Goldenrod */
-            --primary-light: #FFD700;      /* Gold */
+            --primary-light: #FFD700;       /* Gold */
             --primary-ultralight: #FFF8DC; /* Cornsilk */
             --text-color: #FFFFFF;         /* White for text on dark backgrounds */
             --text-light: #E5E5E5;         /* Light Gray for secondary text */
@@ -645,7 +645,7 @@
         }
 
         .testimonials-grid {
-            
+            display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
@@ -893,7 +893,7 @@
             right: 0;
         }
 
-        /* Responsive Styles */
+        /* Responsive Styles - ALIGNMENT FIXED FOR MOBILE/TABLET */
         @media (max-width: 1200px) {
             .container, .nav-container, .footer-container {
                 max-width: 100%;
@@ -1113,6 +1113,70 @@
         }
         .border-gold {
             border-color: var(--primary-color) !important;
+        }
+        /* ===== FIXED TESTIMONIAL ALIGNMENT (MOBILE/TABLET) ===== */
+        .testimonials-flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        .testimonial-card-fixed {
+            width: 260px;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        .testimonial-card-fixed:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        .light-theme .testimonial-card-fixed {
+            background: #f2f2f2;
+        }
+        .testimonial-avatar-fixed {
+            width: 55px;
+            height: 55px;
+            background: var(--primary-color);
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .testimonial-info-fixed h4 {
+            margin: 0;
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+        .testimonial-info-fixed p {
+            margin: 3px 0 0;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        .testimonial-rating-fixed {
+            color: var(--primary-color);
+            font-size: 16px;
+        }
+        .testimonial-text-fixed {
+            margin: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        @media (max-width: 600px) {
+            .testimonial-card-fixed {
+                width: 100%;
+                max-width: 350px;
+            }
         }
     </style>
 </head>
@@ -1349,7 +1413,7 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Testimonials Section - ALIGNMENT FIXED FOR MOBILE/TABLET -->
     <section class="testimonials-section" id="testimonials">
         <div class="container">
             <div class="section-title">
@@ -1357,60 +1421,61 @@
                 <p>Hear from our community of satisfied cyclists who choose GrowwBike for their urban adventures.</p>
             </div>
             
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">MJ</div>
-                        <div class="testimonial-info">
+            <!-- Fixed testimonial flex layout for proper centering & wrapping -->
+            <div class="testimonials-flex">
+
+                <!-- Card 1 -->
+                <div class="testimonial-card-fixed">
+                    <div style="display:flex; align-items:center; gap:15px;">
+                        <div class="testimonial-avatar-fixed">MJ</div>
+                        <div class="testimonial-info-fixed">
                             <h4>Michael Johnson</h4>
                             <p>Daily Commuter</p>
                         </div>
                     </div>
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p>"I've been using GrowwBike for my daily commute for over a year. The bikes are always in excellent condition, and the multiple locations make it incredibly convenient. They've completely transformed how I get around the city!"</p>
+                    <div class="testimonial-rating-fixed">★★★★★</div>
+                    <p class="testimonial-text-fixed">"I've been using GrowwBike daily. Excellent condition bikes and super convenient."</p>
                 </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">SR</div>
-                        <div class="testimonial-info">
+
+                <!-- Card 2 -->
+                <div class="testimonial-card-fixed">
+                    <div style="display:flex; align-items:center; gap:15px;">
+                        <div class="testimonial-avatar-fixed">SR</div>
+                        <div class="testimonial-info-fixed">
                             <h4>Sarah Rodriguez</h4>
                             <p>Weekend Explorer</p>
                         </div>
                     </div>
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <p>"The quality of bikes at GrowwBike is unmatched. I rent mountain bikes for weekend trail adventures, and they're always well-maintained and ready for action. The staff's knowledge of local trails is an added bonus!"</p>
+                    <div class="testimonial-rating-fixed">★★★★☆</div>
+                    <p class="testimonial-text-fixed">"Mountain bikes are always well-maintained and ready for adventure."</p>
                 </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">TP</div>
-                        <div class="testimonial-info">
+
+                <!-- Card 3 -->
+                <div class="testimonial-card-fixed">
+                    <div style="display:flex; align-items:center; gap:15px;">
+                        <div class="testimonial-avatar-fixed">TP</div>
+                        <div class="testimonial-info-fixed">
                             <h4>Thomas Parker</h4>
-                            <p>Tourist</p>
+                            <p>Tourist Explorer</p>
                         </div>
                     </div>
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p>"As a visitor to the city, renting from GrowwBike was the best decision I made. The electric bike made exploring effortless, and the recommended routes helped me discover hidden gems I would have missed otherwise."</p>
+                    <div class="testimonial-rating-fixed">★★★★★</div>
+                    <p class="testimonial-text-fixed">"Electric bikes made exploring effortless and enjoyable."</p>
                 </div>
+
+                <!-- Card 4 -->
+                <div class="testimonial-card-fixed">
+                    <div style="display:flex; align-items:center; gap:15px;">
+                        <div class="testimonial-avatar-fixed">AK</div>
+                        <div class="testimonial-info-fixed">
+                            <h4>Arun Kumar</h4>
+                            <p>Office Professional</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating-fixed">★★★★★</div>
+                    <p class="testimonial-text-fixed">"Smooth booking process and affordable pricing. Highly recommended."</p>
+                </div>
+
             </div>
         </div>
     </section>
