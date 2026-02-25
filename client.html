@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* === CLIENT DASHBOARD – ORANGE THEME (MATCHES INDEX.HTML) === */
+        /* === CLIENT DASHBOARD – ORANGE THEME WITH SIDEBAR === */
         :root {
             /* Primary Color – vibrant orange (same as index.html) */
             --primary-color: #F97316;      /* Bright orange */
@@ -76,6 +76,11 @@
             overflow-x: hidden;
         }
 
+        body.dashboard-body {
+            display: flex;
+            min-height: 100vh;
+        }
+
         a {
             text-decoration: none;
             color: inherit;
@@ -85,15 +90,124 @@
             list-style: none;
         }
 
-        /* === LAYOUT: NO SIDEBAR – JUST HEADER AND CONTENT === */
-        .client-container {
+        /* === SIDEBAR STYLES - FIXED NO SCROLL === */
+        .sidebar {
+            width: 260px;
+            background-color: var(--nav-bg);
+            border-right: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
+            transition: var(--transition);
+            position: fixed;
             height: 100vh;
-            overflow: hidden;
+            z-index: 1000;
+            left: -260px;
+            overflow: hidden; /* No scroll on sidebar itself */
         }
 
-        /* ---------- TOP HEADER (LOGO + PAGE TITLE + CONTROLS) ---------- */
+        .sidebar.active {
+            left: 0;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .sidebar-header {
+            padding: 25px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex-shrink: 0;
+        }
+
+          .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary-color); /* Orange logo */
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1001;
+            flex-shrink: 0;
+        }
+
+        .logo-icon {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+        }
+
+        /* User profile card - removed to keep sidebar clean */
+        .sidebar-nav {
+            padding: 20px;
+            flex: 1;
+            overflow-y: visible; /* No scroll */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-lighter);
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: #FFFFFF;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background-color: var(--bg-secondary);
+            color: var(--primary-color);
+        }
+
+        .nav-link.active {
+            background-color: var(--primary-color);
+            color: #000;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
+        }
+
+        .nav-link i {
+            width: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .sidebar-footer {
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex-shrink: 0;
+        }
+
+        /* === MAIN CONTENT AREA === */
+        .main-content {
+            flex: 1;
+            width: 100%;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* === TOP HEADER (for main content) === */
         .client-top-header {
             height: var(--header-height);
             background-color: var(--nav-bg);
@@ -108,31 +222,31 @@
         .header-left {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 15px;
             flex-wrap: nowrap;
             overflow: hidden;
             min-width: 0;
         }
 
-        .logo {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--primary-color); /* Orange logo */
+        .mobile-toggle {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 1001;
-            flex-shrink: 0;
-        }
-
-        .logo-icon {
-            width: 36px;
-            height: 36px;
-            display: flex;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: #FFFFFF;
+            background: none;
+            border: none;
+            padding: 8px;
+            border-radius: 8px;
+            background-color: rgba(255,255,255,0.08);
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
-            color: var(--primary-color);
+            width: 40px;
+            height: 40px;
+        }
+
+        .mobile-toggle:hover {
+            background-color: var(--primary-color);
+            color: #000;
         }
 
         .page-title {
@@ -144,8 +258,6 @@
             text-overflow: ellipsis;
             flex-shrink: 1;
             min-width: 40px;
-            padding-left: 12px;
-            border-left: 2px solid var(--primary-color);
         }
 
         .header-right {
@@ -173,68 +285,37 @@
 
         .rtl-toggle:hover, .theme-toggle:hover {
             background-color: var(--primary-color);
-            color: #000000;
+            color: #000;
         }
 
-        /* ---------- MAIN CONTENT (SCROLLABLE) ---------- */
-        .client-main {
+        /* === DASHBOARD CONTENT === */
+        .dashboard-content {
+            padding: 20px 16px;
             flex: 1;
             background-color: var(--bg-color);
             overflow-y: auto;
         }
 
-        .client-content {
-            padding: 20px 16px;
+        /* === OVERLAY FOR MOBILE === */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
         }
 
-        /* ---------- RTL TEXT DIRECTION ---------- */
-        body.rtl .client-main,
-        body.rtl .client-top-header,
-        body.rtl .client-content,
-        body.rtl .dashboard-card,
-        body.rtl .card-header,
-        body.rtl .card-body,
-        body.rtl .form-row,
-        body.rtl .order-item,
-        body.rtl .saved-item,
-        body.rtl .message-item,
-        body.rtl .setting-item {
-            text-align: right;
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
-        body.rtl .header-left {
-            flex-direction: row-reverse;
-        }
-
-        body.rtl .header-right {
-            flex-direction: row-reverse;
-        }
-
-        body.rtl .page-title {
-            border-left: none;
-            border-right: 2px solid var(--primary-color);
-            padding-left: 0;
-            padding-right: 12px;
-        }
-
-        body.rtl .order-item,
-        body.rtl .saved-item,
-        body.rtl .message-item,
-        body.rtl .setting-item {
-            flex-direction: row-reverse;
-        }
-
-        body.rtl .toggle-switch::after {
-            right: auto;
-            left: 2px;
-        }
-
-        body.rtl .toggle-switch.active::after {
-            left: 26px;
-            right: auto;
-        }
-
-        /* === DASHBOARD COMPONENTS – FULLY RESPONSIVE / MOBILE FIRST === */
+        /* === DASHBOARD COMPONENTS === */
         .welcome-card {
             background: linear-gradient(145deg, rgba(249, 115, 22, 0.15) 0%, rgba(0,0,0,0) 100%);
             border: 1px solid var(--primary-color);
@@ -270,7 +351,7 @@
             background-color: var(--primary-color);
             padding: 8px 16px;
             border-radius: 40px;
-            color: #000000;
+            color: #000;
             font-weight: 600;
             font-size: 0.9rem;
             display: flex;
@@ -297,7 +378,7 @@
 
         .logout-btn:hover {
             background-color: var(--primary-color);
-            color: #000000;
+            color: #000;
             border-color: var(--primary-color);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
@@ -480,7 +561,7 @@
         }
         .btn-save {
             background-color: var(--primary-color);
-            color: #000000;
+            color: #000;
             border: none;
             padding: 12px 24px;
             border-radius: 10px;
@@ -558,129 +639,111 @@
             grid-column: span 1;
         }
 
-        /* Light theme adjustments */
-        .light-theme .client-top-header {
-            background-color: #000000;
+        /* === FIXED RTL SIDEBAR STYLES - CRITICAL FIX === */
+        body.rtl .sidebar {
+            left: auto !important;
+            right: -260px !important;
+            border-right: none !important;
+            border-left: 1px solid var(--border-color) !important;
+        }
+        
+        body.rtl .sidebar.active {
+            right: 0 !important;
+            left: auto !important;
+        }
+        
+        body.rtl .header-left {
+            flex-direction: row-reverse;
+        }
+        
+        body.rtl .header-right {
+            flex-direction: row-reverse;
+        }
+        
+        body.rtl .order-item,
+        body.rtl .saved-item,
+        body.rtl .message-item,
+        body.rtl .setting-item {
+            flex-direction: row-reverse;
         }
 
-        .light-theme .toggle-switch {
-            background-color: #ccc;
+        body.rtl .toggle-switch::after {
+            right: auto;
+            left: 2px;
         }
 
-        .light-theme .toggle-switch.active {
-            background-color: var(--primary-color);
+        body.rtl .toggle-switch.active::after {
+            left: 24px;
+            right: auto;
         }
 
-        /* === RESPONSIVE FIXES === */
-        @media (max-width: 480px) {
-            .client-top-header {
-                padding: 0 12px;
-                gap: 4px;
+        body.rtl .form-row {
+            grid-template-columns: 2fr 1fr;
+        }
+
+        @media (min-width: 992px) {
+            .sidebar {
+                left: 0;
+                position: fixed;
             }
-            .logo {
-                font-size: 1.1rem;
+            
+            .main-content {
+                margin-left: 260px;
+                width: calc(100% - 260px);
             }
-            .logo-icon {
-                width: 28px;
-                height: 28px;
-                font-size: 1.1rem;
+            
+            /* Desktop RTL fix */
+            body.rtl .sidebar {
+                left: auto !important;
+                right: 0 !important;
             }
-            .page-title {
-                font-size: 1rem;
-                max-width: 120px;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                padding-left: 8px;
+            
+            body.rtl .main-content {
+                margin-left: 0;
+                margin-right: 260px;
             }
-            body.rtl .page-title {
-                padding-left: 0;
-                padding-right: 8px;
+            
+            .mobile-toggle {
+                display: none;
             }
-            .header-right {
-                gap: 4px;
-            }
-            .rtl-toggle, .theme-toggle {
-                width: 36px;
-                height: 36px;
-                font-size: 0.9rem;
-                padding: 6px;
-            }
-            .welcome-card {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 18px;
-            }
-            .welcome-actions {
-                width: 100%;
-                justify-content: space-between;
-            }
-            .welcome-text h2 {
-                font-size: 1.3rem;
-            }
-            .client-stats {
-                grid-template-columns: 1fr 1fr;
-            }
-            .stat-item {
-                padding: 16px 12px;
-            }
-            .stat-number {
-                font-size: 1.6rem;
-            }
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 4px;
-            }
-            .card-header h3 {
-                font-size: 0.95rem;
-            }
-            .card-header a {
-                font-size: 0.8rem;
+            
+            .overlay {
+                display: none;
             }
         }
 
-        @media (max-width: 360px) {
-            .client-top-header {
-                padding: 0 8px;
-            }
-            .page-title {
-                font-size: 0.9rem;
-                max-width: 90px;
-            }
-            .logo {
-                font-size: 1rem;
-                gap: 4px;
-            }
-            .logo-icon {
-                width: 26px;
-                height: 26px;
-                font-size: 1rem;
-            }
-            .rtl-toggle, .theme-toggle {
-                width: 32px;
-                height: 32px;
-                font-size: 0.8rem;
-                padding: 4px;
-            }
-            .welcome-badge {
-                padding: 6px 12px;
-                font-size: 0.8rem;
-            }
-            .logout-btn {
-                padding: 6px 14px;
-                font-size: 0.8rem;
-            }
-            .stat-number {
-                font-size: 1.4rem;
-            }
+        /* === DASHBOARD FOOTER === */
+        .dashboard-footer {
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+            background-color: var(--bg-dark);
+            color: var(--text-lighter);
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            text-align: center;
         }
 
-        /* Scrollbar */
-        .client-main::-webkit-scrollbar { width: 4px; }
-        .client-main::-webkit-scrollbar-track { background: var(--bg-secondary); }
-        .client-main::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 6px; }
+        .footer-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-        /* Logout Modal */
+        .footer-links a {
+            color: var(--text-lighter);
+            transition: var(--transition);
+            font-size: 0.85rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* === LOGOUT MODAL === */
         .logout-modal {
             position: fixed;
             top: 0;
@@ -770,19 +833,136 @@
             border-color: var(--primary-color);
             color: var(--primary-color);
         }
+
+        /* === RESPONSIVE STYLES === */
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .client-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            
+            body.rtl .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .client-top-header {
+                padding: 0 12px;
+            }
+            
+            .page-title {
+                font-size: 1rem;
+                max-width: 120px;
+            }
+            
+            .mobile-toggle {
+                width: 36px;
+                height: 36px;
+            }
+            
+            .header-right {
+                gap: 4px;
+            }
+            
+            .rtl-toggle, .theme-toggle {
+                width: 36px;
+                height: 36px;
+            }
+            
+            .welcome-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .welcome-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .client-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .stat-number {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .client-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-title {
+                max-width: 80px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* No scrollbar needed */
+        .sidebar-nav {
+            overflow-y: visible;
+        }
     </style>
 </head>
-<body>
-    <div class="client-container">
-        <!-- TOP HEADER – orange theme with page title -->
-        <div class="client-top-header">
+<body class="dashboard-body">
+    <!-- Overlay for mobile -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Sidebar - Clean with logo only -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-bicycle"></i></div>
+                <span>GrowwBike</span>
+            </a>
+        </div>
+        
+        <nav class="sidebar-nav">
+           
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link active"><i class="fas fa-tachometer-alt"></i> Overview</a></li>
+                <li><a href="#" class="nav-link"><i class="fas fa-bicycle"></i> My Rides</a></li>
+                <li><a href="#" class="nav-link"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+                <li><a href="#" class="nav-link"><i class="fas fa-users"></i> Community</a></li>
+            </ul>
+            
+            
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link"><i class="fas fa-calendar-alt"></i> Upcoming Rides</a></li>
+                <li><a href="#" class="nav-link"><i class="fas fa-history"></i> Ride History</a></li>
+                <li><a href="#" class="nav-link"><i class="fas fa-heart"></i> Saved Items</a></li>
+                <li><a href="#" class="nav-link"><i class="fas fa-star"></i> Reviews</a></li>
+            </ul>
+            
+            
+        </nav>
+        
+        <div class="sidebar-footer">
+            <!-- Empty footer for spacing -->
+        </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- Top Header -->
+        <header class="client-top-header">
             <div class="header-left">
-                <a href="index.html" class="logo">
-                    <div class="logo-icon"><i class="fas fa-bicycle"></i></div>
-                    <span>GrowwBike</span>
-                </a>
-               
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="page-title">Client Dashboard </div>
             </div>
+            
             <div class="header-right">
                 <button class="rtl-toggle" id="rtlToggle" title="RTL/LTR">
                     <i class="fas fa-arrow-right-arrow-left"></i>
@@ -791,277 +971,278 @@
                     <i class="fas fa-sun"></i>
                 </button>
             </div>
-        </div>
-
-        <!-- MAIN CONTENT (scrollable) -->
-        <div class="client-main" id="clientMain">
-            <div class="client-content">
-                <!-- Welcome card with logout button inside -->
-                <div class="welcome-card">
-                    <div class="welcome-text">
-                        <h2>Welcome back, Alex! 👋</h2>
-                        <p>Your next adventure is just a pedal away.</p>
-                    </div>
-                    <div class="welcome-actions">
-                        <div class="welcome-badge">
-                            <i class="fas fa-bicycle"></i>
-                            <span>Ride member since 2025</span>
-                        </div>
-                        <!-- Logout button with modal -->
-                        <button class="logout-btn" id="logoutBtn" title="Logout">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <span>Logout</span>
-                        </button>
-                    </div>
+        </header>
+        
+        <!-- Dashboard Content -->
+        <section class="dashboard-content">
+            <!-- Welcome Card -->
+            <div class="welcome-card">
+                <div class="welcome-text">
+                    <h2>Welcome back, Alex! 👋</h2>
+                    <p>Your next adventure is just a pedal away.</p>
                 </div>
-
-                <!-- Quick stats -->
-                <div class="client-stats">
-                    <div class="stat-item">
-                        <div class="stat-label">Total rides</div>
-                        <div class="stat-number">18</div>
-                        <span style="color: var(--text-lighter); font-size: 0.7rem;">+3 this month</span>
+                <div class="welcome-actions">
+                    <div class="welcome-badge">
+                        <i class="fas fa-bicycle"></i>
+                        <span>Ride member since 2025</span>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Active bookings</div>
-                        <div class="stat-number">2</div>
-                        <span style="color: var(--text-lighter); font-size: 0.7rem;">Trek & City</span>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Loyalty points</div>
-                        <div class="stat-number">1.2k</div>
-                        <span style="color: var(--text-lighter); font-size: 0.7rem;">≈ $24 credit</span>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Saved items</div>
-                        <div class="stat-number">6</div>
-                        <span style="color: var(--text-lighter); font-size: 0.7rem;">bikes & gear</span>
-                    </div>
+                    <button class="logout-btn" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </button>
                 </div>
+            </div>
 
-                <!-- PROFILE MANAGEMENT -->
-                <section id="profile" style="margin-bottom: 24px;">
-                    <div class="dashboard-card full-width-card">
-                        <div class="card-header">
-                            <h3><i class="fas fa-id-card" style="color: var(--primary-color);"></i> Profile Management</h3>
-                            <a href="#"><i class="fas fa-edit"></i> Edit</a>
-                        </div>
-                        <div class="card-body">
-                            <div class="profile-form">
-                                <div class="form-row">
-                                    <label>Full name</label>
-                                    <input type="text" value="Alex Morgan">
-                                </div>
-                                <div class="form-row">
-                                    <label>Email address</label>
-                                    <input type="email" value="alex.m@example.com">
-                                </div>
-                                <div class="form-row">
-                                    <label>Phone number</label>
-                                    <input type="tel" value="+1 (555) 789-1234">
-                                </div>
-                                <div class="form-row">
-                                    <label>Date of birth</label>
-                                    <input type="date" value="1992-06-15">
-                                </div>
-                                <div class="form-row">
-                                    <label>Preferred bike</label>
-                                    <select>
-                                        <option>Mountain bike</option>
-                                        <option selected>Road bike</option>
-                                        <option>Electric</option>
-                                        <option>Hybrid</option>
-                                    </select>
-                                </div>
-                                <button class="btn-save">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+            <!-- Quick Stats -->
+            <div class="client-stats">
+                <div class="stat-item">
+                    <div class="stat-label">Total rides</div>
+                    <div class="stat-number">18</div>
+                    <span style="color: var(--text-lighter); font-size: 0.7rem;">+3 this month</span>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Active bookings</div>
+                    <div class="stat-number">2</div>
+                    <span style="color: var(--text-lighter); font-size: 0.7rem;">Trek & City</span>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Loyalty points</div>
+                    <div class="stat-number">1.2k</div>
+                    <span style="color: var(--text-lighter); font-size: 0.7rem;">≈ $24 credit</span>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Saved items</div>
+                    <div class="stat-number">6</div>
+                    <span style="color: var(--text-lighter); font-size: 0.7rem;">bikes & gear</span>
+                </div>
+            </div>
 
-                <!-- ORDER HISTORY & SAVED ITEMS -->
-                <div class="dashboard-grid">
-                    <div class="dashboard-card" id="orders">
-                        <div class="card-header">
-                            <h3><i class="fas fa-history" style="color: var(--primary-color);"></i> Recent Orders</h3>
-                            <a href="#">View all <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="card-body">
-                            <div class="order-item">
-                                <div class="order-info">
-                                    <h4>Trek FX 3 Disc</h4>
-                                    <div class="order-meta">May 12, 2026 • $42.50</div>
-                                </div>
-                                <span class="order-status status-active">Completed</span>
-                            </div>
-                            <div class="order-item">
-                                <div class="order-info">
-                                    <h4>Specialized Rockhopper</h4>
-                                    <div class="order-meta">May 5, 2026 • $38.00</div>
-                                </div>
-                                <span class="order-status status-active">Completed</span>
-                            </div>
-                            <div class="order-item">
-                                <div class="order-info">
-                                    <h4>Cannondale Quick 4</h4>
-                                    <div class="order-meta">Apr 28, 2026 • $45.00</div>
-                                </div>
-                                <span class="order-status status-pending">Upcoming</span>
-                            </div>
-                            <div class="order-item">
-                                <div class="order-info">
-                                    <h4>Giant Escape 3</h4>
-                                    <div class="order-meta">Apr 20, 2026 • $35.00</div>
-                                </div>
-                                <span class="order-status status-cancelled">Cancelled</span>
-                            </div>
-                        </div>
+            <!-- Profile Management -->
+            <section id="profile" style="margin-bottom: 24px;">
+                <div class="dashboard-card full-width-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-id-card" style="color: var(--primary-color);"></i> Profile Management</h3>
+                        <a href="#"><i class="fas fa-edit"></i> Edit</a>
                     </div>
-                    <div class="dashboard-card" id="saved">
-                        <div class="card-header">
-                            <h3><i class="fas fa-heart" style="color: var(--primary-color);"></i> Saved Items</h3>
-                            <a href="#">Manage <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="card-body">
-                            <div class="saved-item">
-                                <div class="saved-info">
-                                    <h4>Trek Domane AL 2</h4>
-                                    <div class="saved-meta">Road bike • $64/day</div>
-                                </div>
-                                <button style="background: none; border: none; color: var(--primary-color); cursor: pointer;"><i class="fas fa-trash"></i></button>
+                    <div class="card-body">
+                        <div class="profile-form">
+                            <div class="form-row">
+                                <label>Full name</label>
+                                <input type="text" value="Alex Morgan">
                             </div>
-                            <div class="saved-item">
-                                <div class="saved-info">
-                                    <h4>Schwinn Phocus 1600</h4>
-                                    <div class="saved-meta">Drop bar • $52/day</div>
-                                </div>
-                                <button style="background: none; border: none; color: var(--primary-color); cursor: pointer;"><i class="fas fa-trash"></i></button>
+                            <div class="form-row">
+                                <label>Email address</label>
+                                <input type="email" value="alex.m@example.com">
                             </div>
-                            <div class="saved-item">
-                                <div class="saved-info">
-                                    <h4>Giro Helmet</h4>
-                                    <div class="saved-meta">Gear • $12/day</div>
-                                </div>
-                                <button style="background: none; border: none; color: var(--primary-color); cursor: pointer;"><i class="fas fa-trash"></i></button>
+                            <div class="form-row">
+                                <label>Phone number</label>
+                                <input type="tel" value="+1 (555) 789-1234">
                             </div>
-                            <div class="saved-item">
-                                <div class="saved-info">
-                                    <h4>Bike Lock</h4>
-                                    <div class="saved-meta">Accessory • $5/day</div>
-                                </div>
-                                <button style="background: none; border: none; color: var(--primary-color); cursor: pointer;"><i class="fas fa-trash"></i></button>
+                            <div class="form-row">
+                                <label>Date of birth</label>
+                                <input type="date" value="1992-06-15">
                             </div>
-                            <div class="saved-item">
-                                <div class="saved-info">
-                                    <h4>Kryptonite Light Set</h4>
-                                    <div class="saved-meta">Safety • $6/day</div>
-                                </div>
-                                <button style="background: none; border: none; color: var(--primary-color); cursor: pointer;"><i class="fas fa-trash"></i></button>
+                            <div class="form-row">
+                                <label>Preferred bike</label>
+                                <select>
+                                    <option>Mountain bike</option>
+                                    <option selected>Road bike</option>
+                                    <option>Electric</option>
+                                    <option>Hybrid</option>
+                                </select>
                             </div>
+                            <button class="btn-save">Save changes</button>
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- MESSAGES -->
-                <section id="messages" style="margin-bottom: 24px;">
-                    <div class="dashboard-card full-width-card">
-                        <div class="card-header">
-                            <h3><i class="fas fa-envelope" style="color: var(--primary-color);"></i> Recent Messages</h3>
-                            <a href="#">View all <i class="fas fa-arrow-right"></i></a>
+            <!-- Order History & Saved Items -->
+            <div class="dashboard-grid">
+                <div class="dashboard-card" id="orders">
+                    <div class="card-header">
+                        <h3><i class="fas fa-history" style="color: var(--primary-color);"></i> Recent Orders</h3>
+                        <a href="#">View all <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="card-body">
+                        <div class="order-item">
+                            <div class="order-info">
+                                <h4>Trek FX 3 Disc</h4>
+                                <div class="order-meta">May 12, 2026 • $42.50</div>
+                            </div>
+                            <span class="order-status status-active">Completed</span>
                         </div>
-                        <div class="card-body">
-                            <div class="message-item">
-                                <div class="message-avatar">GW</div>
-                                <div class="message-content">
-                                    <div class="message-header">
-                                        <span class="message-sender">GrowwBike Support</span>
-                                        <span class="message-time">2h ago</span>
-                                    </div>
-                                    <div class="message-text">Your booking #BK-321 is confirmed. Enjoy your ride!</div>
-                                </div>
+                        <div class="order-item">
+                            <div class="order-info">
+                                <h4>Specialized Rockhopper</h4>
+                                <div class="order-meta">May 5, 2026 • $38.00</div>
                             </div>
-                            <div class="message-item">
-                                <div class="message-avatar">JS</div>
-                                <div class="message-content">
-                                    <div class="message-header">
-                                        <span class="message-sender">James Smith</span>
-                                        <span class="message-time">Yesterday</span>
-                                    </div>
-                                    <div class="message-text">Hey, are you still using the mountain bike on Saturday?</div>
-                                </div>
+                            <span class="order-status status-active">Completed</span>
+                        </div>
+                        <div class="order-item">
+                            <div class="order-info">
+                                <h4>Cannondale Quick 4</h4>
+                                <div class="order-meta">Apr 28, 2026 • $45.00</div>
                             </div>
-                            <div class="message-item">
-                                <div class="message-avatar">SB</div>
-                                <div class="message-content">
-                                    <div class="message-header">
-                                        <span class="message-sender">System</span>
-                                        <span class="message-time">3d ago</span>
-                                    </div>
-                                    <div class="message-text">Your saved item 'Trek Domane' is now 15% off – limited time!</div>
+                            <span class="order-status status-pending">Upcoming</span>
+                        </div>
+                        <div class="order-item">
+                            <div class="order-info">
+                                <h4>Giant Escape 3</h4>
+                                <div class="order-meta">Apr 20, 2026 • $35.00</div>
+                            </div>
+                            <span class="order-status status-cancelled">Cancelled</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card" id="saved">
+                    <div class="card-header">
+                        <h3><i class="fas fa-heart" style="color: var(--primary-color);"></i> Saved Items</h3>
+                        <a href="#">Manage <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="card-body">
+                        <div class="saved-item">
+                            <div class="saved-info">
+                                <h4>Trek Domane AL 2</h4>
+                                <div class="saved-meta">Road bike • $64/day</div>
+                            </div>
+                            <button style="background: none; border: none; color: var(--primary-color); cursor: pointer;"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <div class="saved-item">
+                            <div class="saved-info">
+                                <h4>Schwinn Phocus 1600</h4>
+                                <div class="saved-meta">Drop bar • $52/day</div>
+                            </div>
+                            <button style="background: none; border: none; color: var(--primary-color); cursor: pointer;"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <div class="saved-item">
+                            <div class="saved-info">
+                                <h4>Giro Helmet</h4>
+                                <div class="saved-meta">Gear • $12/day</div>
+                            </div>
+                            <button style="background: none; border: none; color: var(--primary-color); cursor: pointer;"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <div class="saved-item">
+                            <div class="saved-info">
+                                <h4>Bike Lock</h4>
+                                <div class="saved-meta">Accessory • $5/day</div>
+                            </div>
+                            <button style="background: none; border: none; color: var(--primary-color); cursor: pointer;"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <div class="saved-item">
+                            <div class="saved-info">
+                                <h4>Kryptonite Light Set</h4>
+                                <div class="saved-meta">Safety • $6/day</div>
+                            </div>
+                            <button style="background: none; border: none; color: var(--primary-color); cursor: pointer;"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Messages -->
+            <section id="messages" style="margin-bottom: 24px;">
+                <div class="dashboard-card full-width-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-envelope" style="color: var(--primary-color);"></i> Recent Messages</h3>
+                        <a href="#">View all <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="card-body">
+                        <div class="message-item">
+                            <div class="message-avatar">GW</div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <span class="message-sender">GrowwBike Support</span>
+                                    <span class="message-time">2h ago</span>
                                 </div>
+                                <div class="message-text">Your booking #BK-321 is confirmed. Enjoy your ride!</div>
+                            </div>
+                        </div>
+                        <div class="message-item">
+                            <div class="message-avatar">JS</div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <span class="message-sender">James Smith</span>
+                                    <span class="message-time">Yesterday</span>
+                                </div>
+                                <div class="message-text">Hey, are you still using the mountain bike on Saturday?</div>
+                            </div>
+                        </div>
+                        <div class="message-item">
+                            <div class="message-avatar">SB</div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <span class="message-sender">System</span>
+                                    <span class="message-time">3d ago</span>
+                                </div>
+                                <div class="message-text">Your saved item 'Trek Domane' is now 15% off – limited time!</div>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <!-- SETTINGS -->
-                <section id="settings">
-                    <div class="dashboard-card full-width-card">
-                        <div class="card-header">
-                            <h3><i class="fas fa-cog" style="color: var(--primary-color);"></i> Settings & Preferences</h3>
-                            <a href="#"><i class="fas fa-save"></i> Save</a>
-                        </div>
-                        <div class="card-body">
-                            <div class="settings-grid">
-                                <div class="setting-item">
-                                    <div class="setting-info">
-                                        <h4>Email notifications</h4>
-                                        <p>Booking confirmations & updates</p>
-                                    </div>
-                                    <div class="toggle-switch active"></div>
+            <!-- Settings -->
+            <section id="settings">
+                <div class="dashboard-card full-width-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-cog" style="color: var(--primary-color);"></i> Settings & Preferences</h3>
+                        <a href="#"><i class="fas fa-save"></i> Save</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="settings-grid">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Email notifications</h4>
+                                    <p>Booking confirmations & updates</p>
                                 </div>
-                                <div class="setting-item">
-                                    <div class="setting-info">
-                                        <h4>SMS alerts</h4>
-                                        <p>Text messages for ride reminders</p>
-                                    </div>
-                                    <div class="toggle-switch"></div>
+                                <div class="toggle-switch active"></div>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>SMS alerts</h4>
+                                    <p>Text messages for ride reminders</p>
                                 </div>
-                                <div class="setting-item">
-                                    <div class="setting-info">
-                                        <h4>Promotional emails</h4>
-                                        <p>Special offers & new bikes</p>
-                                    </div>
-                                    <div class="toggle-switch active"></div>
+                                <div class="toggle-switch"></div>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Promotional emails</h4>
+                                    <p>Special offers & new bikes</p>
                                 </div>
-                                <div class="setting-item">
-                                    <div class="setting-info">
-                                        <h4>Dark mode</h4>
-                                        <p>Use dark theme on dashboard</p>
-                                    </div>
-                                    <div class="toggle-switch"></div>
+                                <div class="toggle-switch active"></div>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Dark mode</h4>
+                                    <p>Use dark theme on dashboard</p>
                                 </div>
-                                <div class="setting-item">
-                                    <div class="setting-info">
-                                        <h4>Two‑factor auth</h4>
-                                        <p>Enhanced account security</p>
-                                    </div>
-                                    <div class="toggle-switch active"></div>
+                                <div class="toggle-switch"></div>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Two‑factor auth</h4>
+                                    <p>Enhanced account security</p>
                                 </div>
-                                <div class="setting-item">
-                                    <div class="setting-info">
-                                        <h4>Language</h4>
-                                        <p>English (US)</p>
-                                    </div>
-                                    <i class="fas fa-chevron-right" style="color: var(--primary-color);"></i>
+                                <div class="toggle-switch active"></div>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Language</h4>
+                                    <p>English (US)</p>
                                 </div>
+                                <i class="fas fa-chevron-right" style="color: var(--primary-color);"></i>
                             </div>
                         </div>
                     </div>
-                </section>
-            </div><!-- end client-content -->
-        </div><!-- end client-main -->
-    </div><!-- end client-container -->
+                </div>
+            </section>
+        </section>
+        
+        <!-- Dashboard Footer -->
+        
+    </main>
 
     <!-- Logout Confirmation Modal -->
     <div class="logout-modal" id="logoutModal">
@@ -1087,6 +1268,63 @@
             const logoutModal = document.getElementById('logoutModal');
             const cancelLogout = document.getElementById('cancelLogout');
             const confirmLogout = document.getElementById('confirmLogout');
+            const mobileToggle = document.getElementById('mobileToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+
+            // ----- SIDEBAR TOGGLE -----
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', () => {
+                    sidebar.classList.toggle('active');
+                    overlay.classList.toggle('active');
+                    body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : 'auto';
+                    
+                    // Update icon
+                    const icon = mobileToggle.querySelector('i');
+                    if (sidebar.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+
+            // Close sidebar when clicking overlay
+            if (overlay) {
+                overlay.addEventListener('click', () => {
+                    sidebar.classList.remove('active');
+                    overlay.classList.remove('active');
+                    body.style.overflow = 'auto';
+                    const icon = mobileToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+
+            // Close sidebar when clicking a nav link on mobile
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 992) {
+                        sidebar.classList.remove('active');
+                        overlay.classList.remove('active');
+                        body.style.overflow = 'auto';
+                        const icon = mobileToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                        
+                        // Set active state
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                });
+            });
 
             // ----- THEME TOGGLE -----
             function initTheme() {
@@ -1114,16 +1352,20 @@
                 });
             }
 
-            // ----- RTL TOGGLE -----
+            // ----- RTL TOGGLE (FIXED) -----
             function initRTL() {
                 const savedRTL = localStorage.getItem('client-rtl-orange');
                 const icon = rtlToggle?.querySelector('i');
                 if (savedRTL === 'true') {
                     body.classList.add('rtl');
-                    if (icon) icon.style.transform = 'rotate(180deg)';
+                    if (icon) {
+                        icon.style.transform = 'rotate(180deg)';
+                    }
                 } else {
                     body.classList.remove('rtl');
-                    if (icon) icon.style.transform = 'rotate(0deg)';
+                    if (icon) {
+                        icon.style.transform = 'rotate(0deg)';
+                    }
                 }
             }
             
@@ -1175,6 +1417,20 @@
                     e.stopPropagation();
                     this.classList.toggle('active');
                 });
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 992 && sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                    overlay.classList.remove('active');
+                    body.style.overflow = 'auto';
+                    const icon = mobileToggle?.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
             });
 
             // ----- LOAD INITIAL STORAGE VALUES -----
