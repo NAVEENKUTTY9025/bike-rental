@@ -4,27 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>Client Dashboard | GrowwBike</title>
-     <link rel="icon" type="images/jpeg" href="images/growwpark_logo.jpg">
+    <link rel="icon" type="images/jpeg" href="images/growwpark_logo.jpg">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* === CLIENT DASHBOARD – FIXED RTL OVERLAP / MOBILE PERFECT === */
+        /* === CLIENT DASHBOARD – ORANGE THEME (MATCHES INDEX.HTML) === */
         :root {
-            --primary-color: #D4AF37;
-            --primary-dark: #B8860B;
-            --primary-light: #FFD700;
-            --primary-ultralight: #FFF8DC;
-            --text-color: #FFFFFF;
-            --text-light: #E5E5E5;
-            --text-lighter: #A0A0A0;
-            --bg-color: #0A0A0A;
-            --bg-secondary: #1A1A1A;
-            --bg-dark: #0A0A0A;
-            --card-bg: #1A1A1A;
-            --border-color: #333333;
-            --nav-bg: #000000;
-            --nav-text: #FFFFFF;
+            /* Primary Color – vibrant orange (same as index.html) */
+            --primary-color: #F97316;      /* Bright orange */
+            --primary-dark: #EA580C;        /* Darker orange */
+            --primary-light: #FB923C;       /* Light orange */
+            --primary-ultralight: #FFF4E6;  /* Very light orange */
+            
+            /* Neutral Colors – black/white/grey */
+            --text-color: #FFFFFF;         /* White on dark sections */
+            --text-light: #E5E5E5;         /* Light grey */
+            --text-lighter: #A0A0A0;       /* Medium grey */
+            --bg-color: #0A0A0A;           /* Almost black background */
+            --bg-secondary: #1A1A1A;       /* Dark grey */
+            --bg-dark: #0A0A0A;             /* Footer black */
+            --card-bg: #1A1A1A;             /* Dark cards */
+            --border-color: #333333;        /* Dark border */
+            --nav-bg: #000000;               /* Pure black navigation */
+            --nav-text: #FFFFFF;              /* White navigation text */
             --nav-text-light: #CCCCCC;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
             --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.7);
@@ -34,23 +37,23 @@
         }
 
         .light-theme {
-            --primary-color: #D4AF37;
-            --primary-dark: #B8860B;
-            --primary-light: #FFD700;
-            --primary-ultralight: #FFF8DC;
-            --text-color: #222222;
-            --text-light: #444444;
-            --text-lighter: #666666;
-            --bg-color: #F5F5F5;
-            --bg-secondary: #FFFFFF;
-            --bg-dark: #FFFFFF;
-            --card-bg: #FFFFFF;
-            --border-color: #E0E0E0;
-            --nav-bg: #000000;
-            --nav-text: #FFFFFF;
+            --primary-color: #F97316;      /* Same vibrant orange */
+            --primary-dark: #EA580C;
+            --primary-light: #FB923C;
+            --primary-ultralight: #FFF4E6;
+            --text-color: #1E1E1E;         /* Almost black text */
+            --text-light: #2E2E2E;          /* Dark grey */
+            --text-lighter: #4B4B4B;        /* Medium-dark grey */
+            --bg-color: #FFFFFF;            /* Pure white background */
+            --bg-secondary: #F8F8F8;        /* Light grey sections */
+            --bg-dark: #FFFFFF;              /* White footer */
+            --card-bg: #FFFFFF;              /* White cards */
+            --border-color: #E0E0E0;         /* Light grey border */
+            --nav-bg: #000000;                /* Keep black nav in light mode */
+            --nav-text: #FFFFFF;               /* White nav text */
             --nav-text-light: #E0E0E0;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         * {
@@ -92,7 +95,7 @@
 
         /* ---------- TOP HEADER (LOGO + PAGE TITLE + CONTROLS) ---------- */
         .client-top-header {
-           height: var(--header-height);
+            height: var(--header-height);
             background-color: var(--nav-bg);
             border-bottom: 1px solid var(--border-color);
             display: flex;
@@ -102,23 +105,23 @@
             flex-shrink: 0;
         }
 
-      .header-left {
+        .header-left {
             display: flex;
             align-items: center;
             gap: 8px;
             flex-wrap: nowrap;
             overflow: hidden;
-            min-width: 0; /* allows truncation if needed, but we prevent it */
+            min-width: 0;
         }
 
-       .logo {
+        .logo {
             font-size: 1.6rem;
             font-weight: 800;
-            color: var(--primary-color);
+            color: var(--primary-color); /* Orange logo */
             display: flex;
             align-items: center;
-            gap: 6px;
-            white-space: nowrap;
+            gap: 10px;
+            z-index: 1001;
             flex-shrink: 0;
         }
 
@@ -128,7 +131,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
+            color: var(--primary-color);
         }
 
         .page-title {
@@ -136,11 +140,12 @@
             font-weight: 700;
             color: #FFFFFF;
             white-space: nowrap;
-            /* ensure it shrinks gracefully on very small devices */
             overflow: hidden;
             text-overflow: ellipsis;
             flex-shrink: 1;
             min-width: 40px;
+            padding-left: 12px;
+            border-left: 2px solid var(--primary-color);
         }
 
         .header-right {
@@ -205,6 +210,13 @@
             flex-direction: row-reverse;
         }
 
+        body.rtl .page-title {
+            border-left: none;
+            border-right: 2px solid var(--primary-color);
+            padding-left: 0;
+            padding-right: 12px;
+        }
+
         body.rtl .order-item,
         body.rtl .saved-item,
         body.rtl .message-item,
@@ -224,7 +236,7 @@
 
         /* === DASHBOARD COMPONENTS – FULLY RESPONSIVE / MOBILE FIRST === */
         .welcome-card {
-            background: linear-gradient(145deg, rgba(212,175,55,0.15) 0%, rgba(0,0,0,0) 100%);
+            background: linear-gradient(145deg, rgba(249, 115, 22, 0.15) 0%, rgba(0,0,0,0) 100%);
             border: 1px solid var(--primary-color);
             border-radius: var(--border-radius);
             padding: 22px 20px;
@@ -240,6 +252,7 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 4px;
+            color: var(--text-color);
         }
         .welcome-text p {
             color: var(--text-lighter);
@@ -286,6 +299,8 @@
             background-color: var(--primary-color);
             color: #000000;
             border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
         }
 
         .client-stats {
@@ -299,6 +314,12 @@
             border-radius: var(--border-radius);
             padding: 20px 16px;
             border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        .stat-item:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
         }
         .stat-label {
             color: var(--text-lighter);
@@ -324,6 +345,11 @@
             border-radius: var(--border-radius);
             border: 1px solid var(--border-color);
             overflow: hidden;
+            transition: var(--transition);
+        }
+        .dashboard-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow);
         }
 
         .card-header {
@@ -339,6 +365,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            color: var(--text-color);
         }
         .card-header a {
             color: var(--primary-color);
@@ -363,6 +390,7 @@
             font-size: 0.95rem;
             font-weight: 600;
             margin-bottom: 4px;
+            color: var(--text-color);
         }
         .order-meta, .saved-meta {
             display: flex;
@@ -377,7 +405,7 @@
             font-weight: 700;
         }
         .status-active { background-color: rgba(16,185,129,0.15); color: #10b981; }
-        .status-pending { background-color: rgba(212,175,55,0.15); color: var(--primary-color); }
+        .status-pending { background-color: rgba(249, 115, 22, 0.15); color: var(--primary-color); }
         .status-cancelled { background-color: rgba(239,68,68,0.15); color: #ef4444; }
 
         .message-item {
@@ -388,7 +416,8 @@
         }
         .message-item:last-child { border-bottom: none; }
         .message-avatar {
-            width: 42px; height: 42px;
+            width: 42px; 
+            height: 42px;
             border-radius: 12px;
             background-color: var(--primary-color);
             display: flex;
@@ -404,9 +433,19 @@
             justify-content: space-between;
             margin-bottom: 5px;
         }
-        .message-sender { font-weight: 600; font-size: 0.9rem; }
-        .message-time { color: var(--text-lighter); font-size: 0.7rem; }
-        .message-text { color: var(--text-light); font-size: 0.8rem; }
+        .message-sender { 
+            font-weight: 600; 
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+        .message-time { 
+            color: var(--text-lighter); 
+            font-size: 0.7rem; 
+        }
+        .message-text { 
+            color: var(--text-light); 
+            font-size: 0.8rem; 
+        }
 
         .profile-form {
             display: flex;
@@ -432,10 +471,12 @@
             color: var(--text-color);
             font-family: 'Inter', sans-serif;
             font-size: 0.9rem;
+            transition: var(--transition);
         }
         .form-row input:focus, .form-row select:focus {
             outline: none;
             border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
         }
         .btn-save {
             background-color: var(--primary-color);
@@ -447,6 +488,12 @@
             cursor: pointer;
             align-self: flex-end;
             font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .btn-save:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
         }
 
         .settings-grid {
@@ -462,10 +509,15 @@
             background-color: var(--bg-secondary);
             border-radius: 14px;
             border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        .setting-item:hover {
+            border-color: var(--primary-color);
         }
         .setting-info h4 {
             font-size: 0.9rem;
             margin-bottom: 4px;
+            color: var(--text-color);
         }
         .setting-info p {
             color: var(--text-lighter);
@@ -511,11 +563,19 @@
             background-color: #000000;
         }
 
-        /* === CRITICAL FIX: RTL BUTTON NO LONGER TOUCHES "Client Dashboard" === */
+        .light-theme .toggle-switch {
+            background-color: #ccc;
+        }
+
+        .light-theme .toggle-switch.active {
+            background-color: var(--primary-color);
+        }
+
+        /* === RESPONSIVE FIXES === */
         @media (max-width: 480px) {
             .client-top-header {
                 padding: 0 12px;
-                gap: 4px; /* smaller gap on mobile but still separate */
+                gap: 4px;
             }
             .logo {
                 font-size: 1.1rem;
@@ -527,12 +587,16 @@
             }
             .page-title {
                 font-size: 1rem;
-                max-width: 120px; /* allow truncation only if needed, but keeps spacing */
+                max-width: 120px;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                padding-left: 8px;
             }
-            /* ensure header-right has consistent width */
+            body.rtl .page-title {
+                padding-left: 0;
+                padding-right: 8px;
+            }
             .header-right {
                 gap: 4px;
             }
@@ -575,7 +639,6 @@
             }
         }
 
-        /* even smaller devices (<=360) – tighten but keep distance */
         @media (max-width: 360px) {
             .client-top-header {
                 padding: 0 8px;
@@ -616,18 +679,109 @@
         .client-main::-webkit-scrollbar { width: 4px; }
         .client-main::-webkit-scrollbar-track { background: var(--bg-secondary); }
         .client-main::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 6px; }
+
+        /* Logout Modal */
+        .logout-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .logout-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .logout-modal-content {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .logout-modal.active .logout-modal-content {
+            transform: translateY(0);
+        }
+
+        .logout-modal-content i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .logout-modal-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .logout-modal-content p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .modal-btn.confirm {
+            background-color: var(--primary-color);
+            color: #000;
+        }
+
+        .modal-btn.confirm:hover {
+            background-color: var(--primary-light);
+        }
+
+        .modal-btn.cancel {
+            background-color: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+        }
+
+        .modal-btn.cancel:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
     </style>
 </head>
 <body>
     <div class="client-container">
-        <!-- TOP HEADER – refined spacing: logo + page title + controls (RTL/LTR fix applied) -->
+        <!-- TOP HEADER – orange theme with page title -->
         <div class="client-top-header">
             <div class="header-left">
                 <a href="index.html" class="logo">
                     <div class="logo-icon"><i class="fas fa-bicycle"></i></div>
                     <span>GrowwBike</span>
                 </a>
-                
+               
             </div>
             <div class="header-right">
                 <button class="rtl-toggle" id="rtlToggle" title="RTL/LTR">
@@ -653,7 +807,7 @@
                             <i class="fas fa-bicycle"></i>
                             <span>Ride member since 2025</span>
                         </div>
-                        <!-- Logout button redirects to login.html -->
+                        <!-- Logout button with modal -->
                         <button class="logout-btn" id="logoutBtn" title="Logout">
                             <i class="fas fa-sign-out-alt"></i>
                             <span>Logout</span>
@@ -909,6 +1063,19 @@
         </div><!-- end client-main -->
     </div><!-- end client-container -->
 
+    <!-- Logout Confirmation Modal -->
+    <div class="logout-modal" id="logoutModal">
+        <div class="logout-modal-content">
+            <i class="fas fa-sign-out-alt"></i>
+            <h3>Logout Confirmation</h3>
+            <p>Are you sure you want to logout from your account?</p>
+            <div class="modal-actions">
+                <button class="modal-btn cancel" id="cancelLogout">Cancel</button>
+                <button class="modal-btn confirm" id="confirmLogout">Logout</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         (function(){
             "use strict";
@@ -917,10 +1084,13 @@
             const themeToggle = document.getElementById('themeToggle');
             const rtlToggle = document.getElementById('rtlToggle');
             const logoutBtn = document.getElementById('logoutBtn');
+            const logoutModal = document.getElementById('logoutModal');
+            const cancelLogout = document.getElementById('cancelLogout');
+            const confirmLogout = document.getElementById('confirmLogout');
 
             // ----- THEME TOGGLE -----
             function initTheme() {
-                const savedTheme = localStorage.getItem('client-theme-nosidebar');
+                const savedTheme = localStorage.getItem('client-theme-orange');
                 if (savedTheme === 'light') {
                     body.classList.add('light-theme');
                     themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
@@ -929,49 +1099,74 @@
                     themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
                 }
             }
-            themeToggle.addEventListener('click', function() {
-                body.classList.toggle('light-theme');
-                const icon = themeToggle.querySelector('i');
-                if (body.classList.contains('light-theme')) {
-                    icon.className = 'fas fa-moon';
-                    localStorage.setItem('client-theme-nosidebar', 'light');
-                } else {
-                    icon.className = 'fas fa-sun';
-                    localStorage.setItem('client-theme-nosidebar', 'dark');
-                }
-            });
+            
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    body.classList.toggle('light-theme');
+                    const icon = themeToggle.querySelector('i');
+                    if (body.classList.contains('light-theme')) {
+                        icon.className = 'fas fa-moon';
+                        localStorage.setItem('client-theme-orange', 'light');
+                    } else {
+                        icon.className = 'fas fa-sun';
+                        localStorage.setItem('client-theme-orange', 'dark');
+                    }
+                });
+            }
 
             // ----- RTL TOGGLE -----
             function initRTL() {
-                const savedRTL = localStorage.getItem('client-rtl-nosidebar');
-                const icon = rtlToggle.querySelector('i');
+                const savedRTL = localStorage.getItem('client-rtl-orange');
+                const icon = rtlToggle?.querySelector('i');
                 if (savedRTL === 'true') {
                     body.classList.add('rtl');
-                    icon.style.transform = 'rotate(180deg)';
+                    if (icon) icon.style.transform = 'rotate(180deg)';
                 } else {
                     body.classList.remove('rtl');
-                    icon.style.transform = 'rotate(0deg)';
+                    if (icon) icon.style.transform = 'rotate(0deg)';
                 }
             }
-            rtlToggle.addEventListener('click', function() {
-                body.classList.toggle('rtl');
-                const icon = rtlToggle.querySelector('i');
-                if (body.classList.contains('rtl')) {
-                    icon.style.transform = 'rotate(180deg)';
-                    localStorage.setItem('client-rtl-nosidebar', 'true');
-                } else {
-                    icon.style.transform = 'rotate(0deg)';
-                    localStorage.setItem('client-rtl-nosidebar', 'false');
-                }
-            });
+            
+            if (rtlToggle) {
+                rtlToggle.addEventListener('click', function() {
+                    body.classList.toggle('rtl');
+                    const icon = rtlToggle.querySelector('i');
+                    if (body.classList.contains('rtl')) {
+                        icon.style.transform = 'rotate(180deg)';
+                        localStorage.setItem('client-rtl-orange', 'true');
+                    } else {
+                        icon.style.transform = 'rotate(0deg)';
+                        localStorage.setItem('client-rtl-orange', 'false');
+                    }
+                });
+            }
 
-            // ----- LOGOUT BUTTON – REDIRECT TO login.html -----
+            // ----- LOGOUT BUTTON WITH MODAL -----
             if (logoutBtn) {
                 logoutBtn.addEventListener('click', function(e) {
                     e.preventDefault();
+                    logoutModal.classList.add('active');
+                });
+            }
+
+            if (cancelLogout) {
+                cancelLogout.addEventListener('click', function() {
+                    logoutModal.classList.remove('active');
+                });
+            }
+
+            if (confirmLogout) {
+                confirmLogout.addEventListener('click', function() {
                     window.location.href = 'login.html';
                 });
             }
+
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === logoutModal) {
+                    logoutModal.classList.remove('active');
+                }
+            });
 
             // ----- TOGGLE SWITCHES (settings) -----
             document.querySelectorAll('.toggle-switch').forEach(toggle => {

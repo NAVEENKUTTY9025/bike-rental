@@ -9,22 +9,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables for Bike Rental Theme - Black/White/Dark Yellow */
+        /* CSS Variables – EXACT SAME THEME as index.html (orange/white/black) */
         :root {
-            --primary-color: #D4AF37;
-            --primary-dark: #B8860B;
-            --primary-light: #FFD700;
-            --primary-ultralight: #FFF8DC;
-            --text-color: #FFFFFF;
-            --text-light: #E5E5E5;
-            --text-lighter: #A0A0A0;
-            --bg-color: #0A0A0A;
-            --bg-secondary: #1A1A1A;
-            --bg-dark: #0A0A0A;
-            --card-bg: #1A1A1A;
-            --border-color: #333333;
-            --nav-bg: #000000;
-            --nav-text: #FFFFFF;
+            /* Primary Color – vibrant orange */
+            --primary-color: #F97316;      /* Bright orange */
+            --primary-dark: #EA580C;        /* Darker orange */
+            --primary-light: #FB923C;       /* Light orange */
+            --primary-ultralight: #FFF4E6;  /* Very light orange */
+            
+            /* Neutral Colors – black/white/grey */
+            --text-color: #FFFFFF;         /* White on dark sections */
+            --text-light: #E5E5E5;         /* Light grey */
+            --text-lighter: #A0A0A0;       /* Medium grey */
+            --bg-color: #0A0A0A;           /* Almost black background */
+            --bg-secondary: #1A1A1A;       /* Dark grey */
+            --bg-dark: #0A0A0A;            /* Footer black */
+            --card-bg: #1A1A1A;            /* Dark cards */
+            --border-color: #333333;       /* Dark border */
+            --nav-bg: #000000;              /* Pure black navigation */
+            --nav-text: #FFFFFF;             /* White navigation text */
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
             --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.7);
             --transition: all 0.3s ease;
@@ -33,21 +36,22 @@
             --header-height: 80px;
         }
 
+        /* Light Theme – EXACT same as index.html */
         .light-theme {
-            --primary-color: #D4AF37;
-            --primary-dark: #B8860B;
-            --primary-light: #FFD700;
-            --primary-ultralight: #FFF8DC;
-            --text-color: #222222;
-            --text-light: #444444;
-            --text-lighter: #666666;
-            --bg-color: #FFFFFF;
-            --bg-secondary: #F8F8F8;
-            --bg-dark: #FFFFFF;
-            --card-bg: #FFFFFF;
-            --border-color: #E0E0E0;
-            --nav-bg: #000000;
-            --nav-text: #FFFFFF;
+            --primary-color: #F97316;      /* Same vibrant orange */
+            --primary-dark: #EA580C;
+            --primary-light: #FB923C;
+            --primary-ultralight: #FFF4E6;
+            --text-color: #1E1E1E;         /* Almost black text */
+            --text-light: #2E2E2E;          /* Dark grey */
+            --text-lighter: #4B4B4B;        /* Medium-dark grey */
+            --bg-color: #FFFFFF;            /* Pure white background */
+            --bg-secondary: #F8F8F8;        /* Light grey sections */
+            --bg-dark: #FFFFFF;              /* White footer */
+            --card-bg: #FFFFFF;              /* White cards */
+            --border-color: #E0E0E0;         /* Light grey border */
+            --nav-bg: #000000;                /* Keep black nav in light mode */
+            --nav-text: #FFFFFF;               /* White nav text */
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
@@ -88,7 +92,7 @@
             padding: 0 24px;
         }
 
-        /* Button Styles - EXACT COPY from index.html */
+        /* Button Styles – EXACT same as index.html (orange now) */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -96,7 +100,7 @@
             gap: 10px;
             padding: 14px 28px;
             background-color: var(--primary-color);
-            color: #000000;
+            color: #000000; /* Black text on orange */
             border-radius: 8px;
             font-weight: 700;
             border: none;
@@ -109,7 +113,7 @@
         .btn:hover {
             background-color: var(--primary-light);
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 8px 16px rgba(249, 115, 22, 0.3);
             color: #000000;
         }
 
@@ -127,20 +131,23 @@
             color: #000000;
         }
 
-        /* SMALL BUTTON VARIANT - ONLY for View Details */
+        /* SMALL BUTTON VARIANT - For View Details (properly sized) */
         .btn-outline-sm {
             background-color: transparent;
             border: 2px solid var(--primary-color);
             color: var(--primary-color);
-            padding: 8px 18px;
-            font-size: 0.85rem;
+            padding: 10px 20px;
+            font-size: 0.9rem;
             font-weight: 600;
             border-radius: 6px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 8px;
             transition: var(--transition);
+            width: 100%;
+            text-align: center;
+            letter-spacing: 0.3px;
         }
 
         .btn-outline-sm:hover {
@@ -149,11 +156,15 @@
             transform: translateY(-2px);
         }
 
+        .btn-outline-sm i {
+            font-size: 0.85rem;
+        }
+
         section {
             padding: 100px 0;
         }
 
-        /* HEADER - PERFECT ALIGNMENT with index.html */
+        /* HEADER - EXACT same as index.html */
         header {
             position: fixed;
             top: 0;
@@ -225,7 +236,6 @@
             gap: 8px;
             white-space: nowrap;
             font-size: 0.95rem;
-            line-height: 1.5;
         }
 
         .nav-link:hover {
@@ -251,7 +261,9 @@
             color: var(--primary-color);
         }
 
-        
+        .nav-link.active::after {
+            width: 100%;
+        }
 
         .dropdown {
             position: relative;
@@ -292,7 +304,7 @@
         }
 
         .dropdown-content a:hover {
-            background-color: rgba(212, 175, 55, 0.2);
+            background-color: rgba(249, 115, 22, 0.2);
             color: var(--primary-color);
         }
 
@@ -341,10 +353,7 @@
             margin-left: 20px;
         }
 
-        /* CRITICAL FIX: Login/Register button EXACT same as index.html */
-        
-
-        /* ========== HERO BANNER – VISIBLE BIKE IMAGE, NOT FIXED ========== */
+        /* ========== PAGE HERO – BOLD ORANGE ACCENTS ========== */
         .page-header {
             padding-top: calc(var(--header-height) + 100px);
             padding-bottom: 120px;
@@ -355,22 +364,19 @@
             background-position: center 30%;
             background-repeat: no-repeat;
             background-attachment: scroll;
-            background-color: rgba(0, 0, 0, 0.55);
+            background-color: rgba(0, 0, 0, 0.6);
             background-blend-mode: overlay;
             isolation: isolate;
-            transition: background-color 0.3s ease;
         }
 
         .light-theme .page-header {
-            background-color: rgba(255, 255, 255, 0.7);
+            background-color: rgba(255, 255, 255, 0.75);
             background-blend-mode: overlay;
         }
 
         .page-header .container {
             position: relative;
             z-index: 3;
-            background-color: transparent;
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
         }
 
         .page-header h1 {
@@ -378,6 +384,7 @@
             font-weight: 800;
             margin-bottom: 20px;
             color: #ffffff;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
         }
 
         .light-theme .page-header h1 {
@@ -408,8 +415,6 @@
         .filter-section {
             background-color: var(--bg-secondary);
             padding: 50px 0;
-            position: relative;
-            z-index: 5;
         }
 
         .filter-container {
@@ -457,17 +462,13 @@
             width: 100%;
         }
 
-        .filter-actions .btn {
-            padding: 12px 28px;
-        }
-
         /* Gallery Grid Section */
-        .Gallery-grid-section {
+        .gallery-section {
             padding: 80px 0;
             background-color: var(--bg-color);
         }
 
-        .Gallery-container {
+        .gallery-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
@@ -481,6 +482,9 @@
             transition: var(--transition);
             border: 1px solid var(--border-color);
             position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .bike-card:hover {
@@ -503,15 +507,16 @@
         }
 
         .bike-image {
-            height: 250px;
+            height: 220px;
             overflow: hidden;
             position: relative;
+            flex-shrink: 0;
         }
 
         .bike-image img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             transition: transform 0.5s ease;
         }
 
@@ -521,6 +526,21 @@
 
         .bike-content {
             padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background-color: rgba(249, 115, 22, 0.1);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            align-self: flex-start;
         }
 
         .bike-header {
@@ -528,6 +548,7 @@
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 20px;
+            gap: 15px;
         }
 
         .bike-header h3 {
@@ -535,17 +556,19 @@
             font-weight: 700;
             color: var(--text-color);
             line-height: 1.3;
+            flex: 1;
         }
 
         .bike-price {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 800;
             color: var(--primary-color);
             white-space: nowrap;
+            line-height: 1.2;
         }
 
         .bike-price span {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-light);
             font-weight: 400;
         }
@@ -560,60 +583,48 @@
         .bike-spec {
             display: flex;
             align-items: center;
-            gap: 12px;
-            color: var(--text-color);
+            gap: 10px;
         }
 
         .bike-spec-icon {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 8px;
-            background-color: rgba(212, 175, 55, 0.15);
+            background-color: rgba(249, 115, 22, 0.15);
             color: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 1rem;
             flex-shrink: 0;
         }
 
         .bike-spec-info h4 {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-light);
             font-weight: 500;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
 
         .bike-spec-info p {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--text-color);
         }
 
         .bike-actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            margin-top: auto;
+            width: 100%;
         }
 
         .bike-actions .btn-outline-sm {
-            flex: 1;
-            justify-content: center;
-            padding: 10px 18px;
+            width: 100%;
+            padding: 12px 20px;
         }
 
-        .category-badge {
-            display: inline-block;
-            padding: 5px 12px;
-            background-color: rgba(212, 175, 55, 0.1);
-            color: var(--primary-color);
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        /* CTA Section */
+        /* CTA Section - Orange gradient like index.html newsletter */
         .cta-section {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
             color: #000000;
@@ -630,6 +641,7 @@
             font-size: 2.8rem;
             font-weight: 800;
             margin-bottom: 20px;
+            color: #000000;
         }
 
         .cta-content p {
@@ -646,7 +658,9 @@
         }
 
         .cta-content .btn:hover {
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
 
         /* Footer - EXACT same as index.html */
@@ -745,8 +759,6 @@
             border-top: 1px solid var(--border-color);
             color: var(--text-light);
             font-size: 0.9rem;
-            max-width: var(--container-width);
-            margin: 0 auto;
         }
 
         .copyright a {
@@ -767,7 +779,6 @@
         body.rtl .dropdown-content {
             left: auto;
             right: 0;
-            text-align: right;
         }
 
         body.rtl .footer-links a:hover {
@@ -779,22 +790,27 @@
             right: 0;
         }
 
-        /* Responsive Styles */
-        @media (max-width: 1200px) {
-            .container, .nav-container, .footer-container {
-                max-width: 100%;
-                padding: 0 20px;
-            }
-            
-            .page-header h1 {
-                font-size: 3rem;
-            }
-            
-            .Gallery-container {
-                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            }
+        body.rtl .category-badge {
+            align-self: flex-end;
         }
 
+        /* No Results Message */
+        .no-results {
+            text-align: center;
+            padding: 60px;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            grid-column: 1 / -1;
+        }
+        
+        .no-results i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* Mobile Navigation - EXACT same as index.html */
         @media (max-width: 1024px) {
             .nav-menu {
                 position: fixed;
@@ -851,7 +867,6 @@
                 overflow: hidden;
                 transition: max-height 0.3s ease, padding 0.3s ease;
                 border: none;
-                margin-left: 0;
                 width: 100%;
             }
 
@@ -864,7 +879,6 @@
 
             .dropdown-content a {
                 padding: 12px 0 12px 20px;
-                color: #FFFFFF;
             }
 
             .nav-actions {
@@ -878,18 +892,12 @@
             }
             
             .nav-actions .btn-outline {
-                width: 100% !important;
-                justify-content: center !important;
-                padding: 14px 28px !important;
-                font-size: 0.95rem !important;
+                width: 100%;
+                justify-content: center;
             }
 
             .page-header {
                 padding-top: calc(var(--header-height) + 80px);
-            }
-            
-            .page-header h1 {
-                font-size: 2.5rem;
             }
             
             .filter-container {
@@ -900,108 +908,24 @@
             .filter-group {
                 width: 100%;
             }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 40px;
-            }
-            
-            .cta-content h2 {
-                font-size: 2.2rem;
-            }
-            
-            .bike-actions {
-                flex-direction: row;
-            }
         }
 
+        /* Responsive Styles */
         @media (max-width: 768px) {
-            section {
-                padding: 80px 0;
-            }
-            
-            .Gallery-grid-section {
-                padding: 60px 0;
-            }
-            
-            .filter-section {
-                padding: 40px 0;
-            }
-            
             .page-header h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
-            .page-header p {
-                font-size: 1.1rem;
-            }
-            
-            .Gallery-container {
+            .gallery-container {
                 grid-template-columns: 1fr;
             }
             
             .bike-image {
-                height: 220px;
+                height: 200px;
             }
             
             .cta-content h2 {
-                font-size: 1.8rem;
-            }
-            
-            .cta-content p {
-                font-size: 1.1rem;
-            }
-            
-            .nav-menu {
-                padding: 20px;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .bike-actions {
-                flex-direction: column;
-            }
-            
-            .bike-actions .btn-outline-sm {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .container, .nav-container, .footer-container {
-                padding: 0 16px;
-            }
-            
-            .page-header h1 {
-                font-size: 1.8rem;
-            }
-            
-            .bike-specs {
-                grid-template-columns: 1fr;
-            }
-            
-            .bike-header {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .bike-header h3 {
-                font-size: 1.3rem;
-            }
-            
-            .bike-price {
-                font-size: 1.6rem;
-            }
-            
-            .cta-content h2 {
-                font-size: 1.6rem;
-            }
-            
-            .cta-content .btn {
-                width: 100%;
+                font-size: 2rem;
             }
             
             .filter-actions {
@@ -1010,6 +934,34 @@
             
             .filter-actions .btn {
                 width: 100%;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+            
+            .bike-specs {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .bike-header {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .bike-price {
+                font-size: 1.5rem;
             }
         }
 
@@ -1036,25 +988,10 @@
         .light-accent {
             color: var(--primary-color);
         }
-        
-        .no-results {
-            text-align: center;
-            padding: 60px;
-            color: var(--text-light);
-            font-size: 1.2rem;
-            grid-column: 1 / -1;
-        }
-        
-        .no-results i {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            display: block;
-        }
     </style>
 </head>
 <body>
-    <!-- HEADER - PERFECT ALIGNMENT with index.html -->
+    <!-- HEADER - EXACT same as index.html -->
     <header>
         <div class="nav-container">
             <a href="index.html" class="logo">
@@ -1081,7 +1018,7 @@
                 </div>
                 
                 <a href="about.html" class="nav-link">About</a>
-                <a href="Gallery.html" class="nav-link active">Gallery</a>
+                <a href="gallery.html" class="nav-link active">Gallery</a>
                 <a href="pricing.html" class="nav-link">Pricing</a>
                 <a href="booking.html" class="nav-link">Book Now</a>
                 <a href="contact.html" class="nav-link">Contact</a>
@@ -1106,14 +1043,13 @@
                         <i class="fas fa-exchange-alt"></i>
                     </button>
                     
-                    <!-- LOGIN/REGISTER BUTTON - EXACT same as index.html -->
                     <a href="login.html" class="btn btn-outline">Login/Register</a>
                 </div>
             </nav>
         </div>
     </header>
 
-    <!-- PAGE HERO – BOLD VISIBLE BIKE BACKGROUND -->
+    <!-- PAGE HERO – BOLD ORANGE ACCENTS -->
     <section class="page-header">
         <div class="container">
             <h1>Our <span class="light-accent">Premium</span> Bike Collection</h1>
@@ -1133,7 +1069,6 @@
                         <option value="sports">Sports Bike</option>
                         <option value="adventure">Adventure Tourer</option>
                         <option value="naked">Naked Street</option>
-                        <option value="electric">Electric Bike</option>
                     </select>
                 </div>
                 
@@ -1165,13 +1100,13 @@
         </div>
     </section>
 
-    <!-- Gallery Grid Section -->
-    <section class="Gallery-grid-section">
+    <!-- Gallery Grid Section - With Properly Aligned CTAs -->
+    <section class="gallery-section">
         <div class="container">
-            <div class="Gallery-container" id="GalleryContainer">
+            <div class="gallery-container" id="galleryContainer">
                 <!-- Royal Enfield Classic 350 -->
                 <div class="bike-card" data-category="cruiser" data-price="medium" data-engine="medium">
-                    <div class="bike-badge">Most Popular</div>
+                    
                     <div class="bike-image">
                         <img src="images/re2.jpg" alt="Royal Enfield Classic 350">
                     </div>
@@ -1179,37 +1114,102 @@
                         <span class="category-badge">Cruiser</span>
                         <div class="bike-header">
                             <h3>Royal Enfield Classic 350</h3>
-                            <div class="bike-price">₹1200<span>/day</span></div>
+                            <div class="bike-price">₹1,200<span>/day</span></div>
                         </div>
                         
                         <div class="bike-specs">
                             <div class="bike-spec">
                                 <div class="bike-spec-icon"><i class="fas fa-gas-pump"></i></div>
-                                <div class="bike-spec-info"><h4>Engine CC</h4><p>346 cc</p></div>
+                                <div class="bike-spec-info">
+                                    <h4>Engine</h4>
+                                    <p>346 cc</p>
+                                </div>
                             </div>
                             <div class="bike-spec">
                                 <div class="bike-spec-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                <div class="bike-spec-info"><h4>Mileage</h4><p>35 km/l</p></div>
+                                <div class="bike-spec-info">
+                                    <h4>Mileage</h4>
+                                    <p>35 km/l</p>
+                                </div>
                             </div>
                             <div class="bike-spec">
                                 <div class="bike-spec-icon"><i class="fas fa-cogs"></i></div>
-                                <div class="bike-spec-info"><h4>Transmission</h4><p>5-Speed</p></div>
+                                <div class="bike-spec-info">
+                                    <h4>Gears</h4>
+                                    <p>5-Speed</p>
+                                </div>
                             </div>
                             <div class="bike-spec">
                                 <div class="bike-spec-icon"><i class="fas fa-bolt"></i></div>
-                                <div class="bike-spec-info"><h4>Power</h4><p>20.2 bhp</p></div>
+                                <div class="bike-spec-info">
+                                    <h4>Power</h4>
+                                    <p>20.2 bhp</p>
+                                </div>
                             </div>
                         </div>
                         
                         <div class="bike-actions">
-                            <a href="bike-details.html?id=royal-enfield-classic-350" class="btn-outline-sm">View Details</a>
+                            <a href="bike-details.html?id=royal-enfield-classic-350" class="btn-outline-sm">
+                                <i class="fas fa-eye"></i> View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Yamaha R15 -->
+                <div class="bike-card" data-category="sports" data-price="medium" data-engine="small">
+                    <div class="bike-image">
+                        <img src="images/r15 2.jpg" alt="Yamaha R15 V4">
+                    </div>
+                    <div class="bike-content">
+                        <span class="category-badge">Sports Bike</span>
+                        <div class="bike-header">
+                            <h3>Yamaha R15 V4</h3>
+                            <div class="bike-price">₹1,300<span>/day</span></div>
+                        </div>
+                        
+                        <div class="bike-specs">
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-gas-pump"></i></div>
+                                <div class="bike-spec-info">
+                                    <h4>Engine</h4>
+                                    <p>155 cc</p>
+                                </div>
+                            </div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <div class="bike-spec-info">
+                                    <h4>Mileage</h4>
+                                    <p>40 km/l</p>
+                                </div>
+                            </div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-cogs"></i></div>
+                                <div class="bike-spec-info">
+                                    <h4>Gears</h4>
+                                    <p>6-Speed</p>
+                                </div>
+                            </div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-bolt"></i></div>
+                                <div class="bike-spec-info">
+                                    <h4>Power</h4>
+                                    <p>18.4 bhp</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bike-actions">
+                            <a href="bike-details.html?id=yamaha-r15-v4" class="btn-outline-sm">
+                                <i class="fas fa-eye"></i> View Details
+                            </a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- KTM Duke 200 -->
                 <div class="bike-card" data-category="naked" data-price="medium" data-engine="small">
-                    <div class="bike-badge" style="background-color: #FF6600; color: white;">Sport Edition</div>
+                    
                     <div class="bike-image">
                         <img src="images/200.jpg" alt="KTM Duke 200">
                     </div>
@@ -1217,39 +1217,44 @@
                         <span class="category-badge">Naked Street</span>
                         <div class="bike-header">
                             <h3>KTM Duke 200</h3>
-                            <div class="bike-price">₹1500<span>/day</span></div>
+                            <div class="bike-price">₹1,500<span>/day</span></div>
                         </div>
+                        
                         <div class="bike-specs">
-                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-gas-pump"></i></div><div class="bike-spec-info"><h4>Engine CC</h4><p>199.5 cc</p></div></div>
-                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-tachometer-alt"></i></div><div class="bike-spec-info"><h4>Mileage</h4><p>30 km/l</p></div></div>
-                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-cogs"></i></div><div class="bike-spec-info"><h4>Transmission</h4><p>6-Speed</p></div></div>
-                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-bolt"></i></div><div class="bike-spec-info"><h4>Power</h4><p>25 bhp</p></div></div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-gas-pump"></i></div>
+                                <div class="bike-spec-info">
+                                    <h4>Engine</h4>
+                                    <p>199.5 cc</p>
+                                </div>
+                            </div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <div class="bike-spec-info">
+                                    <h4>Mileage</h4>
+                                    <p>30 km/l</p>
+                                </div>
+                            </div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-cogs"></i></div>
+                                <div class="bike-spec-info">
+                                    <h4>Gears</h4>
+                                    <p>6-Speed</p>
+                                </div>
+                            </div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-bolt"></i></div>
+                                <div class="bike-spec-info">
+                                    <h4>Power</h4>
+                                    <p>25 bhp</p>
+                                </div>
+                            </div>
                         </div>
+                        
                         <div class="bike-actions">
-                            <a href="bike-details.html?id=ktm-duke-200" class="btn-outline-sm">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Yamaha R15 -->
-                <div class="bike-card" data-category="sports" data-price="medium" data-engine="small">
-                    <div class="bike-image">
-                        <img src="images/r15 2.jpg" alt="Yamaha R15">
-                    </div>
-                    <div class="bike-content">
-                        <span class="category-badge">Sports Bike</span>
-                        <div class="bike-header">
-                            <h3>Yamaha R15 V4</h3>
-                            <div class="bike-price">₹1300<span>/day</span></div>
-                        </div>
-                        <div class="bike-specs">
-                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-gas-pump"></i></div><div class="bike-spec-info"><h4>Engine CC</h4><p>155 cc</p></div></div>
-                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-tachometer-alt"></i></div><div class="bike-spec-info"><h4>Mileage</h4><p>40 km/l</p></div></div>
-                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-cogs"></i></div><div class="bike-spec-info"><h4>Transmission</h4><p>6-Speed</p></div></div>
-                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-bolt"></i></div><div class="bike-spec-info"><h4>Power</h4><p>18.4 bhp</p></div></div>
-                        </div>
-                        <div class="bike-actions">
-                            <a href="bike-details.html?id=yamaha-r15-v4" class="btn-outline-sm">View Details</a>
+                            <a href="bike-details.html?id=ktm-duke-200" class="btn-outline-sm">
+                                <i class="fas fa-eye"></i> View Details
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1263,23 +1268,51 @@
                         <span class="category-badge">Cruiser</span>
                         <div class="bike-header">
                             <h3>Honda CB350</h3>
-                            <div class="bike-price">₹1100<span>/day</span></div>
+                            <div class="bike-price">₹1,100<span>/day</span></div>
                         </div>
+                        
                         <div class="bike-specs">
-                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-gas-pump"></i></div><div class="bike-spec-info"><h4>Engine CC</h4><p>348 cc</p></div></div>
-                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-tachometer-alt"></i></div><div class="bike-spec-info"><h4>Mileage</h4><p>38 km/l</p></div></div>
-                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-cogs"></i></div><div class="bike-spec-info"><h4>Transmission</h4><p>5-Speed</p></div></div>
-                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-bolt"></i></div><div class="bike-spec-info"><h4>Power</h4><p>21 bhp</p></div></div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-gas-pump"></i></div>
+                                <div class="bike-spec-info">
+                                    <h4>Engine</h4>
+                                    <p>348 cc</p>
+                                </div>
+                            </div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <div class="bike-spec-info">
+                                    <h4>Mileage</h4>
+                                    <p>38 km/l</p>
+                                </div>
+                            </div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-cogs"></i></div>
+                                <div class="bike-spec-info">
+                                    <h4>Gears</h4>
+                                    <p>5-Speed</p>
+                                </div>
+                            </div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-bolt"></i></div>
+                                <div class="bike-spec-info">
+                                    <h4>Power</h4>
+                                    <p>21 bhp</p>
+                                </div>
+                            </div>
                         </div>
+                        
                         <div class="bike-actions">
-                            <a href="bike-details.html?id=honda-cb350" class="btn-outline-sm">View Details</a>
+                            <a href="bike-details.html?id=honda-cb350" class="btn-outline-sm">
+                                <i class="fas fa-eye"></i> View Details
+                            </a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Royal Enfield Himalayan -->
                 <div class="bike-card" data-category="adventure" data-price="medium" data-engine="medium">
-                    <div class="bike-badge">Adventure Ready</div>
+                   
                     <div class="bike-image">
                         <img src="images/himalayan.jpg" alt="Royal Enfield Himalayan">
                     </div>
@@ -1287,23 +1320,51 @@
                         <span class="category-badge">Adventure Tourer</span>
                         <div class="bike-header">
                             <h3>Royal Enfield Himalayan</h3>
-                            <div class="bike-price">₹1400<span>/day</span></div>
+                            <div class="bike-price">₹1,400<span>/day</span></div>
                         </div>
+                        
                         <div class="bike-specs">
-                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-gas-pump"></i></div><div class="bike-spec-info"><h4>Engine CC</h4><p>411 cc</p></div></div>
-                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-tachometer-alt"></i></div><div class="bike-spec-info"><h4>Mileage</h4><p>30 km/l</p></div></div>
-                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-cogs"></i></div><div class="bike-spec-info"><h4>Transmission</h4><p>5-Speed</p></div></div>
-                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-bolt"></i></div><div class="bike-spec-info"><h4>Power</h4><p>24.3 bhp</p></div></div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-gas-pump"></i></div>
+                                <div class="bike-spec-info">
+                                    <h4>Engine</h4>
+                                    <p>411 cc</p>
+                                </div>
+                            </div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <div class="bike-spec-info">
+                                    <h4>Mileage</h4>
+                                    <p>30 km/l</p>
+                                </div>
+                            </div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-cogs"></i></div>
+                                <div class="bike-spec-info">
+                                    <h4>Gears</h4>
+                                    <p>5-Speed</p>
+                                </div>
+                            </div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-bolt"></i></div>
+                                <div class="bike-spec-info">
+                                    <h4>Power</h4>
+                                    <p>24.3 bhp</p>
+                                </div>
+                            </div>
                         </div>
+                        
                         <div class="bike-actions">
-                            <a href="bike-details.html?id=royal-enfield-himalayan" class="btn-outline-sm">View Details</a>
+                            <a href="bike-details.html?id=royal-enfield-himalayan" class="btn-outline-sm">
+                                <i class="fas fa-eye"></i> View Details
+                            </a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Kawasaki Ninja 300 -->
                 <div class="bike-card" data-category="sports" data-price="high" data-engine="medium">
-                    <div class="bike-badge" style="background-color: #00A651; color: white;">Green Edition</div>
+                    
                     <div class="bike-image">
                         <img src="images/ninja.jpg" alt="Kawasaki Ninja 300">
                     </div>
@@ -1311,24 +1372,55 @@
                         <span class="category-badge">Sports Bike</span>
                         <div class="bike-header">
                             <h3>Kawasaki Ninja 300</h3>
-                            <div class="bike-price">₹1800<span>/day</span></div>
+                            <div class="bike-price">₹1,800<span>/day</span></div>
                         </div>
+                        
                         <div class="bike-specs">
-                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-gas-pump"></i></div><div class="bike-spec-info"><h4>Engine CC</h4><p>296 cc</p></div></div>
-                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-tachometer-alt"></i></div><div class="bike-spec-info"><h4>Mileage</h4><p>25 km/l</p></div></div>
-                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-cogs"></i></div><div class="bike-spec-info"><h4>Transmission</h4><p>6-Speed</p></div></div>
-                            <div class="bike-spec"><div class="bike-spec-icon"><i class="fas fa-bolt"></i></div><div class="bike-spec-info"><h4>Power</h4><p>39 bhp</p></div></div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-gas-pump"></i></div>
+                                <div class="bike-spec-info">
+                                    <h4>Engine</h4>
+                                    <p>296 cc</p>
+                                </div>
+                            </div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <div class="bike-spec-info">
+                                    <h4>Mileage</h4>
+                                    <p>25 km/l</p>
+                                </div>
+                            </div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-cogs"></i></div>
+                                <div class="bike-spec-info">
+                                    <h4>Gears</h4>
+                                    <p>6-Speed</p>
+                                </div>
+                            </div>
+                            <div class="bike-spec">
+                                <div class="bike-spec-icon"><i class="fas fa-bolt"></i></div>
+                                <div class="bike-spec-info">
+                                    <h4>Power</h4>
+                                    <p>39 bhp</p>
+                                </div>
+                            </div>
                         </div>
+                        
                         <div class="bike-actions">
-                            <a href="bike-details.html?id=kawasaki-ninja-300" class="btn-outline-sm">View Details</a>
+                            <a href="bike-details.html?id=kawasaki-ninja-300" class="btn-outline-sm">
+                                <i class="fas fa-eye"></i> View Details
+                            </a>
                         </div>
                     </div>
                 </div>
+                
+                
+               
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- CTA Section - Orange gradient like index.html newsletter -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-content">
@@ -1344,11 +1436,11 @@
         <div class="footer-container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <a href="index.html" class="logo">
+                    <a href="index.html" class="logo" style="margin-bottom: 16px;">
                         <div class="logo-icon"><i class="fas fa-bicycle"></i></div>
                         <span>GrowwBike</span>
                     </a>
-                    <p style="margin-bottom: 20px; color: var(--text-light);">Premium bike rentals for urban exploration and adventure. Offering quality bicycles, flexible rental plans, and exceptional customer service across the city.</p>
+                    <p style="margin-bottom: 20px; color: var(--text-light);">Premium bike rentals for urban exploration and adventure. Quality bicycles, flexible plans, and exceptional service.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1363,7 +1455,7 @@
                     <ul class="footer-links">
                         <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                         <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
-                        <li><a href="Gallery.html"><i class="fas fa-bicycle"></i> Gallery</a></li>
+                        <li><a href="gallery.html"><i class="fas fa-bicycle"></i> Gallery</a></li>
                         <li><a href="pricing.html"><i class="fas fa-tag"></i> Pricing</a></li>
                         <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
                     </ul>
@@ -1393,7 +1485,7 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2026 GrowwBike Bike Rentals. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Safety Guidelines</a></p>
+                <p>&copy; 2026 GrowwBike Bike Rentals. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
             </div>
         </div>
     </footer>
@@ -1415,22 +1507,17 @@
         const engineFilter = document.getElementById('engine');
         const applyFiltersBtn = document.getElementById('applyFilters');
         const resetFiltersBtn = document.getElementById('resetFilters');
-        const GalleryContainer = document.getElementById('GalleryContainer');
+        const galleryContainer = document.getElementById('galleryContainer');
         const bikeCards = document.querySelectorAll('.bike-card');
 
         // Header scroll effect - EXACT same as index.html
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('header-scrolled');
-            } else {
-                header.classList.remove('header-scrolled');
-            }
+            header.classList.toggle('header-scrolled', window.scrollY > 50);
         });
 
-        // Theme Toggle - FULLY FUNCTIONAL
+        // Theme Toggle - EXACT same as index.html
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('light-theme');
-            
             const icon = themeToggle.querySelector('i');
             if (body.classList.contains('light-theme')) {
                 icon.classList.remove('fa-sun');
@@ -1439,11 +1526,10 @@
                 icon.classList.remove('fa-moon');
                 icon.classList.add('fa-sun');
             }
-            
             localStorage.setItem('theme', body.classList.contains('light-theme') ? 'light' : 'dark');
         });
 
-        // RTL Toggle
+        // RTL Toggle - EXACT same as index.html
         rtlToggle.addEventListener('click', () => {
             body.classList.toggle('rtl');
             localStorage.setItem('rtl', body.classList.contains('rtl') ? 'true' : 'false');
@@ -1453,28 +1539,20 @@
         mobileToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
-            
             const icon = mobileToggle.querySelector('i');
-            if (navMenu.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
         });
 
         // Dropdown functionality for mobile - EXACT same as index.html
         const setupDropdown = (dropdownElement) => {
             if (!dropdownElement) return;
-            
             dropdownElement.addEventListener('click', (e) => {
                 if (window.innerWidth <= 1024) {
                     e.preventDefault();
                     e.stopPropagation();
                     const dropdown = dropdownElement.parentElement;
                     dropdown.classList.toggle('active');
-                    
                     document.querySelectorAll('.dropdown').forEach(otherDropdown => {
                         if (otherDropdown !== dropdown && otherDropdown.classList.contains('active')) {
                             otherDropdown.classList.remove('active');
@@ -1512,6 +1590,7 @@
                 }
             });
             
+            // Show/hide no results message
             let noResultsMsg = document.querySelector('.no-results');
             if (visibleCount === 0) {
                 if (!noResultsMsg) {
@@ -1522,7 +1601,7 @@
                         <h3>No bikes match your filters</h3>
                         <p>Try adjusting your filter criteria or resetting the filters</p>
                     `;
-                    GalleryContainer.appendChild(noResultsMsg);
+                    galleryContainer.appendChild(noResultsMsg);
                 }
             } else if (noResultsMsg) {
                 noResultsMsg.remove();
@@ -1545,8 +1624,7 @@
         // Close dropdowns when clicking outside - EXACT same as index.html
         document.addEventListener('click', (e) => {
             if (window.innerWidth <= 1024) {
-                const dropdowns = document.querySelectorAll('.dropdown');
-                dropdowns.forEach(dropdown => {
+                document.querySelectorAll('.dropdown').forEach(dropdown => {
                     if (!dropdown.contains(e.target) && dropdown.classList.contains('active')) {
                         dropdown.classList.remove('active');
                     }
@@ -1559,24 +1637,15 @@
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'light') {
                 body.classList.add('light-theme');
-                if (themeToggle) {
-                    const icon = themeToggle.querySelector('i');
-                    icon.classList.remove('fa-sun');
-                    icon.classList.add('fa-moon');
-                }
+                themeToggle.querySelector('i').classList.remove('fa-sun');
+                themeToggle.querySelector('i').classList.add('fa-moon');
             }
             
             const savedRTL = localStorage.getItem('rtl');
             if (savedRTL === 'true') {
                 body.classList.add('rtl');
             }
-            
-            // Set active navigation - Gallery page
-            const galleryLink = document.querySelector('a[href="Gallery.html"]');
-            if (galleryLink) {
-                galleryLink.classList.add('active');
-            }
-            
+
             // Close mobile menu when clicking a link - EXACT same as index.html
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
@@ -1584,74 +1653,26 @@
                     if (window.innerWidth <= 1024 && !link.parentElement.classList.contains('dropdown')) {
                         navMenu.classList.remove('active');
                         body.style.overflow = 'auto';
-                        if (mobileToggle.querySelector('i')) {
-                            mobileToggle.querySelector('i').classList.remove('fa-times');
-                            mobileToggle.querySelector('i').classList.add('fa-bars');
-                        }
-                        
-                        const dropdowns = document.querySelectorAll('.dropdown.active');
-                        dropdowns.forEach(dropdown => {
-                            dropdown.classList.remove('active');
-                        });
+                        mobileToggle.querySelector('i').classList.add('fa-bars');
+                        mobileToggle.querySelector('i').classList.remove('fa-times');
+                        document.querySelectorAll('.dropdown.active').forEach(d => d.classList.remove('active'));
                     }
                 });
             });
-            
+
             // Close mobile menu when clicking outside - EXACT same as index.html
             document.addEventListener('click', (e) => {
-                if (window.innerWidth <= 1024 && navMenu.classList.contains('active')) {
-                    if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
-                        navMenu.classList.remove('active');
-                        body.style.overflow = 'auto';
-                        if (mobileToggle.querySelector('i')) {
-                            mobileToggle.querySelector('i').classList.remove('fa-times');
-                            mobileToggle.querySelector('i').classList.add('fa-bars');
-                        }
-                        
-                        const dropdowns = document.querySelectorAll('.dropdown.active');
-                        dropdowns.forEach(dropdown => {
-                            dropdown.classList.remove('active');
-                        });
-                    }
+                if (window.innerWidth <= 1024 && navMenu.classList.contains('active') && !navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                    body.style.overflow = 'auto';
+                    mobileToggle.querySelector('i').classList.add('fa-bars');
+                    mobileToggle.querySelector('i').classList.remove('fa-times');
+                    document.querySelectorAll('.dropdown.active').forEach(d => d.classList.remove('active'));
                 }
             });
-            
-            // Initialize header scroll state
-            if (window.scrollY > 50) {
-                header.classList.add('header-scrolled');
-            }
-        });
 
-        // Smooth scroll for anchor links - EXACT same as index.html
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    e.preventDefault();
-                    
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                    
-                    if (window.innerWidth <= 1024) {
-                        navMenu.classList.remove('active');
-                        body.style.overflow = 'auto';
-                        if (mobileToggle.querySelector('i')) {
-                            mobileToggle.querySelector('i').classList.remove('fa-times');
-                            mobileToggle.querySelector('i').classList.add('fa-bars');
-                        }
-                        
-                        const dropdowns = document.querySelectorAll('.dropdown.active');
-                        dropdowns.forEach(dropdown => {
-                            dropdown.classList.remove('active');
-                        });
-                    }
-                }
-            });
+            // Initialize header scroll state
+            if (window.scrollY > 50) header.classList.add('header-scrolled');
         });
 
         // Window resize handler - EXACT same as index.html
@@ -1659,23 +1680,9 @@
             if (window.innerWidth > 1024 && navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
                 body.style.overflow = 'auto';
-                if (mobileToggle.querySelector('i')) {
-                    mobileToggle.querySelector('i').classList.remove('fa-times');
-                    mobileToggle.querySelector('i').classList.add('fa-bars');
-                }
-                
-                const dropdowns = document.querySelectorAll('.dropdown.active');
-                dropdowns.forEach(dropdown => {
-                    dropdown.classList.remove('active');
-                });
-            }
-            
-            if (window.innerWidth > 1024) {
-                document.querySelectorAll('.dropdown-content').forEach(content => {
-                    content.style.maxHeight = '';
-                    content.style.padding = '';
-                    content.style.border = '';
-                });
+                mobileToggle.querySelector('i').classList.add('fa-bars');
+                mobileToggle.querySelector('i').classList.remove('fa-times');
+                document.querySelectorAll('.dropdown.active').forEach(d => d.classList.remove('active'));
             }
         });
     </script>

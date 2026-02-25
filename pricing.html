@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GrowwBike | Pricing – centered plans</title>
+    <title>GrowwBike | Pricing – Premium Bike Rentals</title>
     <link rel="icon" type="images/jpeg" href="images/growwpark_logo.jpg">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables for Bike Rental Theme - Black/White/Dark Yellow */
+        /* CSS Variables – orange/white/black theme (same as index.html) */
         :root {
-            --primary-color: #D4AF37;
-            --primary-dark: #B8860B;
-            --primary-light: #FFD700;
-            --primary-ultralight: #FFF8DC;
+            --primary-color: #F97316;
+            --primary-dark: #EA580C;
+            --primary-light: #FB923C;
+            --primary-ultralight: #FFF4E6;
             --text-color: #FFFFFF;
             --text-light: #E5E5E5;
             --text-lighter: #A0A0A0;
@@ -34,13 +34,13 @@
         }
 
         .light-theme {
-            --primary-color: #D4AF37;
-            --primary-dark: #B8860B;
-            --primary-light: #FFD700;
-            --primary-ultralight: #FFF8DC;
-            --text-color: #222222;
-            --text-light: #444444;
-            --text-lighter: #666666;
+            --primary-color: #F97316;
+            --primary-dark: #EA580C;
+            --primary-light: #FB923C;
+            --primary-ultralight: #FFF4E6;
+            --text-color: #1E1E1E;
+            --text-light: #2E2E2E;
+            --text-lighter: #4B4B4B;
             --bg-color: #FFFFFF;
             --bg-secondary: #F8F8F8;
             --bg-dark: #FFFFFF;
@@ -108,7 +108,7 @@
         .btn:hover {
             background-color: var(--primary-light);
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 8px 16px rgba(249, 115, 22, 0.3);
             color: #000000;
         }
 
@@ -116,35 +116,11 @@
             background-color: transparent;
             border: 2px solid var(--primary-color);
             color: var(--primary-color);
-            padding: 14px 28px;
-            font-size: 0.95rem;
-            font-weight: 700;
         }
 
         .btn-outline:hover {
             background-color: var(--primary-color);
             color: #000000;
-        }
-
-        .btn-outline-sm {
-            background-color: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-            padding: 6px 14px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border-radius: 6px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            transition: var(--transition);
-        }
-
-        .btn-outline-sm:hover {
-            background-color: var(--primary-color);
-            color: #000000;
-            transform: translateY(-2px);
         }
 
         section {
@@ -207,8 +183,6 @@
             align-items: center;
             gap: 30px;
             margin: 0;
-            padding: 0;
-            list-style: none;
         }
 
         .nav-link {
@@ -222,7 +196,6 @@
             gap: 8px;
             white-space: nowrap;
             font-size: 0.95rem;
-            line-height: 1.5;
         }
 
         .nav-link:hover {
@@ -248,7 +221,9 @@
             color: var(--primary-color);
         }
 
-       
+        .nav-link.active::after {
+            width: 100%;
+        }
 
         .dropdown {
             position: relative;
@@ -289,7 +264,7 @@
         }
 
         .dropdown-content a:hover {
-            background-color: rgba(212, 175, 55, 0.2);
+            background-color: rgba(249, 115, 22, 0.2);
             color: var(--primary-color);
         }
 
@@ -338,7 +313,7 @@
             margin-left: 20px;
         }
 
-        /* ===== PRICING HERO – BOLD VISIBLE BIKE BACKGROUND, NOT FIXED ===== */
+        /* PRICING HERO – 4K QUALITY BACKGROUND */
         .pricing-hero {
             padding-top: calc(var(--header-height) + 80px);
             padding-bottom: 120px;
@@ -346,13 +321,12 @@
             position: relative;
             background-image: url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
-            background-position: center 30%;
+            background-position: center;
             background-repeat: no-repeat;
             background-attachment: scroll;
-            background-color: rgba(0, 0, 0, 0.55);
+            background-color: rgba(0, 0, 0, 0.6);
             background-blend-mode: overlay;
             isolation: isolate;
-            transition: background-color 0.3s ease;
         }
 
         .light-theme .pricing-hero {
@@ -363,8 +337,6 @@
         .pricing-hero .container {
             position: relative;
             z-index: 3;
-            background-color: transparent;
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
         }
 
         .pricing-hero h1 {
@@ -372,6 +344,7 @@
             font-weight: 800;
             margin-bottom: 20px;
             color: #ffffff;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
         }
 
         .light-theme .pricing-hero h1 {
@@ -456,18 +429,17 @@
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
         }
 
         .pricing-card {
             background-color: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 30px;
+            overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
             border: 1px solid var(--border-color);
-            text-align: center;
             display: flex;
             flex-direction: column;
             height: 100%;
@@ -479,52 +451,95 @@
             border-color: var(--primary-color);
         }
 
-        .pricing-card h3 {
-            font-size: 1.4rem;
+        .pricing-card-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .pricing-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .pricing-card:hover .pricing-card-image img {
+            transform: scale(1.1);
+        }
+
+        .pricing-card-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .bike-type {
+            display: inline-block;
+            padding: 5px 12px;
+            background-color: rgba(249, 115, 22, 0.15);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
             margin-bottom: 15px;
+            align-self: flex-start;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
             color: var(--text-color);
             font-weight: 700;
         }
 
-        .pricing-card .price {
+        .price {
             font-size: 2.2rem;
             font-weight: 800;
             color: var(--primary-color);
             margin-bottom: 20px;
         }
 
-        .pricing-card .price span {
+        .price span {
             font-size: 1rem;
             color: var(--text-light);
             font-weight: 400;
         }
 
         .pricing-card ul {
-            margin: 20px 0;
+            margin: 15px 0 20px;
             flex-grow: 1;
         }
 
         .pricing-card ul li {
-            padding: 10px 0;
+            padding: 8px 0;
             color: var(--text-light);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border-color);
             font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .pricing-card ul li:last-child {
             border-bottom: none;
         }
 
+        .pricing-card ul li i {
+            color: var(--primary-color);
+            width: 20px;
+            font-size: 0.9rem;
+        }
+
         .pricing-card .btn {
             width: 100%;
-            margin-top: 20px;
-            padding: 14px 20px;
+            margin-top: 10px;
         }
 
         .pricing-card.popular {
             border: 2px solid var(--primary-color);
             position: relative;
-            transform: scale(1.05);
         }
 
         .pricing-card.popular::before {
@@ -539,6 +554,7 @@
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 700;
+            z-index: 2;
         }
 
         .rental-plans-section {
@@ -546,56 +562,60 @@
         }
 
         .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            display: flex;
+            justify-content: center;
             gap: 30px;
+            flex-wrap: wrap;
+            padding: 50px 0;
         }
 
         .plan-card {
+            width: 320px;
             background-color: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 40px 30px;
+            padding: 35px 25px;
+            border-radius: 20px;
             box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid var(--border-color);
             text-align: center;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            gap: 18px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
         }
 
         .plan-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
             box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .plan-card.popular {
+            border: 2px solid var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .plan-card.popular:hover {
+            transform: scale(1.05) translateY(-10px);
         }
 
         .plan-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background-color: rgba(212, 175, 55, 0.15);
+            font-size: 2.5rem;
             color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            margin: 0 auto 25px;
+            margin-bottom: 5px;
         }
 
         .plan-card h3 {
             font-size: 1.6rem;
-            margin-bottom: 15px;
+            margin: 0;
             color: var(--text-color);
             font-weight: 700;
-            text-align: center;
         }
 
         .plan-price {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
             color: var(--primary-color);
-            margin-bottom: 15px;
-            text-align: center;
+            margin: 0;
             line-height: 1.2;
         }
 
@@ -607,42 +627,36 @@
 
         .plan-card p {
             color: var(--text-light);
-            margin-bottom: 20px;
-            text-align: center;
-            max-width: 280px;
+            margin: 0;
+            font-size: 0.95rem;
         }
 
         .plan-features {
-            margin: 20px 0 30px;
-            text-align: left;
-            width: 100%;
-            max-width: 280px;
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 12px;
+            text-align: left;
         }
 
         .plan-features li {
-            padding: 8px 0;
-            color: var(--text-light);
             display: flex;
             align-items: center;
             gap: 10px;
+            color: var(--text-light);
             font-size: 0.95rem;
-            border-bottom: 1px dashed var(--border-color);
         }
 
         .plan-features li i {
             color: var(--primary-color);
             width: 20px;
-            font-size: 1rem;
-            flex-shrink: 0;
         }
 
         .plan-card .btn {
+            margin-top: 10px;
             width: 100%;
-            max-width: 280px;
-            margin-top: auto;
         }
 
         .faq-section {
@@ -663,7 +677,7 @@
         }
 
         .faq-question {
-            padding: 25px 30px;
+            padding: 20px 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -686,7 +700,7 @@
         }
 
         .faq-answer {
-            padding: 0 30px;
+            padding: 0 25px;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease, padding 0.3s ease;
@@ -694,7 +708,7 @@
         }
 
         .faq-item.active .faq-answer {
-            padding: 0 30px 30px;
+            padding: 0 25px 25px;
             max-height: 500px;
         }
 
@@ -793,8 +807,6 @@
             border-top: 1px solid var(--border-color);
             color: var(--text-light);
             font-size: 0.9rem;
-            max-width: var(--container-width);
-            margin: 0 auto;
         }
 
         .copyright a {
@@ -831,15 +843,14 @@
         }
 
         @media (max-width: 1200px) {
-            .container, .nav-container, .footer-container {
-                max-width: 100%;
-                padding: 0 20px;
-            }
             .pricing-hero h1 {
                 font-size: 3rem;
             }
             .section-title h2 {
                 font-size: 2.5rem;
+            }
+            .pricing-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
         }
 
@@ -862,24 +873,26 @@
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
                 margin: 0;
             }
+
             .nav-menu.active {
                 left: 0;
             }
+
             .mobile-toggle {
                 display: flex;
-                align-items: center;
-                justify-content: center;
             }
+
             .nav-link {
                 width: 100%;
                 padding: 16px 0;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                 justify-content: space-between;
-                color: #FFFFFF;
             }
+
             .nav-link::after {
                 display: none;
             }
+
             .dropdown-content {
                 position: static;
                 opacity: 1;
@@ -894,19 +907,20 @@
                 overflow: hidden;
                 transition: max-height 0.3s ease, padding 0.3s ease;
                 border: none;
-                margin-left: 0;
                 width: 100%;
             }
+
             .dropdown.active .dropdown-content {
                 max-height: 300px;
                 padding: 10px 0;
                 border-top: 1px solid rgba(255, 255, 255, 0.1);
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
+
             .dropdown-content a {
                 padding: 12px 0 12px 20px;
-                color: #FFFFFF;
             }
+
             .nav-actions {
                 flex-direction: column;
                 width: 100%;
@@ -916,25 +930,26 @@
                 border-top: 1px solid rgba(255, 255, 255, 0.1);
                 margin-left: 0;
             }
+            
             .nav-actions .btn {
                 width: 100%;
                 justify-content: center;
             }
+
             .pricing-hero {
                 padding-top: calc(var(--header-height) + 60px);
             }
+
             .pricing-hero h1 {
                 font-size: 2.5rem;
             }
-            .pricing-card.popular {
+
+            .plan-card.popular {
                 transform: scale(1);
             }
-            .pricing-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            }
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 40px;
+
+            .plan-card.popular:hover {
+                transform: translateY(-10px);
             }
         }
 
@@ -942,55 +957,61 @@
             section {
                 padding: 80px 0;
             }
+
             .pricing-hero h1 {
                 font-size: 2.2rem;
             }
+
             .section-title h2 {
                 font-size: 2rem;
             }
+
             .pricing-grid {
                 grid-template-columns: 1fr;
             }
-            .plans-grid {
-                grid-template-columns: 1fr;
-            }
+
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
+
             .categories-filter {
                 gap: 10px;
             }
+
             .category-filter-btn {
                 padding: 10px 20px;
                 font-size: 0.9rem;
             }
+
+            .plan-card {
+                width: 100%;
+                max-width: 350px;
+            }
         }
 
         @media (max-width: 576px) {
-            .container, .nav-container, .footer-container {
-                padding: 0 16px;
-            }
             .pricing-hero h1 {
                 font-size: 1.8rem;
             }
+
             .btn {
                 padding: 12px 24px;
-                width: 100%;
-                justify-content: center;
             }
+
             .section-title h2 {
                 font-size: 1.8rem;
             }
-            .pricing-card,
-            .plan-card,
-            .faq-item {
-                padding: 25px;
+
+            .pricing-card-image {
+                height: 200px;
             }
-            .pricing-card .price {
-                font-size: 2rem;
+
+            .pricing-card-content {
+                padding: 20px;
             }
-            .plan-price {
+
+            .price {
                 font-size: 2rem;
             }
         }
@@ -1020,17 +1041,6 @@
             background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
             margin: 40px auto;
             width: 80%;
-        }
-        
-        .bike-type {
-            display: inline-block;
-            padding: 5px 12px;
-            background-color: rgba(212, 175, 55, 0.15);
-            color: var(--primary-color);
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -1097,7 +1107,7 @@
         <div class="container">
             <h1>Transparent & Affordable <span>Pricing</span></h1>
             <p>Choose from our flexible rental plans designed to fit every budget and riding style. No hidden fees, just great value for your cycling adventures.</p>
-            <a href="#pricing" class="btn">View All Gallery</a>
+            <a href="#pricing" class="btn">View All Bikes</a>
         </div>
     </section>
 
@@ -1110,188 +1120,198 @@
             </div>
             
             <div class="categories-filter">
-                <button class="category-filter-btn active" data-category="all">All Gallery</button>
-                <button class="category-filter-btn" data-category="sports">Sports Gallery</button>
-                <button class="category-filter-btn" data-category="cruiser">Cruiser Gallery</button>
-                <button class="category-filter-btn" data-category="adventure">Adventure Gallery</button>
-                <button class="category-filter-btn" data-category="electric">Electric Gallery</button>
+                <button class="category-filter-btn active" data-category="all">All Bikes</button>
+                <button class="category-filter-btn" data-category="sports">Sports Bikes</button>
+                <button class="category-filter-btn" data-category="cruiser">Cruiser Bikes</button>
+                <button class="category-filter-btn" data-category="adventure">Adventure Bikes</button>
+                <button class="category-filter-btn" data-category="electric">Electric Bikes</button>
             </div>
             
             <div class="pricing-grid">
                 <!-- Yamaha R15 -->
-                <div class="pricing-card " data-category="sports">
-                    <span class="bike-type">Sports Bike</span>
-                    <h3>Yamaha R15</h3>
-                    <p class="price">₹1300 <span>/ Day</span></p>
-                    <ul>
-                        <li>₹800 / Half Day</li>
-                        <li>₹7500 / Week</li>
-                        <li>Security Deposit: ₹3500</li>
-                        <li>Helmet Included</li>
-                    </ul>
-                    <a href="booking.html" class="btn">Book Now</a>
+                <div class="pricing-card" data-category="sports">
+                    <div class="pricing-card-image">
+                        <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?q=80&w=2070&auto=format&fit=crop" alt="Yamaha R15">
+                    </div>
+                    <div class="pricing-card-content">
+                        <span class="bike-type">Sports Bike</span>
+                        <h3>Yamaha R15</h3>
+                        <p class="price">₹1300 <span>/ Day</span></p>
+                        <ul>
+                            <li><i class="fas fa-clock"></i> ₹800 / Half Day</li>
+                            <li><i class="fas fa-calendar-week"></i> ₹7500 / Week</li>
+                            <li><i class="fas fa-shield-alt"></i> Security Deposit: ₹3500</li>
+                            <li><i class="fas fa-helmet-safety"></i> Helmet Included</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
                 </div>
                 
                 <!-- Royal Enfield Classic 350 -->
-                <div class="pricing-card" data-category="cruiser">
-                    <span class="bike-type">Cruiser Bike</span>
-                    <h3>Royal Enfield Classic 350</h3>
-                    <p class="price">₹1500 <span>/ Day</span></p>
-                    <ul>
-                        <li>₹900 / Half Day</li>
-                        <li>₹8500 / Week</li>
-                        <li>Security Deposit: ₹4000</li>
-                        <li>Helmet Included</li>
-                    </ul>
-                    <a href="booking.html" class="btn">Book Now</a>
+<div class="pricing-card" data-category="cruiser">                    <div class="pricing-card-image">
+                        <img src="images/re.jpg" alt="Royal Enfield Classic 350">
+                    </div>
+                    <div class="pricing-card-content">
+                        <span class="bike-type">Cruiser Bike</span>
+                        <h3>Royal Enfield Classic 350</h3>
+                        <p class="price">₹1500 <span>/ Day</span></p>
+                        <ul>
+                            <li><i class="fas fa-clock"></i> ₹900 / Half Day</li>
+                            <li><i class="fas fa-calendar-week"></i> ₹8500 / Week</li>
+                            <li><i class="fas fa-shield-alt"></i> Security Deposit: ₹4000</li>
+                            <li><i class="fas fa-helmet-safety"></i> Helmet Included</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
                 </div>
                 
                 <!-- KTM Duke 200 -->
                 <div class="pricing-card" data-category="sports">
-                    <span class="bike-type">Sports Bike</span>
-                    <h3>KTM Duke 200</h3>
-                    <p class="price">₹1200 <span>/ Day</span></p>
-                    <ul>
-                        <li>₹750 / Half Day</li>
-                        <li>₹7000 / Week</li>
-                        <li>Security Deposit: ₹3500</li>
-                        <li>Helmet Included</li>
-                    </ul>
-                    <a href="booking.html" class="btn">Book Now</a>
+                    <div class="pricing-card-image">
+                        <img src="images/200.jpg" alt="KTM Duke 200">
+                    </div>
+                    <div class="pricing-card-content">
+                        <span class="bike-type">Sports Bike</span>
+                        <h3>KTM Duke 200</h3>
+                        <p class="price">₹1200 <span>/ Day</span></p>
+                        <ul>
+                            <li><i class="fas fa-clock"></i> ₹750 / Half Day</li>
+                            <li><i class="fas fa-calendar-week"></i> ₹7000 / Week</li>
+                            <li><i class="fas fa-shield-alt"></i> Security Deposit: ₹3500</li>
+                            <li><i class="fas fa-helmet-safety"></i> Helmet Included</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
                 </div>
                 
                 <!-- Bajaj Pulsar 150 -->
                 <div class="pricing-card" data-category="sports">
-                    <span class="bike-type">Sports Bike</span>
-                    <h3>Bajaj Pulsar 150</h3>
-                    <p class="price">₹800 <span>/ Day</span></p>
-                    <ul>
-                        <li>₹500 / Half Day</li>
-                        <li>₹4500 / Week</li>
-                        <li>Security Deposit: ₹2500</li>
-                        <li>Helmet Included</li>
-                    </ul>
-                    <a href="booking.html" class="btn">Book Now</a>
+                    <div class="pricing-card-image">
+                        <img src="images/150.jpg" alt="Bajaj Pulsar 150">
+                    </div>
+                    <div class="pricing-card-content">
+                        <span class="bike-type">Sports Bike</span>
+                        <h3>Bajaj Pulsar 150</h3>
+                        <p class="price">₹800 <span>/ Day</span></p>
+                        <ul>
+                            <li><i class="fas fa-clock"></i> ₹500 / Half Day</li>
+                            <li><i class="fas fa-calendar-week"></i> ₹4500 / Week</li>
+                            <li><i class="fas fa-shield-alt"></i> Security Deposit: ₹2500</li>
+                            <li><i class="fas fa-helmet-safety"></i> Helmet Included</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
                 </div>
                 
                 <!-- Honda Activa 125 -->
                 <div class="pricing-card" data-category="electric">
-                    <span class="bike-type">Electric Scooter</span>
-                    <h3>Honda Activa 125</h3>
-                    <p class="price">₹600 <span>/ Day</span></p>
-                    <ul>
-                        <li>₹400 / Half Day</li>
-                        <li>₹3500 / Week</li>
-                        <li>Security Deposit: ₹2000</li>
-                        <li>Helmet Included</li>
-                    </ul>
-                    <a href="booking.html" class="btn">Book Now</a>
+                    <div class="pricing-card-image">
+                        <img src="images/125.jpg" alt="Honda Activa 125">
+                    </div>
+                    <div class="pricing-card-content">
+                        <span class="bike-type">Electric Scooter</span>
+                        <h3>Honda Activa 125</h3>
+                        <p class="price">₹600 <span>/ Day</span></p>
+                        <ul>
+                            <li><i class="fas fa-clock"></i> ₹400 / Half Day</li>
+                            <li><i class="fas fa-calendar-week"></i> ₹3500 / Week</li>
+                            <li><i class="fas fa-shield-alt"></i> Security Deposit: ₹2000</li>
+                            <li><i class="fas fa-helmet-safety"></i> Helmet Included</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
                 </div>
                 
                 <!-- Hero Electric Optima -->
                 <div class="pricing-card" data-category="electric">
-                    <span class="bike-type">Electric Bike</span>
-                    <h3>Hero Electric Optima</h3>
-                    <p class="price">₹500 <span>/ Day</span></p>
-                    <ul>
-                        <li>₹350 / Half Day</li>
-                        <li>₹3000 / Week</li>
-                        <li>Security Deposit: ₹1500</li>
-                        <li>Helmet Included</li>
-                    </ul>
-                    <a href="booking.html" class="btn">Book Now</a>
+                    <div class="pricing-card-image">
+                        <img src="images/optima.jpg" alt="Hero Electric Optima">
+                    </div>
+                    <div class="pricing-card-content">
+                        <span class="bike-type">Electric Bike</span>
+                        <h3>Hero Electric Optima</h3>
+                        <p class="price">₹500 <span>/ Day</span></p>
+                        <ul>
+                            <li><i class="fas fa-clock"></i> ₹350 / Half Day</li>
+                            <li><i class="fas fa-calendar-week"></i> ₹3000 / Week</li>
+                            <li><i class="fas fa-shield-alt"></i> Security Deposit: ₹1500</li>
+                            <li><i class="fas fa-helmet-safety"></i> Helmet Included</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
                 </div>
                 
                 <!-- TVS Apache RTR 160 -->
                 <div class="pricing-card" data-category="sports">
-                    <span class="bike-type">Sports Bike</span>
-                    <h3>TVS Apache RTR 160</h3>
-                    <p class="price">₹900 <span>/ Day</span></p>
-                    <ul>
-                        <li>₹550 / Half Day</li>
-                        <li>₹5000 / Week</li>
-                        <li>Security Deposit: ₹3000</li>
-                        <li>Helmet Included</li>
-                    </ul>
-                    <a href="booking.html" class="btn">Book Now</a>
+                    <div class="pricing-card-image">
+                        <img src="images/rtr.jpg" alt="TVS Apache RTR 160">
+                    </div>
+                    <div class="pricing-card-content">
+                        <span class="bike-type">Sports Bike</span>
+                        <h3>TVS Apache RTR 160</h3>
+                        <p class="price">₹900 <span>/ Day</span></p>
+                        <ul>
+                            <li><i class="fas fa-clock"></i> ₹550 / Half Day</li>
+                            <li><i class="fas fa-calendar-week"></i> ₹5000 / Week</li>
+                            <li><i class="fas fa-shield-alt"></i> Security Deposit: ₹3000</li>
+                            <li><i class="fas fa-helmet-safety"></i> Helmet Included</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
                 </div>
                 
                 <!-- Suzuki Access 125 -->
                 <div class="pricing-card" data-category="electric">
-                    <span class="bike-type">Electric Scooter</span>
-                    <h3>Suzuki Access 125</h3>
-                    <p class="price">₹650 <span>/ Day</span></p>
-                    <ul>
-                        <li>₹400 / Half Day</li>
-                        <li>₹3800 / Week</li>
-                        <li>Security Deposit: ₹2000</li>
-                        <li>Helmet Included</li>
-                    </ul>
-                    <a href="booking.html" class="btn">Book Now</a>
+                    <div class="pricing-card-image">
+                        <img src="images/access.jpg" alt="Suzuki Access 125">
+                    </div>
+                    <div class="pricing-card-content">
+                        <span class="bike-type">Electric Scooter</span>
+                        <h3>Suzuki Access 125</h3>
+                        <p class="price">₹650 <span>/ Day</span></p>
+                        <ul>
+                            <li><i class="fas fa-clock"></i> ₹400 / Half Day</li>
+                            <li><i class="fas fa-calendar-week"></i> ₹3800 / Week</li>
+                            <li><i class="fas fa-shield-alt"></i> Security Deposit: ₹2000</li>
+                            <li><i class="fas fa-helmet-safety"></i> Helmet Included</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
                 </div>
                 
                 <!-- Royal Enfield Himalayan -->
                 <div class="pricing-card" data-category="adventure">
-                    <span class="bike-type">Adventure Bike</span>
-                    <h3>Royal Enfield Himalayan</h3>
-                    <p class="price">₹1800 <span>/ Day</span></p>
-                    <ul>
-                        <li>₹1100 / Half Day</li>
-                        <li>₹10,000 / Week</li>
-                        <li>Security Deposit: ₹5000</li>
-                        <li>Helmet Included</li>
-                    </ul>
-                    <a href="booking.html" class="btn">Book Now</a>
+                    <div class="pricing-card-image">
+                        <img src="images/himalayan.jpg" alt="Royal Enfield Himalayan">
+                    </div>
+                    <div class="pricing-card-content">
+                        <span class="bike-type">Adventure Bike</span>
+                        <h3>Royal Enfield Himalayan</h3>
+                        <p class="price">₹1800 <span>/ Day</span></p>
+                        <ul>
+                            <li><i class="fas fa-clock"></i> ₹1100 / Half Day</li>
+                            <li><i class="fas fa-calendar-week"></i> ₹10,000 / Week</li>
+                            <li><i class="fas fa-shield-alt"></i> Security Deposit: ₹5000</li>
+                            <li><i class="fas fa-helmet-safety"></i> Helmet Included</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
                 </div>
                 
                 <!-- Honda CB Hornet 160R -->
-                <div class="pricing-card" data-category="sports">
-                    <span class="bike-type">Sports Bike</span>
-                    <h3>Honda CB Hornet 160R</h3>
-                    <p class="price">₹850 <span>/ Day</span></p>
-                    <ul>
-                        <li>₹550 / Half Day</li>
-                        <li>₹4800 / Week</li>
-                        <li>Security Deposit: ₹2800</li>
-                        <li>Helmet Included</li>
-                    </ul>
-                    <a href="booking.html" class="btn">Book Now</a>
-                </div>
                 
                 <!-- Yamaha FZS-FI V3 -->
-                <div class="pricing-card" data-category="sports">
-                    <span class="bike-type">Sports Bike</span>
-                    <h3>Yamaha FZS-FI V3</h3>
-                    <p class="price">₹950 <span>/ Day</span></p>
-                    <ul>
-                        <li>₹600 / Half Day</li>
-                        <li>₹5500 / Week</li>
-                        <li>Security Deposit: ₹3000</li>
-                        <li>Helmet Included</li>
-                    </ul>
-                    <a href="booking.html" class="btn">Book Now</a>
-                </div>
+                
                 
                 <!-- Jawa Perak -->
-                <div class="pricing-card" data-category="cruiser">
-                    <span class="bike-type">Cruiser Bike</span>
-                    <h3>Jawa Perak</h3>
-                    <p class="price">₹1600 <span>/ Day</span></p>
-                    <ul>
-                        <li>₹1000 / Half Day</li>
-                        <li>₹9000 / Week</li>
-                        <li>Security Deposit: ₹4500</li>
-                        <li>Helmet Included</li>
-                    </ul>
-                    <a href="booking.html" class="btn">Book Now</a>
-                </div>
+               
             </div>
         </div>
     </section>
     
     <div class="section-divider"></div>
 
-    <!-- RENTAL PLANS – FULLY CENTERED, CLEAN & FIXED -->
+    <!-- RENTAL PLANS – FULLY CENTERED, CLEAN -->
     <section class="rental-plans-section" id="plans">
         <div class="container">
             <div class="section-title">
@@ -1299,109 +1319,61 @@
                 <p>Choose a plan that suits your riding needs. All plans include maintenance, insurance, and 24/7 roadside assistance.</p>
             </div>
             
-            <div style="display:flex; justify-content:center; gap:30px; flex-wrap:wrap; padding:50px 0;">
+            <div class="plans-grid">
+                <!-- Hourly Plan -->
+                <div class="plan-card">
+                    <div class="plan-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Hourly Plan</h3>
+                    <p class="plan-price">₹99 <span>/ hour</span></p>
+                    <p>Perfect for short trips and quick errands around the city.</p>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check-circle"></i> Minimum 2 hours</li>
+                        <li><i class="fas fa-check-circle"></i> Free helmet & lock</li>
+                        <li><i class="fas fa-check-circle"></i> Basic insurance included</li>
+                        <li><i class="fas fa-check-circle"></i> Fuel included</li>
+                        <li><i class="fas fa-check-circle"></i> 24/7 roadside assistance</li>
+                    </ul>
+                    <a href="booking.html" class="btn">Choose Plan</a>
+                </div>
 
-    <!-- Hourly Plan -->
-    <div style="width:300px; background:#f2f2f2; padding:30px; border-radius:20px;
-                box-shadow:0 6px 15px rgba(0,0,0,0.08);
-                text-align:center; display:flex; flex-direction:column; gap:18px;">
+                <!-- Daily Plan (Popular) -->
+                <div class="plan-card popular">
+                    <div class="plan-icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <h3>Daily Plan</h3>
+                    <p class="plan-price">From ₹500 <span>/ day</span></p>
+                    <p>Best value for full day explorations and city tours.</p>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check-circle"></i> 24-hour rental period</li>
+                        <li><i class="fas fa-check-circle"></i> Free helmet & lock</li>
+                        <li><i class="fas fa-check-circle"></i> Comprehensive insurance</li>
+                        <li><i class="fas fa-check-circle"></i> Unlimited kilometers</li>
+                        <li><i class="fas fa-check-circle"></i> Fuel included</li>
+                    </ul>
+                    <a href="booking.html" class="btn">Choose Plan</a>
+                </div>
 
-        <div style="font-size:28px; color:#D4AF37;">
-            <i class="fas fa-clock"></i>
-        </div>
-
-        <h3 style="margin:0;">Hourly Plan</h3>
-
-        <p style="font-size:22px; font-weight:600; margin:0;">₹99</p>
-
-        <p style="margin:0; color:#444;">
-            Perfect for short trips and quick errands around the city.
-        </p>
-
-        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px; text-align:left;">
-            <li><i class="fas fa-check-circle" style="color:#D4AF37; margin-right:8px;"></i> Minimum 2 hours</li>
-            <li><i class="fas fa-check-circle" style="color:#D4AF37; margin-right:8px;"></i> Free helmet & lock</li>
-            <li><i class="fas fa-check-circle" style="color:#D4AF37; margin-right:8px;"></i> Basic insurance included</li>
-            <li><i class="fas fa-check-circle" style="color:#D4AF37; margin-right:8px;"></i> Fuel included</li>
-            <li><i class="fas fa-check-circle" style="color:#D4AF37; margin-right:8px;"></i> 24/7 roadside assistance</li>
-        </ul>
-
-        <a href="booking.html" 
-           style="margin-top:10px; padding:12px; background:#D4AF37; color:#000;
-                  text-decoration:none; border-radius:8px; font-weight:600;">
-            Choose Plan
-        </a>
-    </div>
-
-
-    <!-- Daily Plan (Popular) -->
-    <div style="width:300px; background:#f2f2f2; padding:30px; border-radius:20px;
-                box-shadow:0 8px 20px rgba(0,0,0,0.12);
-                text-align:center; display:flex; flex-direction:column; gap:18px;
-                border:2px solid #D4AF37;">
-
-        <div style="font-size:28px; color:#D4AF37;">
-            <i class="fas fa-calendar-day"></i>
-        </div>
-
-        <h3 style="margin:0;">Daily Plan</h3>
-
-        <p style="font-size:22px; font-weight:600; margin:0;">From ₹500</p>
-
-        <p style="margin:0; color:#444;">
-            Best value for full day explorations and city tours.
-        </p>
-
-        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px; text-align:left;">
-            <li><i class="fas fa-check-circle" style="color:#D4AF37; margin-right:8px;"></i> 24-hour rental period</li>
-            <li><i class="fas fa-check-circle" style="color:#D4AF37; margin-right:8px;"></i> Free helmet & lock</li>
-            <li><i class="fas fa-check-circle" style="color:#D4AF37; margin-right:8px;"></i> Comprehensive insurance</li>
-            <li><i class="fas fa-check-circle" style="color:#D4AF37; margin-right:8px;"></i> Unlimited kilometers</li>
-            <li><i class="fas fa-check-circle" style="color:#D4AF37; margin-right:8px;"></i> Fuel included</li>
-        </ul>
-
-        <a href="booking.html" 
-           style="margin-top:10px; padding:12px; background:#D4AF37; color:#000;
-                  text-decoration:none; border-radius:8px; font-weight:600;">
-            Choose Plan
-        </a>
-    </div>
-
-
-    <!-- Weekly Plan -->
-    <div style="width:300px; background:#f2f2f2; padding:30px; border-radius:20px;
-                box-shadow:0 6px 15px rgba(0,0,0,0.08);
-                text-align:center; display:flex; flex-direction:column; gap:18px;">
-
-        <div style="font-size:28px; color:#D4AF37;">
-            <i class="fas fa-calendar-week"></i>
-        </div>
-
-        <h3 style="margin:0;">Weekly Plan</h3>
-
-        <p style="font-size:22px; font-weight:600; margin:0;">From ₹3000</p>
-
-        <p style="margin:0; color:#444;">
-            Ideal for extended trips and vacation explorations.
-        </p>
-
-        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px; text-align:left;">
-            <li><i class="fas fa-check-circle" style="color:#D4AF37; margin-right:8px;"></i> 7-day rental period</li>
-            <li><i class="fas fa-check-circle" style="color:#D4AF37; margin-right:8px;"></i> Free helmet & lock</li>
-            <li><i class="fas fa-check-circle" style="color:#D4AF37; margin-right:8px;"></i> Premium insurance</li>
-            <li><i class="fas fa-check-circle" style="color:#D4AF37; margin-right:8px;"></i> Unlimited kilometers</li>
-            <li><i class="fas fa-check-circle" style="color:#D4AF37; margin-right:8px;"></i> Free maintenance</li>
-        </ul>
-
-        <a href="booking.html" 
-           style="margin-top:10px; padding:12px; background:#D4AF37; color:#000;
-                  text-decoration:none; border-radius:8px; font-weight:600;">
-            Choose Plan
-        </a>
-    </div>
-
-</div>
-
+                <!-- Weekly Plan -->
+                <div class="plan-card">
+                    <div class="plan-icon">
+                        <i class="fas fa-calendar-week"></i>
+                    </div>
+                    <h3>Weekly Plan</h3>
+                    <p class="plan-price">From ₹3000 <span>/ week</span></p>
+                    <p>Ideal for extended trips and vacation explorations.</p>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check-circle"></i> 7-day rental period</li>
+                        <li><i class="fas fa-check-circle"></i> Free helmet & lock</li>
+                        <li><i class="fas fa-check-circle"></i> Premium insurance</li>
+                        <li><i class="fas fa-check-circle"></i> Unlimited kilometers</li>
+                        <li><i class="fas fa-check-circle"></i> Free maintenance</li>
+                    </ul>
+                    <a href="booking.html" class="btn">Choose Plan</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1450,7 +1422,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>All our Gallery are insured against accidents and theft. In case of breakdown, we provide 24/7 roadside assistance. For accidents, immediately contact our support team and file a police report if required. Please refer to our terms for detailed coverage information.</p>
+                        <p>All our bikes are insured against accidents and theft. In case of breakdown, we provide 24/7 roadside assistance. For accidents, immediately contact our support team and file a police report if required. Please refer to our terms for detailed coverage information.</p>
                     </div>
                 </div>
                 
@@ -1460,7 +1432,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes, we offer doorstep delivery and pickup within city limits for an additional fee of ₹200. For airport/railway station deliveries, the charge is ₹300. Delivery must be Booked at least 4 hours in advance. Free pickup and drop available at our rental stations.</p>
+                        <p>Yes, we offer doorstep delivery and pickup within city limits for an additional fee of ₹200. For airport/railway station deliveries, the charge is ₹300. Delivery must be booked at least 4 hours in advance. Free pickup and drop available at our rental stations.</p>
                     </div>
                 </div>
                 
@@ -1470,7 +1442,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes, you must be at least 18 years old with a valid driving license to rent our Gallery. For premium Gallery (above 250cc), the minimum age is 21 years. International renters must meet their home country's minimum age requirement plus have a valid IDP.</p>
+                        <p>Yes, you must be at least 18 years old with a valid driving license to rent our bikes. For premium bikes (above 250cc), the minimum age is 21 years. International renters must meet their home country's minimum age requirement plus have a valid IDP.</p>
                     </div>
                 </div>
             </div>
@@ -1482,13 +1454,11 @@
         <div class="footer-container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <a href="index.html" class="logo">
-                        <div class="logo-icon">
-                            <i class="fas fa-bicycle"></i>
-                        </div>
+                    <a href="index.html" class="logo" style="margin-bottom: 16px;">
+                        <div class="logo-icon"><i class="fas fa-bicycle"></i></div>
                         <span>GrowwBike</span>
                     </a>
-                    <p style="margin-bottom: 20px; color: var(--text-light);">Premium bike rentals for urban exploration and adventure. Offering quality bicycles, flexible rental plans, and exceptional customer service across the city.</p>
+                    <p style="margin-bottom: 20px; color: var(--text-light);">Premium bike rentals for urban exploration and adventure. Quality bicycles, flexible plans, and exceptional service.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1512,10 +1482,10 @@
                 <div class="footer-column">
                     <h3>Bike Categories</h3>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-motorcycle"></i> Sports Gallery</a></li>
-                        <li><a href="#"><i class="fas fa-biking"></i> Cruiser Gallery</a></li>
-                        <li><a href="#"><i class="fas fa-mountain"></i> Adventure Gallery</a></li>
-                        <li><a href="#"><i class="fas fa-bolt"></i> Electric Gallery</a></li>
+                        <li><a href="#"><i class="fas fa-motorcycle"></i> Sports Bikes</a></li>
+                        <li><a href="#"><i class="fas fa-biking"></i> Cruiser Bikes</a></li>
+                        <li><a href="#"><i class="fas fa-mountain"></i> Adventure Bikes</a></li>
+                        <li><a href="#"><i class="fas fa-bolt"></i> Electric Bikes</a></li>
                         <li><a href="#"><i class="fas fa-scooter"></i> Scooters</a></li>
                     </ul>
                 </div>
@@ -1533,12 +1503,13 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2026 GrowwBike Bike Rentals. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Safety Guidelines</a></p>
+                <p>&copy; 2026 GrowwBike Bike Rentals. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
             </div>
         </div>
     </footer>
 
     <script>
+        // DOM Elements
         const themeToggle = document.getElementById('themeToggle');
         const rtlToggle = document.getElementById('rtlToggle');
         const mobileToggle = document.getElementById('mobileToggle');
@@ -1548,14 +1519,12 @@
         const body = document.body;
         const header = document.querySelector('header');
 
+        // Scroll effect for header
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('header-scrolled');
-            } else {
-                header.classList.remove('header-scrolled');
-            }
+            header.classList.toggle('header-scrolled', window.scrollY > 50);
         });
 
+        // Theme toggle
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('light-theme');
             const icon = themeToggle.querySelector('i');
@@ -1569,47 +1538,48 @@
             localStorage.setItem('theme', body.classList.contains('light-theme') ? 'light' : 'dark');
         });
 
+        // RTL toggle
         rtlToggle.addEventListener('click', () => {
             body.classList.toggle('rtl');
             localStorage.setItem('rtl', body.classList.contains('rtl') ? 'true' : 'false');
         });
 
+        // Mobile menu toggle
         mobileToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
             const icon = mobileToggle.querySelector('i');
-            if (navMenu.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
         });
 
+        // Setup dropdowns for mobile
         const setupDropdown = (dropdownElement) => {
-            dropdownElement.addEventListener('click', (e) => {
-                if (window.innerWidth <= 1024) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const dropdown = dropdownElement.parentElement;
-                    dropdown.classList.toggle('active');
-                    document.querySelectorAll('.dropdown').forEach(otherDropdown => {
-                        if (otherDropdown !== dropdown && otherDropdown.classList.contains('active')) {
-                            otherDropdown.classList.remove('active');
-                        }
-                    });
-                }
-            });
+            if (dropdownElement) {
+                dropdownElement.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 1024) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const dropdown = dropdownElement.parentElement;
+                        dropdown.classList.toggle('active');
+                        // Close other dropdowns
+                        document.querySelectorAll('.dropdown').forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown && otherDropdown.classList.contains('active')) {
+                                otherDropdown.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            }
         };
 
         setupDropdown(homeDropdown);
         setupDropdown(dashboardDropdown);
 
+        // Close dropdowns when clicking outside
         document.addEventListener('click', (e) => {
             if (window.innerWidth <= 1024) {
-                const dropdowns = document.querySelectorAll('.dropdown');
-                dropdowns.forEach(dropdown => {
+                document.querySelectorAll('.dropdown').forEach(dropdown => {
                     if (!dropdown.contains(e.target) && dropdown.classList.contains('active')) {
                         dropdown.classList.remove('active');
                     }
@@ -1617,24 +1587,28 @@
             }
         });
 
+        // Category filter functionality
         const filterButtons = document.querySelectorAll('.category-filter-btn');
         const pricingCards = document.querySelectorAll('.pricing-card');
 
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
+                // Update active button
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
+                
+                // Filter cards
                 const category = button.getAttribute('data-category');
                 pricingCards.forEach(card => {
                     if (category === 'all' || card.getAttribute('data-category') === category) {
                         card.style.display = 'flex';
                         setTimeout(() => {
                             card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
+                            card.style.transform = 'scale(1)';
                         }, 10);
                     } else {
                         card.style.opacity = '0';
-                        card.style.transform = 'translateY(20px)';
+                        card.style.transform = 'scale(0.8)';
                         setTimeout(() => {
                             card.style.display = 'none';
                         }, 300);
@@ -1643,10 +1617,12 @@
             });
         });
 
+        // FAQ accordion
         const faqItems = document.querySelectorAll('.faq-item');
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
             question.addEventListener('click', () => {
+                // Close other FAQs
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item && otherItem.classList.contains('active')) {
                         otherItem.classList.remove('active');
@@ -1656,59 +1632,66 @@
             });
         });
 
+        // Load saved preferences
         document.addEventListener('DOMContentLoaded', () => {
+            // Theme
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'light') {
                 body.classList.add('light-theme');
                 themeToggle.querySelector('i').classList.remove('fa-sun');
                 themeToggle.querySelector('i').classList.add('fa-moon');
             }
-            const savedRTL = localStorage.getItem('rtl');
-            if (savedRTL === 'true') {
+            
+            // RTL
+            if (localStorage.getItem('rtl') === 'true') {
                 body.classList.add('rtl');
             }
+
+            // Set active state for current page
+            const pricingLink = document.querySelector('a[href="pricing.html"]');
+            if (pricingLink) {
+                pricingLink.classList.add('active');
+            }
+
+            // Header scroll state on load
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            }
+
+            // Close mobile menu when clicking on links
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     if (window.innerWidth <= 1024 && !link.parentElement.classList.contains('dropdown')) {
                         navMenu.classList.remove('active');
                         body.style.overflow = 'auto';
-                        mobileToggle.querySelector('i').classList.remove('fa-times');
                         mobileToggle.querySelector('i').classList.add('fa-bars');
-                        const dropdowns = document.querySelectorAll('.dropdown.active');
-                        dropdowns.forEach(dropdown => {
-                            dropdown.classList.remove('active');
-                        });
+                        mobileToggle.querySelector('i').classList.remove('fa-times');
+                        // Close any open dropdowns
+                        document.querySelectorAll('.dropdown.active').forEach(d => d.classList.remove('active'));
                     }
                 });
             });
+
+            // Close mobile menu when clicking outside
             document.addEventListener('click', (e) => {
-                if (window.innerWidth <= 1024 && navMenu.classList.contains('active')) {
-                    if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
-                        navMenu.classList.remove('active');
-                        body.style.overflow = 'auto';
-                        mobileToggle.querySelector('i').classList.remove('fa-times');
-                        mobileToggle.querySelector('i').classList.add('fa-bars');
-                        const dropdowns = document.querySelectorAll('.dropdown.active');
-                        dropdowns.forEach(dropdown => {
-                            dropdown.classList.remove('active');
-                        });
-                    }
+                if (window.innerWidth <= 1024 && navMenu.classList.contains('active') && 
+                    !navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                    body.style.overflow = 'auto';
+                    mobileToggle.querySelector('i').classList.add('fa-bars');
+                    mobileToggle.querySelector('i').classList.remove('fa-times');
+                    document.querySelectorAll('.dropdown.active').forEach(d => d.classList.remove('active'));
                 }
             });
-            if (window.scrollY > 50) {
-                header.classList.add('header-scrolled');
-            }
-            const pricingLink = document.querySelector('a[href="pricing.html"]');
-            if (pricingLink) {
-                pricingLink.classList.add('active');
-            }
         });
 
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
+                
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     e.preventDefault();
@@ -1716,37 +1699,27 @@
                         top: targetElement.offsetTop - 100,
                         behavior: 'smooth'
                     });
+                    
+                    // Close mobile menu if open
                     if (window.innerWidth <= 1024) {
                         navMenu.classList.remove('active');
                         body.style.overflow = 'auto';
-                        mobileToggle.querySelector('i').classList.remove('fa-times');
                         mobileToggle.querySelector('i').classList.add('fa-bars');
-                        const dropdowns = document.querySelectorAll('.dropdown.active');
-                        dropdowns.forEach(dropdown => {
-                            dropdown.classList.remove('active');
-                        });
+                        mobileToggle.querySelector('i').classList.remove('fa-times');
+                        document.querySelectorAll('.dropdown.active').forEach(d => d.classList.remove('active'));
                     }
                 }
             });
         });
 
+        // Handle window resize
         window.addEventListener('resize', () => {
             if (window.innerWidth > 1024 && navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
                 body.style.overflow = 'auto';
                 mobileToggle.querySelector('i').classList.remove('fa-times');
                 mobileToggle.querySelector('i').classList.add('fa-bars');
-                const dropdowns = document.querySelectorAll('.dropdown.active');
-                dropdowns.forEach(dropdown => {
-                    dropdown.classList.remove('active');
-                });
-            }
-            if (window.innerWidth > 1024) {
-                document.querySelectorAll('.dropdown-content').forEach(content => {
-                    content.style.maxHeight = '';
-                    content.style.padding = '';
-                    content.style.border = '';
-                });
+                document.querySelectorAll('.dropdown.active').forEach(d => d.classList.remove('active'));
             }
         });
     </script>

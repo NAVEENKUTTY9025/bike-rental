@@ -9,21 +9,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* === ADMIN DASHBOARD – FULLY RESPONSIVE, "ADMIN DASHBOARD" ALWAYS VISIBLE === */
+        /* === ADMIN DASHBOARD – ORANGE THEME (MATCHES INDEX.HTML) === */
         :root {
-            --primary-color: #D4AF37;
-            --primary-dark: #B8860B;
-            --primary-light: #FFD700;
-            --primary-ultralight: #FFF8DC;
-            --text-color: #FFFFFF;
-            --text-light: #E5E5E5;
-            --text-lighter: #A0A0A0;
-            --bg-color: #0A0A0A;
-            --bg-secondary: #1A1A1A;
-            --card-bg: #1A1A1A;
-            --border-color: #333333;
-            --nav-bg: #000000;
-            --nav-text: #FFFFFF;
+            /* Primary Color – vibrant orange (same as index.html) */
+            --primary-color: #F97316;      /* Bright orange */
+            --primary-dark: #EA580C;        /* Darker orange */
+            --primary-light: #FB923C;       /* Light orange */
+            --primary-ultralight: #FFF4E6;  /* Very light orange */
+            
+            /* Neutral Colors – black/white/grey */
+            --text-color: #FFFFFF;         /* White on dark sections */
+            --text-light: #E5E5E5;         /* Light grey */
+            --text-lighter: #A0A0A0;       /* Medium grey */
+            --bg-color: #0A0A0A;           /* Almost black background */
+            --bg-secondary: #1A1A1A;       /* Dark grey */
+            --card-bg: #1A1A1A;            /* Dark cards */
+            --border-color: #333333;       /* Dark border */
+            --nav-bg: #000000;              /* Pure black navigation */
+            --nav-text: #FFFFFF;            /* White navigation text */
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
             --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.7);
             --transition: all 0.25s ease;
@@ -32,21 +35,21 @@
         }
 
         .light-theme {
-            --primary-color: #D4AF37;
-            --primary-dark: #B8860B;
-            --primary-light: #FFD700;
-            --primary-ultralight: #FFF8DC;
-            --text-color: #222222;
-            --text-light: #444444;
-            --text-lighter: #666666;
-            --bg-color: #F5F5F5;
-            --bg-secondary: #FFFFFF;
-            --card-bg: #FFFFFF;
-            --border-color: #E0E0E0;
-            --nav-bg: #000000;
-            --nav-text: #FFFFFF;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --primary-color: #F97316;      /* Same vibrant orange */
+            --primary-dark: #EA580C;
+            --primary-light: #FB923C;
+            --primary-ultralight: #FFF4E6;
+            --text-color: #1E1E1E;         /* Almost black text */
+            --text-light: #2E2E2E;          /* Dark grey */
+            --text-lighter: #4B4B4B;        /* Medium-dark grey */
+            --bg-color: #FFFFFF;            /* Pure white background */
+            --bg-secondary: #F8F8F8;        /* Light grey sections */
+            --card-bg: #FFFFFF;              /* White cards */
+            --border-color: #E0E0E0;         /* Light grey border */
+            --nav-bg: #000000;                /* Keep black nav in light mode */
+            --nav-text: #FFFFFF;               /* White nav text */
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         * {
@@ -85,7 +88,7 @@
             overflow: hidden;
         }
 
-        /* ---------- TOP HEADER – "ADMIN DASHBOARD" ALWAYS VISIBLE ---------- */
+        /* ---------- TOP HEADER – WITH LOGOUT BUTTON ---------- */
         .admin-top-header {
             height: var(--header-height);
             background-color: var(--nav-bg);
@@ -103,7 +106,7 @@
             gap: 8px;
             flex-wrap: nowrap;
             overflow: hidden;
-            min-width: 0; /* allows truncation if needed, but we prevent it */
+            min-width: 0;
         }
 
         /* Logo — always visible */
@@ -123,7 +126,7 @@
             color: var(--primary-color);
         }
 
-        /* Page title: now always visible with responsive sizing */
+        /* Page title - ADMIN DASHBOARD always visible */
         .page-title {
             font-size: 1.2rem;
             font-weight: 700;
@@ -131,6 +134,8 @@
             margin-left: 4px;
             white-space: nowrap;
             flex-shrink: 0;
+            padding-left: 12px;
+            border-left: 2px solid var(--primary-color);
         }
 
         .header-right {
@@ -138,6 +143,34 @@
             align-items: center;
             gap: 8px;
             flex-shrink: 0;
+        }
+
+        /* Logout button - styled with orange */
+        .logout-btn {
+            background-color: var(--primary-color);
+            color: #000000;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            margin-right: 8px;
+        }
+
+        .logout-btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+        }
+
+        .logout-btn i {
+            font-size: 0.9rem;
         }
 
         .rtl-toggle, .theme-toggle {
@@ -202,6 +235,15 @@
 
         body.rtl .header-right {
             flex-direction: row-reverse;
+        }
+
+        body.rtl .page-title {
+            border-left: none;
+            border-right: 2px solid var(--primary-color);
+            margin-left: 0;
+            margin-right: 4px;
+            padding-left: 0;
+            padding-right: 12px;
         }
 
         body.rtl .user-cell {
@@ -306,7 +348,12 @@
                 font-size: 1.2rem;
             }
             .page-title {
-                font-size: 0.95rem;  /* smaller but still visible */
+                font-size: 0.9rem;
+                padding-left: 8px;
+            }
+            body.rtl .page-title {
+                padding-left: 0;
+                padding-right: 8px;
             }
             .header-right {
                 gap: 4px;
@@ -316,6 +363,13 @@
                 height: 36px;
                 font-size: 0.9rem;
             }
+            .logout-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            .logout-btn i {
+                font-size: 0.8rem;
+            }
         }
 
         /* ensure full-width cards span correctly */
@@ -323,7 +377,7 @@
             grid-column: 1 / -1;
         }
 
-        /* ---------- CARD STYLES ---------- */
+        /* ---------- CARD STYLES WITH ORANGE ACCENTS ---------- */
         .stat-card {
             background-color: var(--card-bg);
             border-radius: var(--border-radius);
@@ -349,7 +403,7 @@
             width: 44px;
             height: 44px;
             border-radius: 12px;
-            background-color: rgba(212,175,55,0.15);
+            background-color: rgba(249, 115, 22, 0.15);
             color: var(--primary-color);
             display: flex;
             align-items: center;
@@ -446,7 +500,7 @@
         }
 
         .status-active { background-color: rgba(16,185,129,0.2); color: #10b981; }
-        .status-pending { background-color: rgba(212,175,55,0.2); color: var(--primary-color); }
+        .status-pending { background-color: rgba(249, 115, 22, 0.2); color: var(--primary-color); }
         .status-cancelled { background-color: rgba(239,68,68,0.2); color: #ef4444; }
 
         .message-item {
@@ -636,6 +690,97 @@
             background-color: var(--primary-color);
         }
 
+        /* Logout confirmation modal (simple) */
+        .logout-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .logout-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .logout-modal-content {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .logout-modal.active .logout-modal-content {
+            transform: translateY(0);
+        }
+
+        .logout-modal-content i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .logout-modal-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .logout-modal-content p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .modal-btn.confirm {
+            background-color: var(--primary-color);
+            color: #000;
+        }
+
+        .modal-btn.confirm:hover {
+            background-color: var(--primary-light);
+        }
+
+        .modal-btn.cancel {
+            background-color: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+        }
+
+        .modal-btn.cancel:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
         /* Scrollbar */
         .admin-main::-webkit-scrollbar {
             width: 4px;
@@ -651,16 +796,20 @@
 </head>
 <body>
     <div class="admin-container">
-        <!-- TOP HEADER: LOGO + "ADMIN DASHBOARD" (always visible) -->
+        <!-- TOP HEADER: LOGO + "ADMIN DASHBOARD" + LOGOUT BUTTON -->
         <div class="admin-top-header">
             <div class="header-left">
                 <a href="index.html" class="logo">
                     <div class="logo-icon"><i class="fas fa-bicycle"></i></div>
                     <span>GrowwBike</span>
                 </a>
-               
+                
             </div>
             <div class="header-right">
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
                 <button class="rtl-toggle" id="rtlToggle" title="Toggle RTL/LTR">
                     <i class="fas fa-arrow-right-arrow-left"></i>
                 </button>
@@ -738,7 +887,10 @@
                                             <td>Customer</td>
                                             <td><span class="booking-status status-active">Active</span></td>
                                             <td>Jan 15, 2026</td>
-                                            <td><button class="action-btn"><i class="fas fa-edit"></i></button><button class="action-btn"><i class="fas fa-trash"></i></button></td>
+                                            <td>
+                                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                                <button class="action-btn"><i class="fas fa-trash"></i></button>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><div class="user-cell"><div class="user-avatar">JS</div><span>Jane Smith</span></div></td>
@@ -746,7 +898,10 @@
                                             <td>Admin</td>
                                             <td><span class="booking-status status-active">Active</span></td>
                                             <td>Dec 10, 2025</td>
-                                            <td><button class="action-btn"><i class="fas fa-edit"></i></button><button class="action-btn"><i class="fas fa-trash"></i></button></td>
+                                            <td>
+                                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                                <button class="action-btn"><i class="fas fa-trash"></i></button>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><div class="user-cell"><div class="user-avatar">MB</div><span>Mike Brown</span></div></td>
@@ -754,7 +909,10 @@
                                             <td>Customer</td>
                                             <td><span class="booking-status status-pending">Pending</span></td>
                                             <td>Feb 1, 2026</td>
-                                            <td><button class="action-btn"><i class="fas fa-edit"></i></button><button class="action-btn"><i class="fas fa-trash"></i></button></td>
+                                            <td>
+                                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                                <button class="action-btn"><i class="fas fa-trash"></i></button>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><div class="user-cell"><div class="user-avatar">SW</div><span>Sarah Wilson</span></div></td>
@@ -762,7 +920,10 @@
                                             <td>Customer</td>
                                             <td><span class="booking-status status-active">Active</span></td>
                                             <td>Jan 28, 2026</td>
-                                            <td><button class="action-btn"><i class="fas fa-edit"></i></button><button class="action-btn"><i class="fas fa-trash"></i></button></td>
+                                            <td>
+                                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                                <button class="action-btn"><i class="fas fa-trash"></i></button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -879,7 +1040,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="message-item">
-                                    <div class="message-avatar" style="background-color:rgba(212,175,55,0.2);color:var(--primary-color);"><i class="fas fa-bell"></i></div>
+                                    <div class="message-avatar" style="background-color:rgba(249, 115, 22, 0.2);color:var(--primary-color);"><i class="fas fa-bell"></i></div>
                                     <div class="message-content">
                                         <div class="message-header"><span class="message-sender">New Booking</span><span class="message-time">10 min ago</span></div>
                                         <div class="message-text">John Doe booked Trek Pro Mountain</div>
@@ -900,7 +1061,7 @@
                                     </div>
                                 </div>
                                 <div class="message-item">
-                                    <div class="message-avatar" style="background-color:rgba(212,175,55,0.2);color:var(--primary-color);"><i class="fas fa-star"></i></div>
+                                    <div class="message-avatar" style="background-color:rgba(249, 115, 22, 0.2);color:var(--primary-color);"><i class="fas fa-star"></i></div>
                                     <div class="message-content">
                                         <div class="message-header"><span class="message-sender">New Review</span><span class="message-time">5 hours ago</span></div>
                                         <div class="message-text">5-star review from Mike Brown</div>
@@ -920,15 +1081,15 @@
                         </div>
                         <div class="card-body">
                             <div class="reports-grid">
-                                <div class="report-card"><h4>Monthly Revenue</h4><div class="report-value">$12,543</div><span class="stat-change"></div>
-                                <div class="report-card"><h4>Total Bookings</h4><div class="report-value">1,234</div><span class="stat-change"></div>
-                                <div class="report-card"><h4>Avg. Rental Duration</h4><div class="report-value">2.3 days</div><span class="stat-change"></div>
-                                <div class="report-card"><h4>New Users</h4><div class="report-value">345</div><span class="stat-change"></div>
-                                <div class="report-card"><h4>Bike Utilization</h4><div class="report-value">78%</div><span class="stat-change"></div>
-                                <div class="report-card"><h4>Customer Satisfaction</h4><div class="report-value">4.8/5.0</div><span class="stat-change"></div>
-                                <div class="report-card"><h4>Most Popular Bike</h4><div class="report-value">Trek Pro</div><span class="stat-change"></div>
-                                <div class="report-card"><h4>Cancellation Rate</h4><div class="report-value">5.2%</div><span class="stat-change"></div>
-                                <div class="report-card"><h4>Peak Rental Time</h4><div class="report-value">4-6 PM</div><span class="stat-change"></div>
+                                <div class="report-card"><h4>Monthly Revenue</h4><div class="report-value">$12,543</div></div>
+                                <div class="report-card"><h4>Total Bookings</h4><div class="report-value">1,234</div></div>
+                                <div class="report-card"><h4>Avg. Rental Duration</h4><div class="report-value">2.3 days</div></div>
+                                <div class="report-card"><h4>New Users</h4><div class="report-value">345</div></div>
+                                <div class="report-card"><h4>Bike Utilization</h4><div class="report-value">78%</div></div>
+                                <div class="report-card"><h4>Customer Satisfaction</h4><div class="report-value">4.8/5.0</div></div>
+                                <div class="report-card"><h4>Most Popular Bike</h4><div class="report-value">Trek Pro</div></div>
+                                <div class="report-card"><h4>Cancellation Rate</h4><div class="report-value">5.2%</div></div>
+                                <div class="report-card"><h4>Peak Rental Time</h4><div class="report-value">4-6 PM</div></div>
                             </div>
                         </div>
                     </div>
@@ -983,6 +1144,19 @@
         </div>
     </div>
 
+    <!-- Logout Confirmation Modal -->
+    <div class="logout-modal" id="logoutModal">
+        <div class="logout-modal-content">
+            <i class="fas fa-sign-out-alt"></i>
+            <h3>Logout Confirmation</h3>
+            <p>Are you sure you want to logout from the Admin Dashboard?</p>
+            <div class="modal-actions">
+                <button class="modal-btn cancel" id="cancelLogout">Cancel</button>
+                <button class="modal-btn confirm" id="confirmLogout">Logout</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         (function() {
             "use strict";
@@ -990,7 +1164,12 @@
             const body = document.body;
             const rtlBtn = document.getElementById('rtlToggle');
             const themeToggle = document.getElementById('themeToggle');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const logoutModal = document.getElementById('logoutModal');
+            const cancelLogout = document.getElementById('cancelLogout');
+            const confirmLogout = document.getElementById('confirmLogout');
 
+            // RTL Toggle
             function setRTL(isRtl) {
                 if (isRtl) {
                     body.classList.add('rtl');
@@ -1014,6 +1193,7 @@
                 });
             }
 
+            // Theme Toggle
             if (themeToggle) {
                 themeToggle.addEventListener('click', function() {
                     body.classList.toggle('light-theme');
@@ -1030,6 +1210,35 @@
                 });
             }
 
+            // Logout functionality
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function() {
+                    logoutModal.classList.add('active');
+                });
+            }
+
+            if (cancelLogout) {
+                cancelLogout.addEventListener('click', function() {
+                    logoutModal.classList.remove('active');
+                });
+            }
+
+            if (confirmLogout) {
+                confirmLogout.addEventListener('click', function() {
+                    // Clear any session data if needed
+                    // localStorage.clear(); // Uncomment if you want to clear all storage
+                    window.location.href = 'index.html'; // Redirect to home page
+                });
+            }
+
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === logoutModal) {
+                    logoutModal.classList.remove('active');
+                }
+            });
+
+            // Load saved preferences
             document.addEventListener('DOMContentLoaded', function() {
                 const savedTheme = localStorage.getItem('admin-theme');
                 if (savedTheme === 'light') {

@@ -9,22 +9,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables for Bike Rental Theme - Black/White/Dark Yellow */
+        /* CSS Variables – matching index.html orange/white/black theme */
         :root {
-            --primary-color: #D4AF37;      /* Classic Gold/Dark Yellow */
-            --primary-dark: #B8860B;       /* Dark Goldenrod */
-            --primary-light: #FFD700;       /* Gold */
-            --primary-ultralight: #FFF8DC; /* Cornsilk */
-            --text-color: #FFFFFF;         /* White for text on dark backgrounds */
-            --text-light: #E5E5E5;         /* Light Gray for secondary text */
-            --text-lighter: #A0A0A0;       /* Light Gray for subtle text */
-            --bg-color: #0A0A0A;           /* Pure black background */
-            --bg-secondary: #1A1A1A;       /* Dark Gray for sections */
-            --bg-dark: #0A0A0A;            /* Very Dark for footer */
-            --card-bg: #1A1A1A;            /* Dark Gray cards */
-            --border-color: #333333;       /* Dark border color */
-            --nav-bg: #000000;             /* Pure black navigation */
-            --nav-text: #FFFFFF;           /* White navigation text */
+            --primary-color: #F97316;      /* Bright orange */
+            --primary-dark: #EA580C;        /* Darker orange */
+            --primary-light: #FB923C;       /* Light orange */
+            --primary-ultralight: #FFF4E6;  /* Very light orange */
+            --text-color: #FFFFFF;           /* White on dark sections */
+            --text-light: #E5E5E5;           /* Light grey */
+            --text-lighter: #A0A0A0;         /* Medium grey */
+            --bg-color: #0A0A0A;              /* Almost black background */
+            --bg-secondary: #1A1A1A;          /* Dark grey */
+            --bg-dark: #0A0A0A;                /* Footer black */
+            --card-bg: #1A1A1A;                /* Dark cards */
+            --border-color: #333333;           /* Dark border */
+            --nav-bg: #000000;                  /* Pure black navigation */
+            --nav-text: #FFFFFF;                 /* White navigation text */
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
             --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.7);
             --transition: all 0.3s ease;
@@ -32,19 +32,19 @@
             --container-width: 1200px;
             --header-height: 80px;
             
-            /* Hero overlay - dark for default theme */
+            /* Hero overlay */
             --hero-overlay: linear-gradient(135deg, rgba(10, 10, 10, 0.85) 0%, rgba(10, 10, 10, 0.7) 100%);
         }
 
         /* Light Theme Variables */
         .light-theme {
-            --primary-color: #D4AF37;
-            --primary-dark: #B8860B;
-            --primary-light: #FFD700;
-            --primary-ultralight: #FFF8DC;
-            --text-color: #222222;
-            --text-light: #444444;
-            --text-lighter: #666666;
+            --primary-color: #F97316;
+            --primary-dark: #EA580C;
+            --primary-light: #FB923C;
+            --primary-ultralight: #FFF4E6;
+            --text-color: #1E1E1E;
+            --text-light: #2E2E2E;
+            --text-lighter: #4B4B4B;
             --bg-color: #FFFFFF;
             --bg-secondary: #F8F8F8;
             --bg-dark: #FFFFFF;
@@ -54,8 +54,6 @@
             --nav-text: #FFFFFF;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
-            
-            /* Lighter overlay for light theme */
             --hero-overlay: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.8) 100%);
         }
 
@@ -71,7 +69,7 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--bg-color);
@@ -117,7 +115,7 @@
         .btn:hover {
             background-color: var(--primary-light);
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 8px 16px rgba(249, 115, 22, 0.3);
             color: #000000;
         }
 
@@ -231,7 +229,9 @@
             color: var(--primary-color);
         }
 
-       
+        .nav-link.active::after {
+            width: 100%;
+        }
 
         .dropdown {
             position: relative;
@@ -272,8 +272,13 @@
         }
 
         .dropdown-content a:hover {
-            background-color: rgba(212, 175, 55, 0.2);
+            background-color: rgba(249, 115, 22, 0.2);
             color: var(--primary-color);
+        }
+
+        .dropdown-content a.active {
+            color: var(--primary-color);
+            background-color: rgba(249, 115, 22, 0.1);
         }
 
         .theme-toggle, .rtl-toggle {
@@ -321,26 +326,22 @@
             margin-left: 20px;
         }
 
-        /* ============ ABOUT HERO with FIXED BACKGROUND BIKE IMAGE ============ */
+        /* ============ ABOUT HERO ============ */
         .about-hero {
             padding-top: calc(var(--header-height) + 80px);
             padding-bottom: 100px;
             text-align: center;
             position: relative;
             overflow: hidden;
-            
-            /* FIXED BACKGROUND IMAGE - PREMIUM BIKE (SAME STYLE AS HOME PAGE) */
-            background-image: var(--hero-overlay), url('https://images.unsplash.com/photo-1559348349-86f1f65817fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-image: var(--hero-overlay), url('https://images.unsplash.com/photo-1559348349-86f1f65817fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center 30%;
             background-repeat: no-repeat;
-            background-attachment: fixed; /* FIXED BACKGROUND */
-            transition: background-image 0.2s ease;
+            background-attachment: fixed;
         }
         
-        /* Light theme hero background overlay adjust */
         .light-theme .about-hero {
-            background-image: var(--hero-overlay), url('https://images.unsplash.com/photo-1559348349-86f1f65817fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-image: var(--hero-overlay), url('https://images.unsplash.com/photo-1559348349-86f1f65817fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
         }
 
         .about-hero-content {
@@ -352,7 +353,7 @@
         }
 
         .about-hero h1 {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             font-weight: 800;
             line-height: 1.2;
             margin-bottom: 20px;
@@ -376,11 +377,9 @@
 
         .light-theme .about-hero p {
             color: #222;
-            text-shadow: 0 1px 3px rgba(255,255,255,0.4);
         }
         .light-theme .about-hero h1 {
             color: #000;
-            text-shadow: 0 1px 3px rgba(255,255,255,0.4);
         }
 
         /* Section Common Styles */
@@ -390,7 +389,7 @@
         }
 
         .section-title h2 {
-            font-size: 2.8rem;
+            font-size: 3.2rem;
             font-weight: 800;
             margin-bottom: 16px;
             color: var(--text-color);
@@ -400,13 +399,14 @@
             color: var(--text-light);
             max-width: 700px;
             margin: 0 auto;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             line-height: 1.7;
         }
 
         /* Our Story Section */
         .story-section {
             background-color: var(--bg-color);
+            padding: 80px 0;
         }
 
         .story-content {
@@ -417,7 +417,7 @@
         }
 
         .story-text h3 {
-            font-size: 2rem;
+            font-size: 2.4rem;
             font-weight: 700;
             margin-bottom: 24px;
             color: var(--text-color);
@@ -427,7 +427,7 @@
         .story-text p {
             color: var(--text-light);
             margin-bottom: 20px;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             line-height: 1.8;
         }
 
@@ -453,6 +453,7 @@
         /* Why Choose Us Section */
         .why-choose-section {
             background-color: var(--bg-secondary);
+            padding: 80px 0;
         }
 
         .features-grid {
@@ -481,7 +482,7 @@
             width: 70px;
             height: 70px;
             border-radius: 12px;
-            background-color: rgba(212, 175, 55, 0.15);
+            background-color: rgba(249, 115, 22, 0.15);
             color: var(--primary-color);
             display: flex;
             align-items: center;
@@ -491,7 +492,7 @@
         }
 
         .feature-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 12px;
             color: var(--text-color);
             font-weight: 700;
@@ -500,17 +501,18 @@
         .feature-card p {
             color: var(--text-light);
             line-height: 1.7;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
         /* Our Fleet Section */
         .fleet-section {
             background-color: var(--bg-color);
+            padding: 80px 0;
         }
 
         .fleet-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
@@ -537,7 +539,7 @@
 
         .fleet-image img {
             width: 100%;
-            height: 200%;
+            height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
@@ -551,7 +553,7 @@
         }
 
         .fleet-content h3 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 12px;
             color: var(--text-color);
             font-weight: 700;
@@ -559,13 +561,15 @@
 
         .fleet-content p {
             color: var(--text-light);
-            margin-bottom: 20px;
-            line-height: 1.6;
+            margin-bottom: 0;
+            line-height: 1.7;
+            font-size: 1rem;
         }
 
         /* How We Operate Section */
         .operation-section {
             background-color: var(--bg-secondary);
+            padding: 80px 0;
         }
 
         .steps-container {
@@ -628,7 +632,7 @@
         }
 
         .step-content h3 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 12px;
             color: var(--primary-color);
             font-weight: 700;
@@ -637,37 +641,44 @@
         .step-content p {
             color: var(--text-light);
             line-height: 1.7;
+            font-size: 1rem;
         }
 
-        /* Testimonials Section */
+        /* Testimonials Section - FIXED ALIGNMENT */
         .testimonials-section {
             background-color: var(--bg-color);
+            padding: 80px 0;
         }
 
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            align-items: stretch;
         }
 
         .testimonial-card {
             background-color: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 36px;
+            padding: 32px;
             box-shadow: var(--shadow);
             transition: var(--transition);
             border: 1px solid var(--border-color);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .testimonial-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
         }
 
         .testimonial-header {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 16px;
             margin-bottom: 20px;
         }
 
@@ -675,15 +686,18 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            overflow: hidden;
             background-color: var(--primary-color);
             color: #000000;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            font-weight: bold;
+            font-weight: 700;
             flex-shrink: 0;
+        }
+
+        .testimonial-info {
+            flex: 1;
         }
 
         .testimonial-info h4 {
@@ -696,12 +710,24 @@
         .testimonial-info p {
             color: var(--text-light);
             font-size: 0.9rem;
+            line-height: 1.4;
         }
 
         .testimonial-rating {
             color: var(--primary-color);
             margin-bottom: 16px;
-            font-size: 1.1rem;
+            font-size: 1rem;
+        }
+
+        .testimonial-rating i {
+            margin-right: 2px;
+        }
+
+        .testimonial-text {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 0.95rem;
+            margin-top: auto;
         }
 
         /* CTA Section */
@@ -718,7 +744,7 @@
         }
 
         .cta-content h2 {
-            font-size: 3rem;
+            font-size: 3.2rem;
             font-weight: 800;
             margin-bottom: 20px;
             line-height: 1.2;
@@ -728,11 +754,11 @@
         .cta-content p {
             font-size: 1.2rem;
             margin-bottom: 40px;
-            opacity: 0.8;
+            opacity: 0.9;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            color: rgba(0, 0, 0, 0.8);
+            color: rgba(0, 0, 0, 0.9);
         }
 
         .cta-buttons {
@@ -748,7 +774,7 @@
         }
 
         .cta-buttons .btn:hover {
-            background-color: #111111;
+            background-color: #1a1a1a;
             color: var(--primary-light);
         }
 
@@ -859,8 +885,6 @@
             border-top: 1px solid var(--border-color);
             color: var(--text-light);
             font-size: 0.9rem;
-            max-width: var(--container-width);
-            margin: 0 auto;
         }
 
         .copyright a {
@@ -893,17 +917,38 @@
             right: 0;
         }
 
-        /* Responsive Styles - ALIGNMENT FIXED FOR MOBILE/TABLET */
+        /* Mobile Dropdown Arrow */
+        .mobile-dropdown-arrow {
+            transition: transform 0.3s ease;
+            font-size: 0.8rem;
+            margin-left: 5px;
+        }
+        
+        .dropdown.active .mobile-dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        
+        @media (min-width: 1025px) {
+            .mobile-dropdown-arrow {
+                display: none;
+            }
+        }
+        
+        .text-xs {
+            font-size: 0.75rem;
+        }
+
+        /* ============ RESPONSIVE STYLES ============ */
         @media (max-width: 1200px) {
-            .container, .nav-container, .footer-container {
+            .container {
                 max-width: 100%;
                 padding: 0 20px;
             }
             .about-hero h1 {
-                font-size: 3rem;
+                font-size: 3.2rem;
             }
             .cta-content h2 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
         }
 
@@ -931,15 +976,12 @@
             }
             .mobile-toggle {
                 display: flex;
-                align-items: center;
-                justify-content: center;
             }
             .nav-link {
                 width: 100%;
                 padding: 16px 0;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                 justify-content: space-between;
-                color: #FFFFFF;
             }
             .nav-link::after {
                 display: none;
@@ -958,7 +1000,6 @@
                 overflow: hidden;
                 transition: max-height 0.3s ease, padding 0.3s ease;
                 border: none;
-                margin-left: 0;
                 width: 100%;
             }
             .dropdown.active .dropdown-content {
@@ -969,7 +1010,6 @@
             }
             .dropdown-content a {
                 padding: 12px 0 12px 20px;
-                color: #FFFFFF;
             }
             .nav-actions {
                 flex-direction: column;
@@ -984,35 +1024,37 @@
                 width: 100%;
                 justify-content: center;
             }
+            
             .story-content {
                 grid-template-columns: 1fr;
                 gap: 50px;
             }
+            
             .story-image {
                 height: 400px;
             }
+            
             .about-hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
+            
             .steps-container::before {
                 display: none;
             }
+            
             .step-item {
                 flex-direction: column !important;
                 text-align: center;
                 gap: 25px;
             }
+            
+            .section-title h2 {
+                font-size: 2.8rem;
+            }
+            
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 40px;
-            }
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            .cta-buttons .btn {
-                width: 100%;
-                max-width: 300px;
             }
         }
 
@@ -1020,162 +1062,122 @@
             section {
                 padding: 80px 0;
             }
+            
             .about-hero {
                 padding-top: calc(var(--header-height) + 60px);
-                background-attachment: scroll; /* fallback for mobile */
+                background-attachment: scroll;
             }
+            
             .about-hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.4rem;
             }
+            
             .about-hero p {
                 font-size: 1.1rem;
             }
+            
             .section-title h2 {
-                font-size: 2.2rem;
+                font-size: 2.4rem;
             }
+            
             .section-title p {
                 font-size: 1rem;
             }
+            
+            .story-text h3 {
+                font-size: 2rem;
+            }
+            
             .features-grid,
             .fleet-grid,
             .testimonials-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .cta-content h2 {
+                font-size: 2.4rem;
+            }
+            
+            .cta-content p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-            .cta-content h2 {
-                font-size: 2rem;
-            }
-            .cta-content p {
-                font-size: 1.1rem;
-            }
         }
 
         @media (max-width: 576px) {
-            .container, .nav-container, .footer-container {
+            .container {
                 padding: 0 16px;
             }
+            
             .about-hero h1 {
                 font-size: 2rem;
             }
+            
             .btn {
                 padding: 12px 24px;
                 width: 100%;
                 justify-content: center;
             }
+            
             .section-title h2 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
+            
+            .story-image {
+                height: 300px;
+            }
+            
             .feature-card,
             .fleet-card,
             .testimonial-card,
             .step-content {
                 padding: 24px;
             }
-            .story-image {
-                height: 300px;
+            
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+            
+            .testimonial-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .testimonial-info {
+                text-align: center;
             }
         }
 
-        .mobile-dropdown-arrow {
-            transition: transform 0.3s ease;
-            font-size: 0.8rem;
-            margin-left: 5px;
-        }
-        .dropdown.active .mobile-dropdown-arrow {
-            transform: rotate(180deg);
-        }
-        @media (min-width: 1025px) {
-            .mobile-dropdown-arrow {
-                display: none;
+        @media (max-width: 360px) {
+            .about-hero h1 {
+                font-size: 1.8rem;
             }
-        }
-        .text-xs {
-            font-size: 0.75rem;
-        }
-        .light-accent {
-            color: var(--primary-color);
-        }
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
-            margin: 40px auto;
-            width: 80%;
-        }
-        .accent-text {
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-        .gold-glow {
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-        }
-        .border-gold {
-            border-color: var(--primary-color) !important;
-        }
-        /* ===== FIXED TESTIMONIAL ALIGNMENT (MOBILE/TABLET) ===== */
-        .testimonials-flex {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
-        .testimonial-card-fixed {
-            width: 260px;
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-        .testimonial-card-fixed:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        .light-theme .testimonial-card-fixed {
-            background: #f2f2f2;
-        }
-        .testimonial-avatar-fixed {
-            width: 55px;
-            height: 55px;
-            background: var(--primary-color);
-            color: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-weight: 700;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-        .testimonial-info-fixed h4 {
-            margin: 0;
-            color: var(--text-color);
-            font-size: 1.1rem;
-        }
-        .testimonial-info-fixed p {
-            margin: 3px 0 0;
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-        .testimonial-rating-fixed {
-            color: var(--primary-color);
-            font-size: 16px;
-        }
-        .testimonial-text-fixed {
-            margin: 0;
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-        @media (max-width: 600px) {
-            .testimonial-card-fixed {
-                width: 100%;
-                max-width: 350px;
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .story-text h3 {
+                font-size: 1.6rem;
+            }
+            
+            .testimonial-card {
+                padding: 20px;
             }
         }
     </style>
@@ -1208,7 +1210,7 @@
                 </div>
                 
                 <a href="about.html" class="nav-link active">About</a>
-                <a href="Gallery.html" class="nav-link">Gallery</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
                 <a href="pricing.html" class="nav-link">Pricing</a>
                 <a href="booking.html" class="nav-link">Book Now</a>
                 <a href="contact.html" class="nav-link">Contact</a>
@@ -1239,7 +1241,7 @@
         </div>
     </header>
 
-    <!-- About Hero Section - FIXED BACKGROUND BIKE IMAGE (SAME PREMIUM BIKE AS HOME) -->
+    <!-- About Hero Section -->
     <section class="about-hero" id="about-hero">
         <div class="container">
             <div class="about-hero-content">
@@ -1413,7 +1415,7 @@
         </div>
     </section>
 
-    <!-- Testimonials Section - ALIGNMENT FIXED FOR MOBILE/TABLET -->
+    <!-- Testimonials Section - FIXED ALIGNMENT -->
     <section class="testimonials-section" id="testimonials">
         <div class="container">
             <div class="section-title">
@@ -1421,61 +1423,116 @@
                 <p>Hear from our community of satisfied cyclists who choose GrowwBike for their urban adventures.</p>
             </div>
             
-            <!-- Fixed testimonial flex layout for proper centering & wrapping -->
-            <div class="testimonials-flex">
-
+            <div class="testimonials-grid">
                 <!-- Card 1 -->
-                <div class="testimonial-card-fixed">
-                    <div style="display:flex; align-items:center; gap:15px;">
-                        <div class="testimonial-avatar-fixed">MJ</div>
-                        <div class="testimonial-info-fixed">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">MJ</div>
+                        <div class="testimonial-info">
                             <h4>Michael Johnson</h4>
                             <p>Daily Commuter</p>
                         </div>
                     </div>
-                    <div class="testimonial-rating-fixed">★★★★★</div>
-                    <p class="testimonial-text-fixed">"I've been using GrowwBike daily. Excellent condition bikes and super convenient."</p>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"I've been using GrowwBike for my daily commute for over 6 months now. The bikes are always in excellent condition, the stations are conveniently located, and the pricing is very affordable. Highly recommended!"</p>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="testimonial-card-fixed">
-                    <div style="display:flex; align-items:center; gap:15px;">
-                        <div class="testimonial-avatar-fixed">SR</div>
-                        <div class="testimonial-info-fixed">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">SR</div>
+                        <div class="testimonial-info">
                             <h4>Sarah Rodriguez</h4>
                             <p>Weekend Explorer</p>
                         </div>
                     </div>
-                    <div class="testimonial-rating-fixed">★★★★☆</div>
-                    <p class="testimonial-text-fixed">"Mountain bikes are always well-maintained and ready for adventure."</p>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text">"The mountain bikes are top-notch! I rented one for a weekend trail adventure, and it performed flawlessly. The staff was incredibly helpful with route suggestions. Can't wait for my next rental!"</p>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="testimonial-card-fixed">
-                    <div style="display:flex; align-items:center; gap:15px;">
-                        <div class="testimonial-avatar-fixed">TP</div>
-                        <div class="testimonial-info-fixed">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">TP</div>
+                        <div class="testimonial-info">
                             <h4>Thomas Parker</h4>
-                            <p>Tourist<br>Explorer</p>
+                            <p>Tourist Explorer</p>
                         </div>
                     </div>
-                    <div class="testimonial-rating-fixed">★★★★★</div>
-                    <p class="testimonial-text-fixed">"Electric bikes made exploring effortless and enjoyable."</p>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Visited the city for a week and discovered GrowwBike. The electric bikes made exploring effortless and fun. The booking process was simple, and the return was quick. This is the way to see the city!"</p>
                 </div>
 
                 <!-- Card 4 -->
-                <div class="testimonial-card-fixed">
-                    <div style="display:flex; align-items:center; gap:15px;">
-                        <div class="testimonial-avatar-fixed">AK</div>
-                        <div class="testimonial-info-fixed">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">AK</div>
+                        <div class="testimonial-info">
                             <h4>Arun Kumar</h4>
-                            <p>Office<br>Professional</p>
+                            <p>Office Professional</p>
                         </div>
                     </div>
-                    <div class="testimonial-rating-fixed">★★★★★</div>
-                    <p class="testimonial-text-fixed">"Smooth booking process and affordable pricing. Highly recommended."</p>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Smooth booking process and affordable pricing. The bikes are well-maintained and the staff is always friendly. I use GrowwBike for my office commute and couldn't be happier with the service."</p>
                 </div>
-
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">MJ</div>
+                        <div class="testimonial-info">
+                            <h4>Michael Johnson</h4>
+                            <p>Daily Commuter</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"I've been using GrowwBike for my daily commute for over 6 months now. The bikes are always in excellent condition, the stations are conveniently located, and the pricing is very affordable. Highly recommended!"</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">MJ</div>
+                        <div class="testimonial-info">
+                            <h4>Michael Johnson</h4>
+                            <p>Daily Commuter</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"I've been using GrowwBike for my daily commute for over 6 months now. The bikes are always in excellent condition, the stations are conveniently located, and the pricing is very affordable. Highly recommended!"</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1488,7 +1545,7 @@
                 <p>Join thousands of satisfied riders who have discovered the freedom of urban cycling with GrowwBike.</p>
                 
                 <div class="cta-buttons">
-                    <a href="Gallery.html" class="btn">Browse Our Bikes</a>
+                    <a href="gallery.html" class="btn">Browse Our Bikes</a>
                     <a href="contact.html" class="btn btn-outline">Contact Our Team</a>
                 </div>
             </div>
@@ -1521,7 +1578,7 @@
                     <ul class="footer-links">
                         <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                         <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
-                        <li><a href="Gallery.html"><i class="fas fa-bicycle"></i> Gallery</a></li>
+                        <li><a href="gallery.html"><i class="fas fa-bicycle"></i> Gallery</a></li>
                         <li><a href="pricing.html"><i class="fas fa-tag"></i> Pricing</a></li>
                         <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
                     </ul>
@@ -1596,9 +1653,6 @@
         rtlToggle.addEventListener('click', () => {
             body.classList.toggle('rtl');
             localStorage.setItem('rtl', body.classList.contains('rtl') ? 'true' : 'false');
-            setTimeout(() => {
-                document.body.clientWidth;
-            }, 10);
         });
 
         // Mobile Menu Toggle
@@ -1618,20 +1672,22 @@
 
         // Dropdown functionality for mobile
         const setupDropdown = (dropdownElement) => {
-            dropdownElement.addEventListener('click', (e) => {
-                if (window.innerWidth <= 1024) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const dropdown = dropdownElement.parentElement;
-                    dropdown.classList.toggle('active');
-                    
-                    document.querySelectorAll('.dropdown').forEach(otherDropdown => {
-                        if (otherDropdown !== dropdown && otherDropdown.classList.contains('active')) {
-                            otherDropdown.classList.remove('active');
-                        }
-                    });
-                }
-            });
+            if (dropdownElement) {
+                dropdownElement.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 1024) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const dropdown = dropdownElement.parentElement;
+                        dropdown.classList.toggle('active');
+                        
+                        document.querySelectorAll('.dropdown').forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown && otherDropdown.classList.contains('active')) {
+                                otherDropdown.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            }
         };
 
         setupDropdown(homeDropdown);
@@ -1704,6 +1760,7 @@
             
             // Highlight current page in navigation
             document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
                 if (link.getAttribute('href') === 'about.html') {
                     link.classList.add('active');
                 }
@@ -1750,14 +1807,6 @@
                 const dropdowns = document.querySelectorAll('.dropdown.active');
                 dropdowns.forEach(dropdown => {
                     dropdown.classList.remove('active');
-                });
-            }
-            
-            if (window.innerWidth > 1024) {
-                document.querySelectorAll('.dropdown-content').forEach(content => {
-                    content.style.maxHeight = '';
-                    content.style.padding = '';
-                    content.style.border = '';
                 });
             }
         });

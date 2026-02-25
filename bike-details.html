@@ -9,22 +9,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables - Same as gallery page for consistency */
+        /* CSS Variables – EXACT SAME THEME as index.html (orange/white/black) */
         :root {
-            --primary-color: #D4AF37;
-            --primary-dark: #B8860B;
-            --primary-light: #FFD700;
-            --primary-ultralight: #FFF8DC;
-            --text-color: #FFFFFF;
-            --text-light: #E5E5E5;
-            --text-lighter: #A0A0A0;
-            --bg-color: #0A0A0A;
-            --bg-secondary: #1A1A1A;
-            --bg-dark: #0A0A0A;
-            --card-bg: #1A1A1A;
-            --border-color: #333333;
-            --nav-bg: #000000;
-            --nav-text: #FFFFFF;
+            /* Primary Color – vibrant orange */
+            --primary-color: #F97316;      /* Bright orange */
+            --primary-dark: #EA580C;        /* Darker orange */
+            --primary-light: #FB923C;       /* Light orange */
+            --primary-ultralight: #FFF4E6;  /* Very light orange */
+            
+            /* Neutral Colors – black/white/grey */
+            --text-color: #FFFFFF;         /* White on dark sections */
+            --text-light: #E5E5E5;         /* Light grey */
+            --text-lighter: #A0A0A0;       /* Medium grey */
+            --bg-color: #0A0A0A;           /* Almost black background */
+            --bg-secondary: #1A1A1A;       /* Dark grey */
+            --bg-dark: #0A0A0A;            /* Footer black */
+            --card-bg: #1A1A1A;            /* Dark cards */
+            --border-color: #333333;       /* Dark border */
+            --nav-bg: #000000;              /* Pure black navigation */
+            --nav-text: #FFFFFF;             /* White navigation text */
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
             --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.7);
             --transition: all 0.3s ease;
@@ -33,22 +36,22 @@
             --header-height: 80px;
         }
 
-        /* Light Theme */
+        /* Light Theme – EXACT same as index.html */
         .light-theme {
-            --primary-color: #D4AF37;
-            --primary-dark: #B8860B;
-            --primary-light: #FFD700;
-            --primary-ultralight: #FFF8DC;
-            --text-color: #222222;
-            --text-light: #444444;
-            --text-lighter: #666666;
-            --bg-color: #FFFFFF;
-            --bg-secondary: #F8F8F8;
-            --bg-dark: #FFFFFF;
-            --card-bg: #FFFFFF;
-            --border-color: #E0E0E0;
-            --nav-bg: #000000;
-            --nav-text: #FFFFFF;
+            --primary-color: #F97316;      /* Same vibrant orange */
+            --primary-dark: #EA580C;
+            --primary-light: #FB923C;
+            --primary-ultralight: #FFF4E6;
+            --text-color: #1E1E1E;         /* Almost black text */
+            --text-light: #2E2E2E;          /* Dark grey */
+            --text-lighter: #4B4B4B;        /* Medium-dark grey */
+            --bg-color: #FFFFFF;            /* Pure white background */
+            --bg-secondary: #F8F8F8;        /* Light grey sections */
+            --bg-dark: #FFFFFF;              /* White footer */
+            --card-bg: #FFFFFF;              /* White cards */
+            --border-color: #E0E0E0;         /* Light grey border */
+            --nav-bg: #000000;                /* Keep black nav in light mode */
+            --nav-text: #FFFFFF;               /* White nav text */
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
@@ -64,12 +67,13 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--bg-color);
             transition: var(--transition);
             overflow-x: hidden;
+            font-weight: 400;
         }
 
         a {
@@ -88,7 +92,7 @@
             padding: 0 24px;
         }
 
-        /* Button Styles */
+        /* Button Styles – EXACT same as index.html */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -96,19 +100,20 @@
             gap: 10px;
             padding: 14px 28px;
             background-color: var(--primary-color);
-            color: #000000;
+            color: #000000; /* Black text on orange */
             border-radius: 8px;
             font-weight: 700;
             border: none;
             cursor: pointer;
             transition: var(--transition);
+            text-align: center;
             font-size: 0.95rem;
         }
 
         .btn:hover {
             background-color: var(--primary-light);
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 8px 16px rgba(249, 115, 22, 0.3);
             color: #000000;
         }
 
@@ -116,6 +121,9 @@
             background-color: transparent;
             border: 2px solid var(--primary-color);
             color: var(--primary-color);
+            padding: 14px 28px;
+            font-size: 0.95rem;
+            font-weight: 700;
         }
 
         .btn-outline:hover {
@@ -128,7 +136,11 @@
             font-size: 1.1rem;
         }
 
-        /* Header & Navigation - Same as gallery */
+        section {
+            padding: 80px 0;
+        }
+
+        /* HEADER - EXACT same as index.html */
         header {
             position: fixed;
             top: 0;
@@ -164,23 +176,29 @@
             align-items: center;
             gap: 10px;
             z-index: 1001;
+            flex-shrink: 0;
         }
 
         .logo-icon {
             width: 36px;
             height: 36px;
             border-radius: 8px;
+            background: none;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary-color);
             font-size: 1.5rem;
+            font-weight: bold;
         }
 
         .nav-menu {
             display: flex;
             align-items: center;
             gap: 30px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
         }
 
         .nav-link {
@@ -192,6 +210,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            white-space: nowrap;
             font-size: 0.95rem;
         }
 
@@ -218,8 +237,10 @@
             color: var(--primary-color);
         }
 
-       
-    
+        .nav-link.active::after {
+            width: 100%;
+        }
+
         .dropdown {
             position: relative;
         }
@@ -254,11 +275,12 @@
             padding: 12px 24px;
             transition: var(--transition);
             color: #FFFFFF;
+            white-space: nowrap;
             font-size: 0.9rem;
         }
 
         .dropdown-content a:hover {
-            background-color: rgba(212, 175, 55, 0.2);
+            background-color: rgba(249, 115, 22, 0.2);
             color: var(--primary-color);
         }
 
@@ -277,6 +299,7 @@
             align-items: center;
             justify-content: center;
             background-color: rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
         }
 
         .theme-toggle:hover, .rtl-toggle:hover {
@@ -295,12 +318,14 @@
             border-radius: 8px;
             background-color: rgba(255, 255, 255, 0.1);
             z-index: 1001;
+            flex-shrink: 0;
         }
 
         .nav-actions {
             display: flex;
             align-items: center;
             gap: 15px;
+            flex-shrink: 0;
             margin-left: 20px;
         }
 
@@ -308,7 +333,7 @@
         .page-header {
             padding-top: calc(var(--header-height) + 60px);
             padding-bottom: 40px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(10, 10, 10, 0.95) 100%);
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(10, 10, 10, 0.95) 100%);
         }
 
         .breadcrumb {
@@ -318,6 +343,7 @@
             color: var(--text-light);
             font-size: 0.95rem;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
         .breadcrumb a {
@@ -334,16 +360,21 @@
             color: var(--primary-color);
         }
 
+        .breadcrumb span {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
         /* Bike Details Section */
         .bike-details-section {
-            padding: 60px 0 100px;
+            padding: 40px 0 80px;
         }
 
         .bike-details-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
         }
 
         /* Bike Gallery */
@@ -380,7 +411,7 @@
         }
 
         .thumbnail {
-            height: 100px;
+            height: 90px;
             border-radius: 8px;
             overflow: hidden;
             cursor: pointer;
@@ -413,7 +444,7 @@
         .bike-category {
             display: inline-block;
             padding: 6px 16px;
-            background-color: rgba(212, 175, 55, 0.15);
+            background-color: rgba(249, 115, 22, 0.15);
             color: var(--primary-color);
             border-radius: 30px;
             font-size: 0.9rem;
@@ -438,6 +469,7 @@
             align-items: center;
             gap: 15px;
             margin-bottom: 30px;
+            flex-wrap: wrap;
         }
 
         .stars {
@@ -512,40 +544,59 @@
             background-color: var(--bg-secondary);
             border-radius: 8px;
             border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .feature-item:hover {
+            border-color: var(--primary-color);
         }
 
         .feature-item i {
             width: 36px;
             height: 36px;
             border-radius: 8px;
-            background-color: rgba(212, 175, 55, 0.15);
+            background-color: rgba(249, 115, 22, 0.15);
             color: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1rem;
+            flex-shrink: 0;
         }
 
         .feature-item span {
             color: var(--text-color);
             font-weight: 500;
+            font-size: 0.95rem;
         }
 
         /* Specifications Table */
         .specifications {
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
 
         .specifications h3 {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: var(--text-color);
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .specifications h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
         }
 
         .specs-table {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             background-color: var(--bg-secondary);
             border-radius: var(--border-radius);
@@ -556,72 +607,96 @@
         .spec-row {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
+            padding: 10px;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .spec-row:hover {
+            background-color: rgba(249, 115, 22, 0.05);
         }
 
         .spec-label {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-lighter);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .spec-value {
-            font-size: 1.1rem;
-            font-weight: 700;
+            font-size: 1rem;
+            font-weight: 600;
             color: var(--text-color);
         }
 
         /* Rental Terms */
         .rental-terms {
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
 
         .rental-terms h3 {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: var(--text-color);
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .rental-terms h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
         }
 
         .terms-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
 
         .term-item {
             display: flex;
             align-items: center;
             gap: 15px;
-            padding: 15px;
+            padding: 18px;
             background-color: var(--bg-secondary);
             border-radius: 8px;
             border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .term-item:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
         }
 
         .term-item i {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border-radius: 8px;
-            background-color: rgba(212, 175, 55, 0.15);
+            background-color: rgba(249, 115, 22, 0.15);
             color: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            flex-shrink: 0;
         }
 
-        .term-content h4 {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-            color: var(--text-color);
+        .term-content {
+            flex: 1;
         }
 
         .term-content p {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text-light);
+            line-height: 1.5;
         }
 
         /* Action Buttons */
@@ -629,17 +704,17 @@
             display: flex;
             gap: 20px;
             margin-top: 40px;
+            flex-wrap: wrap;
         }
 
         .action-buttons .btn {
             flex: 1;
-            padding: 18px 28px;
-            font-size: 1.1rem;
+            min-width: 200px;
         }
 
         /* Similar Bikes Section */
         .similar-bikes {
-            margin-top: 80px;
+            margin-top: 60px;
             padding-top: 60px;
             border-top: 1px solid var(--border-color);
         }
@@ -649,6 +724,8 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .section-header h2 {
@@ -673,6 +750,9 @@
             overflow: hidden;
             border: 1px solid var(--border-color);
             transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .similar-bike-card:hover {
@@ -682,8 +762,9 @@
         }
 
         .similar-bike-image {
-            height: 200px;
+            height: 180px;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
         .similar-bike-image img {
@@ -699,25 +780,31 @@
 
         .similar-bike-content {
             padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .similar-bike-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 15px;
+            gap: 10px;
         }
 
         .similar-bike-header h3 {
             font-size: 1.2rem;
             font-weight: 700;
             color: var(--text-color);
+            line-height: 1.3;
         }
 
         .similar-bike-price {
             font-size: 1.2rem;
             font-weight: 800;
             color: var(--primary-color);
+            white-space: nowrap;
         }
 
         .similar-bike-price span {
@@ -732,18 +819,27 @@
             margin-bottom: 20px;
             color: var(--text-light);
             font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .similar-bike-specs span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .similar-bike-specs i {
             color: var(--primary-color);
-            margin-right: 5px;
         }
 
         .similar-bike-link {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             color: var(--primary-color);
             font-weight: 600;
             transition: var(--transition);
+            margin-top: auto;
         }
 
         .similar-bike-link:hover {
@@ -751,7 +847,7 @@
             transform: translateX(5px);
         }
 
-        /* Footer */
+        /* Footer - EXACT same as index.html */
         footer {
             background-color: var(--bg-dark);
             color: var(--text-color);
@@ -878,179 +974,18 @@
             right: 0;
         }
 
-        /* Responsive Styles */
-        @media (max-width: 1200px) {
-            .container, .nav-container, .footer-container {
-                padding: 0 20px;
-            }
-            
-            .bike-title {
-                font-size: 2.5rem;
-            }
+        body.rtl .specifications h3::after,
+        body.rtl .rental-terms h3::after {
+            left: auto;
+            right: 0;
         }
 
-        @media (max-width: 1024px) {
-            .nav-menu {
-                position: fixed;
-                top: var(--header-height);
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - var(--header-height));
-                background-color: #000000;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: flex-start;
-                padding: 30px;
-                gap: 0;
-                transition: var(--transition);
-                z-index: 999;
-                overflow-y: auto;
-            }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .mobile-toggle {
-                display: flex;
-            }
-
-            .nav-link {
-                width: 100%;
-                padding: 16px 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                justify-content: space-between;
-            }
-
-            .nav-link::after {
-                display: none;
-            }
-
-            .dropdown-content {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                background-color: rgba(255, 255, 255, 0.05);
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease;
-                border: none;
-                width: 100%;
-            }
-
-            .dropdown.active .dropdown-content {
-                max-height: 300px;
-                padding: 10px 0;
-            }
-
-            .dropdown-content a {
-                padding: 12px 0 12px 20px;
-            }
-
-            .nav-actions {
-                flex-direction: column;
-                width: 100%;
-                margin-top: 20px;
-                padding-top: 20px;
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
-                margin-left: 0;
-            }
-
-            .bike-details-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .bike-gallery {
-                position: static;
-            }
-
-            .main-image {
-                height: 350px;
-            }
-
-            .similar-bikes-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        body.rtl .feature-item {
+            flex-direction: row-reverse;
         }
 
-        @media (max-width: 768px) {
-            .bike-title {
-                font-size: 2rem;
-            }
-
-            .bike-price-large {
-                font-size: 2rem;
-            }
-
-            .specs-table {
-                grid-template-columns: 1fr;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .action-buttons {
-                flex-direction: column;
-            }
-
-            .similar-bikes-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-header {
-                flex-direction: column;
-                gap: 20px;
-                align-items: flex-start;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .main-image {
-                height: 250px;
-            }
-
-            .thumbnail-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-
-            .thumbnail {
-                height: 70px;
-            }
-
-            .bike-title {
-                font-size: 1.8rem;
-            }
-
-            .bike-price-large {
-                font-size: 1.8rem;
-            }
-
-            .specs-table {
-                padding: 20px;
-            }
-        }
-
-        /* Mobile dropdown arrow */
-        .mobile-dropdown-arrow {
-            display: none;
-        }
-
-        @media (max-width: 1024px) {
-            .mobile-dropdown-arrow {
-                display: inline-block;
-                transition: transform 0.3s ease;
-            }
-
-            .dropdown.active .mobile-dropdown-arrow {
-                transform: rotate(180deg);
-            }
+        body.rtl .term-item {
+            flex-direction: row-reverse;
         }
 
         /* Loading State */
@@ -1064,6 +999,20 @@
             font-size: 3rem;
             color: var(--primary-color);
             margin-bottom: 20px;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border-color);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         /* Not Found */
@@ -1089,10 +1038,259 @@
             color: var(--text-light);
             margin-bottom: 30px;
         }
+
+        /* Mobile Navigation - EXACT same as index.html */
+        @media (max-width: 1024px) {
+            .nav-menu {
+                position: fixed;
+                top: var(--header-height);
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - var(--header-height));
+                background-color: #000000;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                padding: 30px;
+                gap: 0;
+                transition: var(--transition);
+                z-index: 999;
+                overflow-y: auto;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+                margin: 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .nav-link {
+                width: 100%;
+                padding: 16px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                justify-content: space-between;
+                color: #FFFFFF;
+            }
+
+            .nav-link::after {
+                display: none;
+            }
+
+            .dropdown-content {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background-color: rgba(255, 255, 255, 0.05);
+                margin-top: 0;
+                padding: 0;
+                border-radius: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease, padding 0.3s ease;
+                border: none;
+                width: 100%;
+            }
+
+            .dropdown.active .dropdown-content {
+                max-height: 300px;
+                padding: 10px 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .dropdown-content a {
+                padding: 12px 0 12px 20px;
+                color: #FFFFFF;
+            }
+
+            .nav-actions {
+                flex-direction: column;
+                width: 100%;
+                gap: 15px;
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                margin-left: 0;
+            }
+            
+            .nav-actions .btn-outline {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .bike-details-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .bike-gallery {
+                position: static;
+            }
+
+            .main-image {
+                height: 350px;
+            }
+
+            .specs-table {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .similar-bikes-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .terms-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .page-header {
+                padding-top: calc(var(--header-height) + 40px);
+            }
+
+            .bike-title {
+                font-size: 2.2rem;
+            }
+
+            .bike-price-large {
+                font-size: 2rem;
+            }
+
+            .main-image {
+                height: 280px;
+            }
+
+            .thumbnail-grid {
+                gap: 10px;
+            }
+
+            .thumbnail {
+                height: 70px;
+            }
+
+            .specs-table {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .action-buttons .btn {
+                width: 100%;
+            }
+
+            .similar-bikes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .bike-rating {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .bike-title {
+                font-size: 1.8rem;
+            }
+
+            .bike-price-large {
+                font-size: 1.8rem;
+            }
+
+            .main-image {
+                height: 220px;
+            }
+
+            .thumbnail-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .thumbnail {
+                height: 60px;
+            }
+
+            .breadcrumb {
+                font-size: 0.85rem;
+                gap: 8px;
+            }
+
+            .term-item {
+                padding: 15px;
+            }
+
+            .term-item i {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+
+            .similar-bike-image {
+                height: 160px;
+            }
+        }
+
+        /* Mobile dropdown arrow */
+        .mobile-dropdown-arrow {
+            display: none;
+            font-size: 0.8rem;
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        @media (max-width: 1024px) {
+            .mobile-dropdown-arrow {
+                display: inline-block;
+            }
+
+            .dropdown.active .mobile-dropdown-arrow {
+                transform: rotate(180deg);
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .mobile-dropdown-arrow {
+                display: none;
+            }
+        }
+
+        .text-xs {
+            font-size: 0.75rem;
+        }
+
+        .light-accent {
+            color: var(--primary-color);
+        }
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
+    <!-- HEADER - EXACT same as index.html -->
     <header>
         <div class="nav-container">
             <a href="index.html" class="logo">
@@ -1110,7 +1308,7 @@
                 <div class="dropdown">
                     <a href="index.html" class="nav-link" id="homeDropdown">
                         <span>Home</span>
-                        <i class="fas fa-chevron-down mobile-dropdown-arrow"></i>
+                        <i class="fas fa-chevron-down mobile-dropdown-arrow text-xs"></i>
                     </a>
                     <div class="dropdown-content">
                         <a href="index.html">Home 1</a>
@@ -1127,9 +1325,9 @@
                 <div class="dropdown">
                     <a href="#" class="nav-link" id="dashboardDropdown">
                         <span>Dashboard</span>
-                        <i class="fas fa-chevron-down mobile-dropdown-arrow"></i>
+                        <i class="fas fa-chevron-down mobile-dropdown-arrow text-xs"></i>
                     </a>
-                    <div class="dropdown-content">
+                   <div class="dropdown-content">
                         <a href="admin.html"><i class="fas fa-user-shield"></i> Admin Dashboard</a>
                         <a href="client.html"><i class="fas fa-user"></i> Client Dashboard</a>
                     </div>
@@ -1167,23 +1365,25 @@
     <section class="bike-details-section">
         <div class="container">
             <div id="bike-details-container">
-                <!-- Dynamic content will be loaded here -->
+                <!-- Loading State -->
+                <div class="loading" id="loading-state">
+                    <div class="loading-spinner"></div>
+                    <p>Loading bike details...</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - EXACT same as index.html -->
     <footer>
         <div class="footer-container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <a href="index.html" class="logo">
-                        <div class="logo-icon">
-                            <i class="fas fa-bicycle"></i>
-                        </div>
+                    <a href="index.html" class="logo" style="margin-bottom: 16px;">
+                        <div class="logo-icon"><i class="fas fa-bicycle"></i></div>
                         <span>GrowwBike</span>
                     </a>
-                    <p style="margin-bottom: 20px; color: var(--text-light);">Premium bike rentals for urban exploration and adventure. Offering quality motorcycles, flexible rental plans, and exceptional customer service across the city.</p>
+                    <p style="margin-bottom: 20px; color: var(--text-light);">Premium bike rentals for urban exploration and adventure. Quality motorcycles, flexible plans, and exceptional service.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1192,7 +1392,7 @@
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                
+                    
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
@@ -1228,13 +1428,13 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2026 GrowwBike Bike Rentals. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Safety Guidelines</a></p>
+                <p>&copy; 2026 GrowwBike Bike Rentals. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Bike database with all details
+        // Bike database with all details - Updated with orange theme colors
         const bikeDatabase = {
             'royal-enfield-classic-350': {
                 id: 'royal-enfield-classic-350',
@@ -1244,13 +1444,13 @@
                 price: 1200,
                 rating: 4.8,
                 reviewCount: 245,
-                description: 'The Royal Enfield Classic 350 is an iconic motorcycle that embodies timeless design and modern reliability. Perfect for leisurely weekend rides and daily commutes alike, this bike offers a smooth, thumping experience that captures the essence of classic motorcycling. With its retro styling, comfortable seating position, and refined engine, it\'s the ideal choice for riders who appreciate tradition and quality.',
-                longDescription: 'Experience the perfect blend of vintage charm and contemporary engineering. The Classic 350 features a refined 346cc engine that delivers smooth power delivery and that signature Royal Enfield thump. The motorcycle comes equipped with dual-channel ABS, redesigned chassis for better handling, and improved suspension for superior ride comfort. Whether you\'re cruising through city streets or exploring countryside roads, the Classic 350 provides an unparalleled riding experience.',
+                description: 'The Royal Enfield Classic 350 is an iconic motorcycle that embodies timeless design and modern reliability. Perfect for leisurely weekend rides and daily commutes alike, this bike offers a smooth, thumping experience that captures the essence of classic motorcycling.',
+                longDescription: 'Experience the perfect blend of vintage charm and contemporary engineering. The Classic 350 features a refined 346cc engine that delivers smooth power delivery and that signature Royal Enfield thump. The motorcycle comes equipped with dual-channel ABS, redesigned chassis for better handling, and improved suspension for superior ride comfort.',
                 engine: '346 cc',
                 mileage: '35 km/l',
                 transmission: '5-Speed',
-                power: '20.2 bhp @ 6100 rpm',
-                torque: '27 Nm @ 4000 rpm',
+                power: '20.2 bhp',
+                torque: '27 Nm',
                 fuelSystem: 'Electronic Fuel Injection',
                 cooling: 'Air Cooled',
                 startType: 'Electric Start',
@@ -1284,9 +1484,10 @@
                 ],
                 mainImage: 'images/re2.jpg',
                 gallery: [
-                    
-                    
-                    
+                    'images/re2.jpg',
+                    'images/re2.jpg',
+                    'images/re2.jpg',
+                    'images/re2.jpg'
                 ],
                 similarBikes: [
                     {
@@ -1323,13 +1524,13 @@
                 price: 1500,
                 rating: 4.7,
                 reviewCount: 189,
-                description: 'The KTM Duke 200 is the ultimate street fighter that brings raw power and aggressive styling to the urban jungle. Designed for riders who crave excitement and performance, this bike delivers an adrenaline-pumping experience with every twist of the throttle.',
-                longDescription: 'The Duke 200 is powered by a 199.5cc liquid-cooled engine that produces 25 bhp, making it one of the most powerful bikes in its class. The lightweight trellis frame, upside-down forks, and radial tires provide exceptional handling and cornering capability. With its signature split-seat design, LED headlamp, and fully digital display, the Duke 200 is a true performance machine that stands out in any crowd.',
+                description: 'The KTM Duke 200 is the ultimate street fighter that brings raw power and aggressive styling to the urban jungle. Designed for riders who crave excitement and performance.',
+                longDescription: 'The Duke 200 is powered by a 199.5cc liquid-cooled engine that produces 25 bhp, making it one of the most powerful bikes in its class. The lightweight trellis frame, upside-down forks, and radial tires provide exceptional handling and cornering capability.',
                 engine: '199.5 cc',
                 mileage: '30 km/l',
                 transmission: '6-Speed',
-                power: '25 bhp @ 10000 rpm',
-                torque: '19.2 Nm @ 8000 rpm',
+                power: '25 bhp',
+                torque: '19.2 Nm',
                 fuelSystem: 'Electronic Fuel Injection',
                 cooling: 'Liquid Cooled',
                 startType: 'Electric Start',
@@ -1363,7 +1564,10 @@
                 ],
                 mainImage: 'images/200.jpg',
                 gallery: [
-                    
+                    'images/200.jpg',
+                    'images/200.jpg',
+                    'images/200.jpg',
+                    'images/200.jpg'
                 ],
                 similarBikes: [
                     {
@@ -1400,13 +1604,13 @@
                 price: 1300,
                 rating: 4.9,
                 reviewCount: 312,
-                description: 'The Yamaha R15 V4 is a track-inspired sports motorcycle that brings MotoGP technology to the streets. With its aggressive styling, advanced electronics, and race-proven performance, it\'s the perfect choice for aspiring racers and sports bike enthusiasts.',
-                longDescription: 'Featuring a 155cc liquid-cooled engine with Variable Valve Actuation (VVA), the R15 V4 delivers class-leading performance with impressive fuel efficiency. The Deltabox frame, aluminum swingarm, and aerodynamic bodywork provide exceptional stability at high speeds. With features like Traction Control System (TCS), Quick Shifter, and fully digital display, this bike offers a truly premium sports riding experience.',
+                description: 'The Yamaha R15 V4 is a track-inspired sports motorcycle that brings MotoGP technology to the streets. Perfect for aspiring racers and sports bike enthusiasts.',
+                longDescription: 'Featuring a 155cc liquid-cooled engine with Variable Valve Actuation (VVA), the R15 V4 delivers class-leading performance with impressive fuel efficiency. The Deltabox frame and aerodynamic bodywork provide exceptional stability at high speeds.',
                 engine: '155 cc',
                 mileage: '40 km/l',
                 transmission: '6-Speed',
-                power: '18.4 bhp @ 10000 rpm',
-                torque: '14.2 Nm @ 7500 rpm',
+                power: '18.4 bhp',
+                torque: '14.2 Nm',
                 fuelSystem: 'Electronic Fuel Injection',
                 cooling: 'Liquid Cooled',
                 startType: 'Electric Start',
@@ -1440,7 +1644,10 @@
                 ],
                 mainImage: 'images/r15 2.jpg',
                 gallery: [
-                   
+                    'images/r15 2.jpg',
+                    'images/r15 2.jpg',
+                    'images/r15 2.jpg',
+                    'images/r15 2.jpg'
                 ],
                 similarBikes: [
                     {
@@ -1477,13 +1684,13 @@
                 price: 1100,
                 rating: 4.7,
                 reviewCount: 178,
-                description: 'The Honda CB350 is a modern classic that combines retro styling with contemporary engineering. Built on Honda\'s "Honda Wing" philosophy, this motorcycle offers refined performance, exceptional reliability, and timeless elegance.',
-                longDescription: 'Powered by a 348cc air-cooled engine with Honda\'s PGM-FI fuel injection, the CB350 delivers smooth, linear power delivery perfect for relaxed cruising. The bike features a slipper clutch for light clutch operation, dual-channel ABS, and Honda\'s Smartphone Voice Control system. With its teardrop fuel tank, chrome accents, and comfortable upright seating position, the CB350 is the epitome of classic sophistication.',
+                description: 'The Honda CB350 is a modern classic that combines retro styling with contemporary engineering. Built on Honda\'s "Honda Wing" philosophy.',
+                longDescription: 'Powered by a 348cc air-cooled engine with Honda\'s PGM-FI fuel injection, the CB350 delivers smooth, linear power delivery perfect for relaxed cruising. The bike features a slipper clutch and dual-channel ABS.',
                 engine: '348 cc',
                 mileage: '38 km/l',
                 transmission: '5-Speed',
-                power: '21 bhp @ 5500 rpm',
-                torque: '30 Nm @ 3000 rpm',
+                power: '21 bhp',
+                torque: '30 Nm',
                 fuelSystem: 'PGM-FI',
                 cooling: 'Air Cooled',
                 startType: 'Electric Start',
@@ -1517,7 +1724,10 @@
                 ],
                 mainImage: 'images/cb350.jpg',
                 gallery: [
-                   
+                    'images/cb350.jpg',
+                    'images/cb350.jpg',
+                    'images/cb350.jpg',
+                    'images/cb350.jpg'
                 ],
                 similarBikes: [
                     {
@@ -1554,13 +1764,13 @@
                 price: 1400,
                 rating: 4.8,
                 reviewCount: 267,
-                description: 'The Royal Enfield Himalayan is India\'s first dedicated adventure tourer, designed to conquer the toughest terrains with ease. Whether you\'re crossing mountain passes or navigating city traffic, the Himalayan is your trusted companion for every journey.',
-                longDescription: 'Built around a rugged 411cc long-stroke engine, the Himalayan delivers strong low-end torque perfect for off-road adventures. The motorcycle features a unique half-duplex split cradle frame, long-travel suspension, and a 21-inch front wheel for exceptional off-road capability. With its tall windscreen, comfortable upright seating, and robust build quality, the Himalayan is engineered for explorers who seek the path less traveled.',
+                description: 'The Royal Enfield Himalayan is India\'s first dedicated adventure tourer, designed to conquer the toughest terrains with ease.',
+                longDescription: 'Built around a rugged 411cc long-stroke engine, the Himalayan delivers strong low-end torque perfect for off-road adventures. The motorcycle features long-travel suspension and a 21-inch front wheel for exceptional off-road capability.',
                 engine: '411 cc',
                 mileage: '30 km/l',
                 transmission: '5-Speed',
-                power: '24.3 bhp @ 6500 rpm',
-                torque: '32 Nm @ 4000 rpm',
+                power: '24.3 bhp',
+                torque: '32 Nm',
                 fuelSystem: 'Electronic Fuel Injection',
                 cooling: 'Air Cooled',
                 startType: 'Electric Start',
@@ -1594,7 +1804,10 @@
                 ],
                 mainImage: 'images/himalayan.jpg',
                 gallery: [
-                    
+                    'images/himalayan.jpg',
+                    'images/himalayan.jpg',
+                    'images/himalayan.jpg',
+                    'images/himalayan.jpg'
                 ],
                 similarBikes: [
                     {
@@ -1631,13 +1844,13 @@
                 price: 1800,
                 rating: 4.9,
                 reviewCount: 234,
-                description: 'The Kawasaki Ninja 300 is the perfect entry into the world of supersport motorcycles. With its aggressive styling, responsive engine, and razor-sharp handling, it delivers the authentic Ninja experience that riders dream about.',
-                longDescription: 'The Ninja 300 features a 296cc parallel-twin engine that produces class-leading power with incredible smoothness. The assist & slipper clutch ensures effortless downshifts, while the lightweight trellis frame and advanced suspension provide exceptional cornering capability. The aggressive Ninja styling, including the iconic dual-headlight design, turns heads everywhere you go. Whether you\'re carving canyons or commuting to work, the Ninja 300 delivers pure riding excitement.',
+                description: 'The Kawasaki Ninja 300 is the perfect entry into the world of supersport motorcycles, delivering the authentic Ninja experience.',
+                longDescription: 'The Ninja 300 features a 296cc parallel-twin engine that produces class-leading power with incredible smoothness. The assist & slipper clutch ensures effortless downshifts, while the lightweight trellis frame provides exceptional cornering capability.',
                 engine: '296 cc',
                 mileage: '25 km/l',
                 transmission: '6-Speed',
-                power: '39 bhp @ 11000 rpm',
-                torque: '27 Nm @ 10000 rpm',
+                power: '39 bhp',
+                torque: '27 Nm',
                 fuelSystem: 'Electronic Fuel Injection',
                 cooling: 'Liquid Cooled',
                 startType: 'Electric Start',
@@ -1671,7 +1884,10 @@
                 ],
                 mainImage: 'images/ninja.jpg',
                 gallery: [
-                    
+                    'images/ninja.jpg',
+                    'images/ninja.jpg',
+                    'images/ninja.jpg',
+                    'images/ninja.jpg'
                 ],
                 similarBikes: [
                     {
@@ -1713,6 +1929,7 @@
         const header = document.querySelector('header');
         const bikeDetailsContainer = document.getElementById('bike-details-container');
         const breadcrumbBike = document.getElementById('breadcrumb-bike');
+        const loadingState = document.getElementById('loading-state');
 
         // Get bike ID from URL
         function getBikeIdFromUrl() {
@@ -1728,6 +1945,11 @@
         // Render bike details
         function renderBikeDetails(bikeId) {
             const bike = bikeDatabase[bikeId];
+            
+            // Hide loading state
+            if (loadingState) {
+                loadingState.style.display = 'none';
+            }
             
             if (!bike) {
                 // Show not found message
@@ -2001,15 +2223,18 @@
         function initPage() {
             const bikeId = getBikeIdFromUrl();
             
-            if (bikeId) {
-                renderBikeDetails(bikeId);
-            } else {
-                // Default to Royal Enfield Classic 350 if no ID provided
-                renderBikeDetails('royal-enfield-classic-350');
-            }
+            // Simulate loading delay for better UX
+            setTimeout(() => {
+                if (bikeId) {
+                    renderBikeDetails(bikeId);
+                } else {
+                    // Default to Royal Enfield Classic 350 if no ID provided
+                    renderBikeDetails('royal-enfield-classic-350');
+                }
+            }, 500);
         }
 
-        // Header scroll effect
+        // Header scroll effect - EXACT same as index.html
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 header.classList.add('header-scrolled');
@@ -2018,7 +2243,7 @@
             }
         });
 
-        // Theme Toggle
+        // Theme Toggle - EXACT same as index.html
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('light-theme');
             
@@ -2034,13 +2259,13 @@
             localStorage.setItem('theme', body.classList.contains('light-theme') ? 'light' : 'dark');
         });
 
-        // RTL Toggle
+        // RTL Toggle - EXACT same as index.html
         rtlToggle.addEventListener('click', () => {
             body.classList.toggle('rtl');
             localStorage.setItem('rtl', body.classList.contains('rtl') ? 'true' : 'false');
         });
 
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle - EXACT same as index.html
         mobileToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
@@ -2055,8 +2280,10 @@
             }
         });
 
-        // Dropdown functionality for mobile
+        // Dropdown functionality for mobile - EXACT same as index.html
         const setupDropdown = (dropdownElement) => {
+            if (!dropdownElement) return;
+            
             dropdownElement.addEventListener('click', (e) => {
                 if (window.innerWidth <= 1024) {
                     e.preventDefault();
@@ -2076,7 +2303,7 @@
         setupDropdown(homeDropdown);
         setupDropdown(dashboardDropdown);
 
-        // Load saved preferences
+        // Load saved preferences - EXACT same as index.html
         document.addEventListener('DOMContentLoaded', () => {
             // Load theme preference
             const savedTheme = localStorage.getItem('theme');
@@ -2103,41 +2330,46 @@
                 header.classList.add('header-scrolled');
             }
             
+            // Close mobile menu when clicking a link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 1024 && !link.parentElement.classList.contains('dropdown')) {
+                        navMenu.classList.remove('active');
+                        body.style.overflow = 'auto';
+                        mobileToggle.querySelector('i').classList.add('fa-bars');
+                        mobileToggle.querySelector('i').classList.remove('fa-times');
+                        
+                        document.querySelectorAll('.dropdown.active').forEach(d => d.classList.remove('active'));
+                    }
+                });
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 1024 && navMenu.classList.contains('active') && !navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                    body.style.overflow = 'auto';
+                    mobileToggle.querySelector('i').classList.add('fa-bars');
+                    mobileToggle.querySelector('i').classList.remove('fa-times');
+                    
+                    document.querySelectorAll('.dropdown.active').forEach(d => d.classList.remove('active'));
+                }
+            });
+            
             // Initialize bike details
             initPage();
         });
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 1024 && navMenu.classList.contains('active')) {
-                if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
-                    navMenu.classList.remove('active');
-                    body.style.overflow = 'auto';
-                    const icon = mobileToggle.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                    
-                    const dropdowns = document.querySelectorAll('.dropdown.active');
-                    dropdowns.forEach(dropdown => {
-                        dropdown.classList.remove('active');
-                    });
-                }
-            }
-        });
-
-        // Window resize handler
+        // Window resize handler - EXACT same as index.html
         window.addEventListener('resize', () => {
             if (window.innerWidth > 1024 && navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
                 body.style.overflow = 'auto';
-                const icon = mobileToggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+                mobileToggle.querySelector('i').classList.add('fa-bars');
+                mobileToggle.querySelector('i').classList.remove('fa-times');
                 
-                const dropdowns = document.querySelectorAll('.dropdown.active');
-                dropdowns.forEach(dropdown => {
-                    dropdown.classList.remove('active');
-                });
+                document.querySelectorAll('.dropdown.active').forEach(d => d.classList.remove('active'));
             }
         });
     </script>
